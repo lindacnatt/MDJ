@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using PDollarGestureRecognizer1;
 using Lean.Touch;
 using QDollarGestureRecognizer;
+using System.IO;
+using System;
 
 public class DemoManager : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class DemoManager : MonoBehaviour
     private LineRenderer currentGestureLineRenderer;
 
     public Transform GesturePrefab;
+
+    public InputField InputField;
     #endregion
 
 
@@ -37,10 +41,18 @@ public class DemoManager : MonoBehaviour
         DrawArea = GameObject.Find("DrawingCanvas").GetComponent<RectTransform>();
         resultText = GameObject.Find("ResultText").GetComponent<Text>();
 
+        InputField = GameObject.Find("InputField").GetComponent<InputField>();
+
         //Load pre-made gestures
         TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/10-stylus-MEDIUM/");
         foreach (TextAsset gestureXml in gesturesXml)
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
+
+        //Load user custom gestures
+        string[] filePaths = Directory.GetFiles(Application.persistentDataPath, "*.xml");
+        foreach (string filePath in filePaths)
+            trainingSet.Add(GestureIO.ReadGestureFromFile(filePath));
+
     }
 
     // Update is called once per frame
@@ -105,7 +117,21 @@ public class DemoManager : MonoBehaviour
 
         Result gestureResult = QPointCloudRecognizer.ClassifyWithResult(candidate, trainingSet.ToArray());
 
-        resultText.text = gestureResult.GestureClass + " " + gestureResult.Score;
+        resultText.text = gestureResult.GestureClass;
 
+    }
+
+    public void AddShape()
+    {
+        if(!string.IsNullOrEmpty(InputField.text) && points.Count > 0)
+        {
+            string fileName = String.Format("{0}/{1}-{2}.xml", Application.persistentDataPath, InputField.text, DateTime.Now.ToFileTime());
+
+            GestureIO.WriteGesture(points.ToArray(), InputField.text, fileName);
+
+            trainingSet.Add(new Gesture(points.ToArray(), InputField.text));
+
+            InputField.text = "";
+        }
     }
 }

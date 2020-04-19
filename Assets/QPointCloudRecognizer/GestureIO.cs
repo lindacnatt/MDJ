@@ -99,7 +99,7 @@ namespace PDollarGestureRecognizer1
         /// <summary>
         /// Writes a multistroke gesture to an XML file
         /// </summary>
-        public static void WriteGesture(PDollarGestureRecognizer.Point[] points, string gestureName, string fileName)
+        public static void WriteGesture(Point[] points, string gestureName, string fileName)
         {
             using (StreamWriter sw = new StreamWriter(fileName))
             {
