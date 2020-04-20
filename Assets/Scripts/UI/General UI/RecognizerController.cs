@@ -108,7 +108,12 @@ public class RecognizerController : MonoBehaviour
 
             Result gestureResult = QPointCloudRecognizer.ClassifyWithResult(candidate, trainingSet.ToArray());
 
-            //resultText.text = gestureResult.GestureClass;
+            
+            if(gestureResult.GestureClass == "pitchfork")
+            {
+                FindObjectOfType<PlayerController>().AssignSpell();
+            }
+            
             Debug.Log(gestureResult.GestureClass);
         }
 
