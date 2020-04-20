@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     NavMeshAgent agent;
 
+    public Joystick joystick;
 
     //QUICK WORKAROUND TODO
     public bool HasSpell;
@@ -15,20 +16,36 @@ public class PlayerController : MonoBehaviour
     public float CurrentHP;
     public float CurrentInk;
 
+    public bool JoystickMode = true;
+    private float velocity = 5f;
+
+ 
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         CurrentHP = CurrentInk = 100;
+        if (JoystickMode)
+        {
+
+        }
+    }
+
+    private void Update()
+    {
+        this.transform.Translate(Time.deltaTime * velocity*joystick.Horizontal,0, Time.deltaTime * velocity * joystick.Vertical);
     }
 
     void OnEnable()
     {
+        if(!JoystickMode)
         Lean.Touch.LeanTouch.OnFingerDown += HandleFingerTap;
     }
 
     void OnDisable()
     {
-        Lean.Touch.LeanTouch.OnFingerDown -= HandleFingerTap;
+        if (!JoystickMode)
+            Lean.Touch.LeanTouch.OnFingerDown -= HandleFingerTap;
     }
 
     void HandleFingerTap(Lean.Touch.LeanFinger finger)
