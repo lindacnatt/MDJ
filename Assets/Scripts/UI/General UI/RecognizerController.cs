@@ -71,7 +71,7 @@ public class RecognizerController : MonoBehaviour
 
                 strokeID++;
 
-                Transform tmpGesture = Instantiate(GesturePrefab, transform.position, transform.rotation) as Transform;
+                Transform tmpGesture = Instantiate(GesturePrefab, Vector3.zero, Quaternion.identity) as Transform;
                 currentGestureLineRenderer = tmpGesture.GetComponent<UILineRendererList>();
                 
                 //Set the parent
