@@ -5,24 +5,32 @@ using UnityEngine.UI;
 
 public class GameplayUIManager : MonoBehaviour
 {
-    //TODO workaround
-    public PlayerController Player;
-
-    public Text UIHPText;
-    public Text UIInkText;
-    public Text UISpellText;
-    // Start is called before the first frame update
-    void Start()
-    {
-       Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    }
+    [SerializeField] private Text UIHPText;
+    [SerializeField] private Text UIInkText;
+    [SerializeField] private Text UISpellText;
 
     // Update is called once per frame
-    void Update()
+    //void Update()
+    //{
+    //    UIHPText.text = "Health: " + Player.CurrentHP;
+    //    UIInkText.text = "Ink: " + Player.CurrentInk;
+    //    UISpellText.text = Player.HasSpell ? "Fireball" : "";
+
+    //}
+
+    public void UpdateHp(float newHP)
     {
-        UIHPText.text = "Health: " + Player.CurrentHP;
-        UIInkText.text = "Ink: " + Player.CurrentInk;
-        UISpellText.text = Player.HasSpell ? "Fireball" : "";
-        
+        UIHPText.text = "Health: " + newHP;
+    }
+
+    public void UpdateInk(float newInk)
+    {
+        UIInkText.text = "Ink: " + newInk;
+    }
+
+    //TODO
+    void UpdateSpellPrimed()
+    {
+
     }
 }

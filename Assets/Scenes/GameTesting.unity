@@ -944,18 +944,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7979712039235699451}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1180015701 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7979712039782550125, guid: 1af6e92ae478b2042adde1955072d173,
-    type: 3}
-  m_PrefabInstance: {fileID: 7979712039235699451}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180015699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8946c7652b649b34cb7cca7a3e7300f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1317911095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1674,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3341787153903545741, guid: fe5544ef4e54d644c88203590af00757,
         type: 3}
+    - target: {fileID: 7979712039782550125, guid: 1af6e92ae478b2042adde1955072d173,
+        type: 3}
+      propertyPath: onHPChanged
+      value: 
+      objectReference: {fileID: 11400000, guid: 30996a53b55207c4996715e254ca5f39,
+        type: 2}
+    - target: {fileID: 7979712039782550125, guid: 1af6e92ae478b2042adde1955072d173,
+        type: 3}
+      propertyPath: onInkChanged
+      value: 
+      objectReference: {fileID: 11400000, guid: ddfc31900b0f3f34097688ab9566f0bf,
+        type: 2}
     - target: {fileID: 7979712039782550126, guid: 1af6e92ae478b2042adde1955072d173,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1750,11 +1750,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1103683774097740368, guid: 0bae73fed8923e7488b499f62d9a5cdd,
-        type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1180015701}
     - target: {fileID: 8633562168582713811, guid: 0bae73fed8923e7488b499f62d9a5cdd,
         type: 3}
       propertyPath: m_LocalPosition.x
