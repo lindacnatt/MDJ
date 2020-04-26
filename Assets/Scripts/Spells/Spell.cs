@@ -6,5 +6,6 @@ using UnityEngine;
 public abstract class Spell : ScriptableObject
 {
     public int InkCost;
-    public Gesture Gesture;
+    public string GestureName;
+    public GameObject SpellPrefab;
 }
