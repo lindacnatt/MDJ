@@ -7,17 +7,8 @@ public class GameplayUIManager : MonoBehaviour
 {
     [SerializeField] private Text UIHPText = null;
     [SerializeField] private Text UIInkText = null;
-    [SerializeField] private Text UISpellText;
-
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    UIHPText.text = "Health: " + Player.CurrentHP;
-    //    UIInkText.text = "Ink: " + Player.CurrentInk;
-    //    UISpellText.text = Player.HasSpell ? "Fireball" : "";
-
-    //}
-
+    [SerializeField] private Text UISpellText = null;
+    
     public void UpdateHp(float newHP)
     {
         UIHPText.text = "Health: " + newHP;
@@ -28,9 +19,8 @@ public class GameplayUIManager : MonoBehaviour
         UIInkText.text = "Ink: " + newInk;
     }
 
-    //TODO
-    void UpdateSpellPrimed()
+    public void UpdateSpellPrimed(Spell spell)
     {
-
+        UISpellText.text = spell == null ? "" : spell.name;
     }
 }
