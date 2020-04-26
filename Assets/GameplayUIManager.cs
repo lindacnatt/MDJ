@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameplayUIManager : MonoBehaviour
 {
-    [SerializeField] private Text UIHPText;
-    [SerializeField] private Text UIInkText;
+    [SerializeField] private Text UIHPText = null;
+    [SerializeField] private Text UIInkText = null;
     [SerializeField] private Text UISpellText;
 
     // Update is called once per frame
