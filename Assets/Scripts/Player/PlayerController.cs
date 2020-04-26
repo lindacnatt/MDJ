@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
@@ -8,22 +9,46 @@ public class PlayerController : MonoBehaviour
 
     //QUICK WORKAROUND TODO
     public bool HasSpell;
-    public GameObject FireballPrefab;
+    private Spell currentPrimedSpell;
 
-    [SerializeField] private FloatEvent onHPChanged;
-    [SerializeField] private FloatEvent onInkChanged;
+    [SerializeField] private FloatEvent onHPChanged = null;
+    [SerializeField] private FloatEvent onInkChanged = null;
+    [SerializeField] private SpellEvent onSpellPrimed = null;
 
     //Values
-    public float CurrentHP;
-    public float CurrentInk;
+    private float currentHP;
+    private float currentInk;
+
+
+    private bool Knockback = false;
+    private Vector3 direction;
+
+    //Raise an event if we change the Ink
+    public float CurrentInk { get => currentInk; 
+        set {
+            currentInk = value;
+            onInkChanged.Raise(currentInk);
+        } 
+    }
+
+    //Raise an event if the HP changes
+    //TODO: Raise an event if the player dies instead
+    //TODO: Don't forget to clamp the hp between 0 and maxHP as well!
+    public float CurrentHP { get => currentHP; 
+        set
+        {
+            currentHP = value;
+            onHPChanged.Raise(currentHP);
+        }
+    }
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        //Don't forgot to set the current hp/ink values at start to get the UI working (fire off events)
         CurrentHP = CurrentInk = 100;
-
-        onHPChanged.Raise(CurrentHP);
-        onInkChanged.Raise(CurrentInk);
+        
+        onSpellPrimed.Raise(null);
     }
 
     void OnEnable()
@@ -42,9 +67,13 @@ public class PlayerController : MonoBehaviour
         //Use spell instead of moving
         if(HasSpell)
         {
-            Instantiate(FireballPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>().SetDestination(finger);
+
+            //TODO: think about this after we've implemented a few different spells
+            //Like lighting, healing, etc...
+            Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>().SetDestination(finger);         
             
             HasSpell = false;
+            onSpellPrimed.Raise(null);
         }
         //Ignore GUI
         else if (!finger.IsOverGui)
@@ -58,24 +87,78 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void AssignSpell()
+    public void AssignSpell(Spell spell)
     {
+        if (spell == null)
+        {
+            Debug.LogWarning("No spell was received.");
+            return;
+        }
+            
+        if(spell.InkCost > CurrentInk)
+        {
+            Debug.Log("Player didn't have enough Ink for this spell.");
+            return;
+        }
 
-        //TODO: Incomplete of course.
-        //For now we just "equip" the only spell we have, the fireball
-        //Later on, hopefully we can just pass the apropriate spell we get from the recognizer.
-        //But we need a good architecture for that lol
+        HasSpell = true;
+        currentPrimedSpell = spell;
+        onSpellPrimed.Raise(spell);
 
-        //TODO: read this from the spell SO and check if we have enough ink to cast the spell
-        CurrentInk -= 10;
-
-
-        //If we have enough boom
-        if (CurrentInk > 0)
-            HasSpell = true;
-        else
-            CurrentInk = 0;
-
-        onInkChanged.Raise(CurrentInk);
+        CurrentInk -= spell.InkCost;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            direction = transform.position - collision.gameObject.transform.position;
+            direction = direction.normalized;
+
+            StartCoroutine(AddKnockback(direction));
+
+            //Take damage
+            TakeDamage(10);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        CurrentHP -= damage;
+    }
+
+    #region Knockback
+
+    //Check this out: https://www.youtube.com/watch?v=gFq0lO2E2Sc
+    private void FixedUpdate()
+    {
+        if (Knockback)
+        {
+            //TODO: try to refactor this in it's own class. We use navAgents on enemies too and we might want to have enemies have
+            //knockback
+            //Reset path needs to be here otherwise knockback won't happen if the navagent hasn't a set destination
+            //https://forum.unity.com/threads/setting-navmeshagent-velocity-manually-not-really-working-all-the-time.718055/
+            agent.ResetPath();
+            agent.velocity = direction * 8;
+        }
+            
+    }
+
+    //TODO: refactor this (on it's own class/function with the rest)
+    //Cache the values at start and then reapply everything neatly
+    IEnumerator AddKnockback(Vector3 direction)
+    {
+        Knockback = true;
+        agent.speed = 10;
+        agent.angularSpeed = 0;
+        agent.acceleration = 20;
+
+        yield return new WaitForSeconds(.2f);
+
+        Knockback = false;
+        agent.speed = 3.5f;
+        agent.angularSpeed = 120;
+        agent.acceleration = 8;
+    }
+    #endregion
 }
