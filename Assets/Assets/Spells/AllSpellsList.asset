@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6fc833bce88f1245845c4dd673962f6, type: 3}
-  m_Name: Fireball
+  m_Script: {fileID: 11500000, guid: fcb8f7810f727a642bdf5dc9a7944869, type: 3}
+  m_Name: AllSpellsList
   m_EditorClassIdentifier: 
-  InkCost: 10
-  GestureName: pitchfork
-  SpellPrefab: {fileID: 3341787153903545741, guid: fe5544ef4e54d644c88203590af00757,
-    type: 3}
-  damage: 100
+  SpellMap:
+  - {fileID: 11400000, guid: 3cccdffb8043d5b4ca49f2b7d93c2c60, type: 2}
