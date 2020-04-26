@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public bool HasSpell;
     public GameObject FireballPrefab;
 
+    [SerializeField] private FloatEvent onHPChanged;
+    [SerializeField] private FloatEvent onInkChanged;
 
     //Values
     public float CurrentHP;
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         CurrentHP = CurrentInk = 100;
+
+        onHPChanged.Raise(CurrentHP);
+        onInkChanged.Raise(CurrentInk);
     }
 
     void OnEnable()
@@ -70,5 +75,7 @@ public class PlayerController : MonoBehaviour
             HasSpell = true;
         else
             CurrentInk = 0;
+
+        onInkChanged.Raise(CurrentInk);
     }
 }
