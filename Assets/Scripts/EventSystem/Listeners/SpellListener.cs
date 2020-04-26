@@ -1,0 +1,1 @@
+﻿public class SpellListener : BaseGameEventListener<Spell, SpellEvent, UnitySpellEvent> { }
