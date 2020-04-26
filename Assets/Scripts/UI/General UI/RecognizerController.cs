@@ -21,6 +21,10 @@ public class RecognizerController : MonoBehaviour
 
     public Transform GesturePrefab;
 
+    [SerializeField] private SpellListManager spellList = null;
+
+    [SerializeField] private SpellEvent onSpellRecognized = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,7 @@ public class RecognizerController : MonoBehaviour
         TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/10-stylus-MEDIUM/");
         foreach (TextAsset gestureXml in gesturesXml)
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
+        
     }
 
     void OnEnable()
@@ -43,7 +48,10 @@ public class RecognizerController : MonoBehaviour
     void idk(Lean.Touch.LeanFinger finger)
     {
 
-        //Workaround for now
+        /* Workaround for now
+         * This is to prevent finger touch to "bleed" through the finish button and prevent unintentional drawing
+         * TODO: Refactor variable names
+         */ 
         var test = Lean.Touch.LeanTouch.RaycastGui(finger.ScreenPosition);
         
         if(test.Count > 0)
@@ -108,11 +116,13 @@ public class RecognizerController : MonoBehaviour
 
             Result gestureResult = QPointCloudRecognizer.ClassifyWithResult(candidate, trainingSet.ToArray());
 
-            
-            if(gestureResult.GestureClass == "pitchfork")
-            {
-                FindObjectOfType<PlayerController>().AssignSpell();
-            }
+
+
+            /*Fire off the event with the spell we've gotten
+            * TODO: maybe log if a shape wasn't detected
+            * This will come in handy if we extend the recognizer to discard any shapes that are badly draw for example
+            */ 
+            onSpellRecognized.Raise(spellList.GetSpell(gestureResult.GestureClass));         
             
             Debug.Log(gestureResult.GestureClass);
         }
