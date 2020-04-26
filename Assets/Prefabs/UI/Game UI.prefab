@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1103683774097740368}
   - component: {fileID: 8633562168199645600}
   - component: {fileID: 8633562168199645605}
+  - component: {fileID: 7321779825471826638}
   m_Layer: 5
   m_Name: GameplayCanvas
   m_TagString: Untagged
@@ -286,6 +287,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7321779825471826638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968852022892242714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30620c3217f404449a71fdcbe898379d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a694d4e888947cf4ab545f39f74ca2bb, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1103683774097740368}
+        m_MethodName: UpdateSpellPrimed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8296898393238797802
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +432,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GesturePrefab: {fileID: 6307142989538908025, guid: ec72aebaa1824a0499b5b349e127ddf8,
     type: 3}
+  spellList: {fileID: 11400000, guid: 74cd35b8dc9716240b0dffc160bc2a89, type: 2}
+  onSpellRecognized: {fileID: 11400000, guid: a6c0767bcb9124e4da0e54f228c6ab0b, type: 2}
 --- !u!1 &8633562167899801587
 GameObject:
   m_ObjectHideFlags: 0

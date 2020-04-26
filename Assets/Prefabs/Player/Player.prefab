@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7979712039782550121}
   - component: {fileID: 7979712039782550125}
   - component: {fileID: 7979712039782550124}
+  - component: {fileID: 2906521407638371189}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -109,7 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HasSpell: 0
-  FireballPrefab: {fileID: 0}
+  onHPChanged: {fileID: 11400000, guid: 30996a53b55207c4996715e254ca5f39, type: 2}
+  onInkChanged: {fileID: 11400000, guid: ddfc31900b0f3f34097688ab9566f0bf, type: 2}
+  onSpellPrimed: {fileID: 11400000, guid: a694d4e888947cf4ab545f39f74ca2bb, type: 2}
 --- !u!195 &7979712039782550124
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -132,3 +135,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &2906521407638371189
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979712039782550122}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
