@@ -22,12 +22,18 @@ public class Generator : MonoBehaviour
 
     private readonly Vector2 MaxSize = new Vector2(200, 150);
 
+    private readonly Vector2 numEnemies = new Vector2(18,20);
+    private readonly int numChests = 4;
 
     private TileType[][] tiles;
     private Room[] rooms;
     private Corridor[] corridors;
     public GameObject boardHolder;
-    public GameObject[] enemies;
+
+    public GameObject[] chests;
+
+    public GameObject[] enemiesPrefab;
+    public List<GameObject> enemies;
 
     public GameObject player;
     public GameObject[] boss;
@@ -37,11 +43,14 @@ public class Generator : MonoBehaviour
     public List<Room> Rooms;    // Start is called before the first frame update
     void Start()
     {
+        enemies = new List<GameObject>();
         boardHolder = new GameObject("BoardHolder");
         SetupTilesArray();
         CreateRooms();
         SetTilesValues();
         InstantiateTiles();
+
+        CreateEnemies();
     }
 
     void SetupTilesArray()
@@ -218,6 +227,77 @@ public class Generator : MonoBehaviour
             }
         }
     }
+    
+    private bool noEnemy(int x, int y)
+    {
+        if (Vector2.Distance(player.transform.position, new Vector2(x, y)) < 8)
+        {
+            return false;
+        }
 
+        foreach (GameObject g in enemies)
+        {
+            if (Vector2.Distance(g.transform.position,new Vector2(x,y)) < 3)
+            {
+                
+                return false;
+            }
+            
+        }
+        return true;
+    }
 
+    void CreateEnemies()
+    {
+        int currNumEnemies = r.Next((int)numEnemies.x,(int)numEnemies.y);
+
+        while(currNumEnemies > 0)
+        {
+            int xPos = r.Next(1, (int)MaxSize.x);
+            int yPos = r.Next(1, (int)MaxSize.y);
+
+            if (tiles[xPos][yPos] == TileType.floor && noEnemy(xPos,yPos))
+            {
+                GameObject g = Instantiate(enemiesPrefab[r.Next(0,enemiesPrefab.Length)], new Vector3(xPos, yPos, -1), Quaternion.identity);
+                enemies.Add(g);
+                currNumEnemies--;
+            }
+            
+        }
+    }
+
+    void CreateChests()
+    {
+        int currChests = 0;
+        while (numChests > currChests)
+        {
+            int xPos = r.Next(1, (int)MaxSize.x);
+            int yPos = r.Next(1, (int)MaxSize.y);
+
+            if (tiles[xPos][yPos] == TileType.floor && noEnemy(xPos, yPos) && nearWall(xPos,yPos))
+            {
+                putChest(xPos, yPos);
+                currChests--;
+            }
+        }
+    }
+
+    private void putChest(int x, int y)
+    {
+        int chest = r.Next(0, 101);
+        int typeChest = 0;
+
+        if (chest > 90) typeChest = 4;
+        else if (chest > 75) typeChest = 3;
+        else if (chest > 50) typeChest = 2;
+        else if (chest > 25) typeChest = 1;
+
+        Instantiate(chests[typeChest], new Vector3(x, y, -1), Quaternion.identity);
+    }
+
+    private bool nearWall(int x,int y)
+    {
+        return tiles[x + 1][y] == TileType.wall || tiles[x - 1][y] == TileType.wall ||
+            tiles[x][y + 1] == TileType.wall || tiles[x][y - 1] == TileType.wall;
+    }
 }

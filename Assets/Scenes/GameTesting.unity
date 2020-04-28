@@ -155,8 +155,10 @@ MonoBehaviour:
   floor:
   - {fileID: 1645321533627082146, guid: 953c419e192baab43917be0b9aa3421c, type: 3}
   boardHolder: {fileID: 0}
-  enemies:
-  - {fileID: 7314309809477675227, guid: fb524523d553b48449d93d628c05a8ef, type: 3}
+  chests: []
+  enemiesPrefab:
+  - {fileID: 7073474034743198294, guid: e593c40a3f55d8a4b86388ade60a6aa8, type: 3}
+  enemies: []
   player: {fileID: 454527848251342780, guid: a83c01cc3ad15724b86e0a3c259466b0, type: 3}
   boss:
   - {fileID: 7342147608722229795, guid: 6c20fceba7fda7a43aba789fa86c96dc, type: 3}
@@ -619,6 +621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 413
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633562169641161178, guid: 0bae73fed8923e7488b499f62d9a5cdd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bae73fed8923e7488b499f62d9a5cdd, type: 3}
