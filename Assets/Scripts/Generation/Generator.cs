@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
 public class Generator : MonoBehaviour
 {
     public enum TileType
@@ -10,10 +10,10 @@ public class Generator : MonoBehaviour
         wall,floor,
     }
 
-
     public GameObject[] wall;
     public GameObject[] floor;
 
+    private readonly int corridorWidth = 2;
     private readonly int minNumRooms = 15;
     private readonly int maxNumRooms = 20;
     private readonly Vector2 roomwidth = new Vector2(12, 30);
@@ -25,7 +25,14 @@ public class Generator : MonoBehaviour
     private readonly Vector2 numEnemies = new Vector2(18,20);
     private readonly int numChests = 4;
 
+    public Tile[] floorTile;
+    public Tile[] wallTile;
+
+    public Tilemap floorTM;
+    public Tilemap wallTM;
+
     private TileType[][] tiles;
+
     private Room[] rooms;
     private Corridor[] corridors;
     public GameObject boardHolder;
@@ -48,7 +55,7 @@ public class Generator : MonoBehaviour
         SetupTilesArray();
         CreateRooms();
         SetTilesValues();
-        InstantiateTiles();
+        InstantiateTiles2();
 
         CreateEnemies();
     }
@@ -102,7 +109,8 @@ public class Generator : MonoBehaviour
         Instantiate(boss[r.Next(0,boss.Length)], bossPos, Quaternion.identity);
     }
 
-    void SetTilesValues()
+    
+     void SetTilesValues()
     {
         //rooms
         for(int i = 0; i < rooms.Length; i++)
@@ -132,41 +140,93 @@ public class Generator : MonoBehaviour
                 {
                     case direction.up:
                         yCoord += j;
-                        tiles[xCoord-2][yCoord] = TileType.floor;
-                        tiles[xCoord-1][yCoord] = TileType.floor;
-                        tiles[xCoord][yCoord] = TileType.floor;
-                        tiles[xCoord+1][yCoord] = TileType.floor;
-                        tiles[xCoord+2][yCoord] = TileType.floor;
+                        singleCorridor2(xCoord, yCoord);
                         break;
                     case direction.right:
                         xCoord += j;
-                        tiles[xCoord][yCoord-2] = TileType.floor;
-                        tiles[xCoord][yCoord-1] = TileType.floor;
-                        tiles[xCoord][yCoord] = TileType.floor;
-                        tiles[xCoord][yCoord+1] = TileType.floor;
-                        tiles[xCoord][yCoord+2] = TileType.floor;
+                        singleCorridor1(xCoord, yCoord);
                         break;
                     case direction.down:
                         yCoord -= j;
-                        tiles[xCoord - 2][yCoord] = TileType.floor;
-                        tiles[xCoord - 1][yCoord] = TileType.floor;
-                        tiles[xCoord][yCoord] = TileType.floor;
-                        tiles[xCoord + 1][yCoord] = TileType.floor;
-                        tiles[xCoord + 2][yCoord] = TileType.floor;
+                        singleCorridor2(xCoord, yCoord);
                         break;
                     case direction.left:
                         xCoord -= j;
-                        tiles[xCoord][yCoord - 2] = TileType.floor;
-                        tiles[xCoord][yCoord - 1] = TileType.floor;
-                        tiles[xCoord][yCoord] = TileType.floor;
-                        tiles[xCoord][yCoord + 1] = TileType.floor;
-                        tiles[xCoord][yCoord + 2] = TileType.floor;
+                        singleCorridor1(xCoord, yCoord);
                         break;
                 }
             }
         }
     }
 
+    private void singleCorridor1(int x, int y)
+    {
+        for(int i = -corridorWidth; i <= corridorWidth ; i++)
+        {
+            tiles[x][y + i] = TileType.floor;
+        }
+    }
+
+    private void singleCorridor2(int x, int y)
+    {
+        for (int i = -corridorWidth; i <= corridorWidth; i++)
+        {
+            tiles[x+i][y] = TileType.floor;
+        }
+    }
+
+    void InstantiateTiles2()
+    {
+        for (int i = 0; i < tiles.Length; i++)
+        {
+            if (tiles[i][1] == TileType.floor)
+            {
+                wallTM.SetTile(new Vector3Int(i, 0, 0), wallTile[r.Next(0, wall.Length)]);
+            }
+            if (tiles[i][tiles[0].Length - 2] == TileType.floor)
+            {
+                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTile[r.Next(0, wall.Length)]);
+            }
+        }
+        for (int i = 0; i < tiles[0].Length; i++)
+        {
+            if (tiles[1][i] == TileType.floor)
+            {
+                wallTM.SetTile(new Vector3Int(0, i, 0), wallTile[r.Next(0, wall.Length)]);
+            }
+            if (tiles[tiles.Length - 2][i] == TileType.floor)
+            {
+                wallTM.SetTile(new Vector3Int(tiles.Length - 1, i, 0), wallTile[r.Next(0, wall.Length)]);
+            }
+        }
+        for (int i = 1; i < tiles.Length - 1; i++)
+        {
+            for (int j = 1; j < tiles[i].Length - 1; j++)
+            {
+                if (tiles[i][j] == TileType.floor)
+                {
+                    floorTM.SetTile(new Vector3Int(i, j, 0), floorTile[r.Next(0, wall.Length)]);
+                    if (tiles[i + 1][j] != TileType.floor)
+                    {
+                        wallTM.SetTile(new Vector3Int(i + 1, j, 0), wallTile[r.Next(0, wall.Length)]);
+                    }
+                    if (tiles[i - 1][j] != TileType.floor)
+                    {
+                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTile[r.Next(0, wall.Length)]);
+                    }
+                    if (tiles[i][j + 1] != TileType.floor)
+                    {
+                        wallTM.SetTile(new Vector3Int(i, j + 1, 0), wallTile[r.Next(0, wall.Length)]);
+                    }
+                    if (tiles[i][j - 1] != TileType.floor)
+                    {
+                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTile[r.Next(0, wall.Length)]);
+                    }
+
+                }
+            }
+        }
+    }
     void InstantiateTiles()
     {
         for(int i = 0; i < tiles.Length; i++)
