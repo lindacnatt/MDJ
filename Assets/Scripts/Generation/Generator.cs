@@ -5,25 +5,19 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class Generator : MonoBehaviour
 {
-    public enum TileType
-    {
-        wall,floor,
-    }
+    public enum TileType{wall,floor,}
 
-    public GameObject[] wall;
-    public GameObject[] floor;
+    private readonly Vector2Int corridorWidth = new Vector2Int(1, 4);
+    private int corridorW = 0;
+    private readonly Vector2Int numRooms = new Vector2Int(15,20);
+    private readonly Vector2Int roomwidth = new Vector2Int(15, 35);
+    private readonly Vector2Int roomheight = new Vector2Int(15, 30);
+    private readonly Vector2Int corridorLength = new Vector2Int(15, 20);
+    private readonly Vector2Int MaxSize = new Vector2Int(200, 150);
 
-    private readonly int corridorWidth = 2;
-    private readonly int minNumRooms = 15;
-    private readonly int maxNumRooms = 20;
-    private readonly Vector2 roomwidth = new Vector2(12, 30);
-    private readonly Vector2 roomheight = new Vector2(10, 24);
-    private readonly Vector2 corridorLength = new Vector2(15, 20);
+    private readonly Vector2Int numEnemies = new Vector2Int(18,20);
 
-    private readonly Vector2 MaxSize = new Vector2(200, 150);
-
-    private readonly Vector2 numEnemies = new Vector2(18,20);
-    private readonly int numChests = 4;
+    private readonly Vector2Int numChests = new Vector2Int(5,8);
 
     public Tile[] floorTile;
     public Tile[] wallTile;
@@ -55,7 +49,7 @@ public class Generator : MonoBehaviour
         SetupTilesArray();
         CreateRooms();
         SetTilesValues();
-        InstantiateTiles2();
+        InstantiateTiles();
 
         CreateEnemies();
     }
@@ -72,7 +66,7 @@ public class Generator : MonoBehaviour
     void CreateRooms()
     {
         r = new System.Random();
-        rooms = new Room[r.Next(minNumRooms, maxNumRooms)];
+        rooms = new Room[r.Next(numRooms.x, numRooms.y)];
         corridors = new Corridor[rooms.Length - 1];
         rooms[0] = new Room();
         corridors[0] = new Corridor();
@@ -131,11 +125,11 @@ public class Generator : MonoBehaviour
         for (int i = 0; i < corridors.Length; i++)
         {
             Corridor current = corridors[i];
+            corridorW = r.Next(corridorWidth.x, corridorWidth.y);
             for (int j = 0; j < current.corridorLength; j++)
             {
                 int xCoord = current.startXpos;
                 int yCoord = current.startYpos;
-
                 switch (current.dir)
                 {
                     case direction.up:
@@ -161,7 +155,7 @@ public class Generator : MonoBehaviour
 
     private void singleCorridor1(int x, int y)
     {
-        for(int i = -corridorWidth; i <= corridorWidth ; i++)
+        for(int i = -corridorW; i <= corridorW; i++)
         {
             tiles[x][y + i] = TileType.floor;
         }
@@ -169,34 +163,34 @@ public class Generator : MonoBehaviour
 
     private void singleCorridor2(int x, int y)
     {
-        for (int i = -corridorWidth; i <= corridorWidth; i++)
+        for (int i = -corridorW; i <= corridorW; i++)
         {
             tiles[x+i][y] = TileType.floor;
         }
     }
 
-    void InstantiateTiles2()
+    void InstantiateTiles()
     {
         for (int i = 0; i < tiles.Length; i++)
         {
             if (tiles[i][1] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(i, 0, 0), wallTile[r.Next(0, wall.Length)]);
+                wallTM.SetTile(new Vector3Int(i, 0, 0), wallTile[r.Next(0, wallTile.Length)]);
             }
             if (tiles[i][tiles[0].Length - 2] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTile[r.Next(0, wall.Length)]);
+                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTile[r.Next(0, wallTile.Length)]);
             }
         }
         for (int i = 0; i < tiles[0].Length; i++)
         {
             if (tiles[1][i] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(0, i, 0), wallTile[r.Next(0, wall.Length)]);
+                wallTM.SetTile(new Vector3Int(0, i, 0), wallTile[r.Next(0, wallTile.Length)]);
             }
             if (tiles[tiles.Length - 2][i] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(tiles.Length - 1, i, 0), wallTile[r.Next(0, wall.Length)]);
+                wallTM.SetTile(new Vector3Int(tiles.Length - 1, i, 0), wallTile[r.Next(0, wallTile.Length)]);
             }
         }
         for (int i = 1; i < tiles.Length - 1; i++)
@@ -205,88 +199,29 @@ public class Generator : MonoBehaviour
             {
                 if (tiles[i][j] == TileType.floor)
                 {
-                    floorTM.SetTile(new Vector3Int(i, j, 0), floorTile[r.Next(0, wall.Length)]);
+                    floorTM.SetTile(new Vector3Int(i, j, 0), floorTile[r.Next(0, wallTile.Length)]);
                     if (tiles[i + 1][j] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i + 1, j, 0), wallTile[r.Next(0, wall.Length)]);
+                        wallTM.SetTile(new Vector3Int(i + 1, j, 0), wallTile[r.Next(0, wallTile.Length)]);
                     }
                     if (tiles[i - 1][j] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTile[r.Next(0, wall.Length)]);
+                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTile[r.Next(0, wallTile.Length)]);
                     }
                     if (tiles[i][j + 1] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i, j + 1, 0), wallTile[r.Next(0, wall.Length)]);
+                        wallTM.SetTile(new Vector3Int(i, j + 1, 0), wallTile[r.Next(0, wallTile.Length)]);
                     }
                     if (tiles[i][j - 1] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTile[r.Next(0, wall.Length)]);
+                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTile[r.Next(0, wallTile.Length)]);
                     }
 
                 }
             }
         }
     }
-    void InstantiateTiles()
-    {
-        for(int i = 0; i < tiles.Length; i++)
-        {
-            if (tiles[i][1] == TileType.floor)
-            {
-                GameObject g = Instantiate(wall[r.Next(0,wall.Length)], new Vector3(i, 0,-1), Quaternion.identity);
-                g.transform.parent = boardHolder.transform;
-            }
-            if (tiles[i][tiles[0].Length - 2] == TileType.floor)
-            {
-                GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(i, tiles[0].Length-1,-1), Quaternion.identity);
-                g.transform.parent = boardHolder.transform;
-            }
-        }
-        for (int i = 0; i < tiles[0].Length; i++)
-        {
-            if (tiles[1][i] == TileType.floor)
-            {
-                GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(0,i,-1), Quaternion.identity);
-                g.transform.parent = boardHolder.transform;
-            }
-            if (tiles[tiles.Length - 2][i] == TileType.floor)
-            {
-                GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(tiles.Length - 1,i,-1), Quaternion.identity);
-                g.transform.parent = boardHolder.transform;
-            }
-        }
-        for (int i = 1; i < tiles.Length-1; i++)
-        {
-            for (int j = 1; j < tiles[i].Length-1; j++)
-            {
-                if (tiles[i][j] == TileType.floor)
-                {
-                    GameObject g1 = Instantiate(floor[r.Next(0, floor.Length)], new Vector3(i, j,0), Quaternion.identity);
-                    g1.transform.parent = boardHolder.transform;
-                    if (tiles[i + 1][j] != TileType.floor) {
-                        GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(i+1, j,-1), Quaternion.identity);
-                        g.transform.parent = boardHolder.transform;
-                    }
-                    if(tiles[i - 1][j] != TileType.floor)
-                    {
-                        GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(i-1, j,-1), Quaternion.identity);
-                        g.transform.parent = boardHolder.transform;
-                    }
-                    if (tiles[i][j + 1] != TileType.floor)
-                    {
-                        GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(i, j+1,-1), Quaternion.identity);
-                        g.transform.parent = boardHolder.transform;
-                    }
-                    if (tiles[i][j - 1] != TileType.floor)
-                    {
-                        GameObject g = Instantiate(wall[r.Next(0, wall.Length)], new Vector3(i, j-1,-1), Quaternion.identity);
-                        g.transform.parent = boardHolder.transform;
-                    }
-                    
-                }
-            }
-        }
-    }
+    
     
     private bool noEnemy(int x, int y)
     {
@@ -328,8 +263,8 @@ public class Generator : MonoBehaviour
 
     void CreateChests()
     {
-        int currChests = 0;
-        while (numChests > currChests)
+        int numeroChests = r.Next(numChests.x, numChests.y);
+        while (numeroChests > 0)
         {
             int xPos = r.Next(1, (int)MaxSize.x);
             int yPos = r.Next(1, (int)MaxSize.y);
@@ -337,7 +272,7 @@ public class Generator : MonoBehaviour
             if (tiles[xPos][yPos] == TileType.floor && noEnemy(xPos, yPos) && nearWall(xPos,yPos))
             {
                 putChest(xPos, yPos);
-                currChests--;
+                numeroChests--;
             }
         }
     }
