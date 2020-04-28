@@ -20,6 +20,8 @@ public class RecognizerController : MonoBehaviour
     private UILineRendererList currentGestureLineRenderer;
 
     public Transform GesturePrefab;
+    [SerializeField] private GameObject DrawingLinesParent;
+    
 
     [SerializeField] private SpellListManager spellList = null;
 
@@ -83,7 +85,7 @@ public class RecognizerController : MonoBehaviour
                 currentGestureLineRenderer = tmpGesture.GetComponent<UILineRendererList>();
                 
                 //Set the parent
-                currentGestureLineRenderer.transform.SetParent(FindObjectOfType<RecognizerController>().transform.Find("Lines"));
+                currentGestureLineRenderer.transform.SetParent(DrawingLinesParent.transform);
                 
                 //TODO: better this out
                 //Remember to set the rect transform in the proper position (bottom left)
