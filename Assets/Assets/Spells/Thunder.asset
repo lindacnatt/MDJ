@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Thunder
   m_EditorClassIdentifier: 
   InkCost: 2
+  GestureName: five point star
+  SpellPrefab: {fileID: 0}
   damage: 50
