@@ -51,6 +51,7 @@ public class Generator : MonoBehaviour
         SetTilesValues();
         InstantiateTiles();
 
+        InstantiatePlayer();
         CreateEnemies();
     }
 
@@ -82,11 +83,7 @@ public class Generator : MonoBehaviour
                 corridors[i].SetupCorridor(rooms[i], corridorLength, roomwidth, roomheight, MaxSize, r, false);
             }
 
-            if(i == (int)(rooms.Length * 0.5))
-            {
-                Vector3 playerPos = new Vector3(rooms[i].position.x + (int)(rooms[i].roomWidth/2), rooms[i].position.y + (int)(rooms[i].roomHeight / 2), -1);
-                Instantiate(player, playerPos, Quaternion.identity);
-            }
+            
         }
 
         Room farthest = rooms[0];
@@ -294,5 +291,18 @@ public class Generator : MonoBehaviour
     {
         return tiles[x + 1][y] == TileType.wall || tiles[x - 1][y] == TileType.wall ||
             tiles[x][y + 1] == TileType.wall || tiles[x][y - 1] == TileType.wall;
+    }
+
+    void InstantiatePlayer()
+    {
+        for(int i = 0; i < rooms.Length; i++)
+        {
+            if (i == (int)(rooms.Length * 0.5))
+            {
+                Vector3 playerPos = new Vector3(rooms[i].position.x + (int)(rooms[i].roomWidth / 2), rooms[i].position.y + (int)(rooms[i].roomHeight / 2), -1);
+                Instantiate(player, playerPos, Quaternion.identity);
+            }
+        }
+        
     }
 }
