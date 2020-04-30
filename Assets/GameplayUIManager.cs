@@ -9,12 +9,19 @@ public class GameplayUIManager : MonoBehaviour
     [SerializeField] private Text UIInkText = null;
     [SerializeField] private Text UISpellText = null;
     [SerializeField] private Slider HealthSlider = null;
+    [SerializeField] public Image HealthFill = null;
     [SerializeField] private Slider InkSlider = null;
     
     public void UpdateHp(float newHP)
     {
         UIHPText.text = "Health: " + newHP;
-        HealthSlider.value = newHP;
+        HealthSlider.value = newHP; 
+        if (newHP < 30){
+            HealthFill.color = Color.red;
+        }
+        if (newHP > 30 && newHP < 60){
+            HealthFill.color = Color.yellow;
+        }
     }
 
     public void UpdateInk(float newInk)
