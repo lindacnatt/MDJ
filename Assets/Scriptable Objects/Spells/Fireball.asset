@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InkCost: 10
   GestureName: pitchfork
-  SpellPrefab: {fileID: 3341787153903545741, guid: fe5544ef4e54d644c88203590af00757,
+  SpellPrefab: {fileID: 6097121493472704719, guid: cd4a179b104d7ba48a8daede1da2141b,
     type: 3}
   damage: 100

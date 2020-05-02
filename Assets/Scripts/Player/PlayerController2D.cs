@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2D : MonoBehaviour
 {
-    NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
 
 
     //QUICK WORKAROUND TODO
@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+
+
         //Don't forgot to set the current hp/ink values at start to get the UI working (fire off events)
         CurrentHP = CurrentInk = 100;
         
@@ -54,6 +59,7 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         Lean.Touch.LeanTouch.OnFingerDown += HandleFingerTap;
+        agent.enabled = true;
     }
 
     void OnDisable()
@@ -78,13 +84,31 @@ public class PlayerController : MonoBehaviour
         //Ignore GUI
         else if (!finger.IsOverGui)
         {
-            RaycastHit hit;
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(finger.ScreenPosition), out hit, 100))
-            {
-                agent.destination = hit.point;
-            }
+            var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
+            target.z = 0;
+            agent.destination = target;
+            DebugDrawPath(agent.path.corners);
+
+            //RaycastHit hit;
+
+            //if (Physics.Raycast(Camera.main.ScreenPointToRay(finger.ScreenPosition), out hit, 100))
+            //{
+            //    agent.destination = hit.point;
+            //}
         }
+    }
+
+
+    public static void DebugDrawPath(Vector3[] corners)
+    {
+        if (corners.Length < 2) { return; }
+        int i = 0;
+        for (; i < corners.Length - 1; i++)
+        {
+            Debug.DrawLine(corners[i], corners[i + 1], Color.blue);
+        }
+        Debug.DrawLine(corners[0], corners[1], Color.red);
     }
 
     public void AssignSpell(Spell spell)
@@ -108,9 +132,9 @@ public class PlayerController : MonoBehaviour
         CurrentInk -= spell.InkCost;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             direction = transform.position - collision.gameObject.transform.position;
             direction = direction.normalized;
@@ -132,6 +156,8 @@ public class PlayerController : MonoBehaviour
     //Check this out: https://www.youtube.com/watch?v=gFq0lO2E2Sc
     private void FixedUpdate()
     {
+        DebugDrawPath(agent.path.corners);
+
         if (Knockback)
         {
             //TODO: try to refactor this in it's own class. We use navAgents on enemies too and we might want to have enemies have

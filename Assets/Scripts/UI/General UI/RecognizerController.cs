@@ -20,7 +20,7 @@ public class RecognizerController : MonoBehaviour
     private UILineRendererList currentGestureLineRenderer;
 
     public Transform GesturePrefab;
-    [SerializeField] private GameObject DrawingLinesParent;
+    [SerializeField] private GameObject DrawingLinesParent = null;
     
 
     [SerializeField] private SpellListManager spellList = null;

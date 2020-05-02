@@ -21,48 +21,64 @@ public class Fireball : MonoBehaviour
     void Start()
     {
         //Lean.Touch.LeanTouch.OnFingerDown += SetDestination;
-        Destroy(gameObject, 2.0f);
+        //Destroy(gameObject, 2.0f);
 
         Direction = (Destination - transform.position).normalized;
+        Direction.z = 0;
     }
 
     void OnDisable()
     {
-        //Lean.Touch.LeanTouch.OnFingerDown -= SetDestination;
+        Lean.Touch.LeanTouch.OnFingerDown -= SetDestination;
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
 
         transform.position += Direction * speed;
 
-        transform.LookAt(transform.position + Direction * speed);
+        //transform.LookAt(transform.position + Direction * speed);
 
     }
 
     public void SetDestination(Lean.Touch.LeanFinger finger)
     {
-        RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(finger.ScreenPosition), out hit, 100))
-        {
-            Destination = hit.point;
-            Destination.y = 1;
-        
-        }
+        var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
+        target.z = 0;
+        Destination = target;
+
+        //RaycastHit hit;
+
+        //if (Physics.Raycast(Camera.main.ScreenPointToRay(finger.ScreenPosition), out hit, 100))
+        //{
+        //    Destination = hit.point;
+        //    Destination.y = 1;
+
+        //}
     }
 
-
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyController>().TakeDamage(DamageSpellSettings.damage);
+            collision.gameObject.GetComponent<EnemyController2D>().TakeDamage(DamageSpellSettings.damage);
             Destroy(gameObject);
 
         }
-        
     }
+
+    //3D
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.CompareTag("Enemy"))
+    //    {
+    //        other.gameObject.GetComponent<EnemyController>().TakeDamage(DamageSpellSettings.damage);
+    //        Destroy(gameObject);
+
+    //    }
+        
+    //}
 
 }
