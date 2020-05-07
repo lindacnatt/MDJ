@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.AI;
+using static Chest;
+using UnityEngine.SceneManagement;
+
 public class Generator : MonoBehaviour
 {
     public enum TileType{wall,floor,}
@@ -31,18 +34,19 @@ public class Generator : MonoBehaviour
     private Room[] rooms;
     private Corridor[] corridors;
 
-    public GameObject[] chests;
-
     public GameObject[] enemiesPrefab;
     public List<GameObject> enemies;
 
     public GameObject player;
     public GameObject[] boss;
 
+    public GameObject[] chests;
+
     private System.Random r;
 
     public List<Room> Rooms;    // Start is called before the first frame update
 
+    public int sceneIndex;
 
     [SerializeField] private NavMeshSurface2d navMesh = null;
     void Start()
@@ -60,10 +64,13 @@ public class Generator : MonoBehaviour
 
         CreateEnemies();
 
+        CreateChests();
+
     }
 
     void SetupTilesArray()
     {
+        //Instantiate
         tiles = new TileType[(int)MaxSize.x+2][];
         for(int i = 0; i < tiles.Length; i++)
         {
@@ -76,32 +83,38 @@ public class Generator : MonoBehaviour
         r = new System.Random();
         rooms = new Room[r.Next(numRooms.x, numRooms.y)];
         corridors = new Corridor[rooms.Length - 1];
+        //first room
         rooms[0] = new Room();
         corridors[0] = new Corridor();
         rooms[0].SetupRoom(roomwidth, roomheight, MaxSize, r);
         corridors[0].SetupCorridor(rooms[0], corridorLength, roomwidth, roomheight, MaxSize, r, true);
+
         for(int i = 1; i < rooms.Length; i++)
         {
+            //create room based on previous corridor
             rooms[i] = new Room();
             rooms[i].SetupRoom(roomwidth, roomheight, MaxSize, corridors[i - 1], r);
             if( i < corridors.Length)
             {
+                //create corridor 
                 corridors[i] = new Corridor();
                 corridors[i].SetupCorridor(rooms[i], corridorLength, roomwidth, roomheight, MaxSize, r, false);
             }
 
             if(i == (int)(rooms.Length * 0.5))
             {
+                //instantiate player in the middle room
                 Vector3 playerPos = new Vector3(rooms[i].position.x + (int)(rooms[i].roomWidth/2), rooms[i].position.y + (int)(rooms[i].roomHeight / 2), -1);
                 Instantiate(player, playerPos, Quaternion.identity);
             }
         }
 
+        //instantiate boss on the furstest room feeling dumb might delete later
         Room farthest = rooms[0];
         float d = 0;
         for (int i = 1; i < rooms.Length; i++)
         {
-            if (Vector2.Distance(rooms[i].position,player.transform.position)>d)
+            if (Vector2.Distance(rooms[i].position,player.transform.position) > d)
             {
                 d = Vector2.Distance(rooms[i].position, player.transform.position);
                 farthest = rooms[i];
@@ -161,6 +174,7 @@ public class Generator : MonoBehaviour
         }
     }
 
+    //instantiate the sides of corridors
     private void singleCorridor1(int x, int y)
     {
         for(int i = -corridorW; i <= corridorW; i++)
@@ -207,7 +221,7 @@ public class Generator : MonoBehaviour
             {
                 if (tiles[i][j] == TileType.floor)
                 {
-                    floorTM.SetTile(new Vector3Int(i, j, 0), floorTile[r.Next(0, wallTile.Length)]);
+                    floorTM.SetTile(new Vector3Int(i, j, 0), floorTile[r.Next(0, floorTile.Length)]);
                     if (tiles[i + 1][j] != TileType.floor)
                     {
                         wallTM.SetTile(new Vector3Int(i + 1, j, 0), wallTile[r.Next(0, wallTile.Length)]);
@@ -230,22 +244,14 @@ public class Generator : MonoBehaviour
         }
     }
     
-    
+    //check if the position is apropriate
     private bool noEnemy(int x, int y)
     {
-        if (Vector2.Distance(player.transform.position, new Vector2(x, y)) < 8)
-        {
-            return false;
-        }
+        if (Vector2.Distance(player.transform.position, new Vector2(x, y)) < 8) return false;
 
         foreach (GameObject g in enemies)
         {
-            if (Vector2.Distance(g.transform.position,new Vector2(x,y)) < 3)
-            {
-                
-                return false;
-            }
-            
+            if (Vector2.Distance(g.transform.position,new Vector2(x,y)) < 3)   return false; 
         }
         return true;
     }
@@ -276,31 +282,52 @@ public class Generator : MonoBehaviour
         {
             int xPos = r.Next(1, (int)MaxSize.x);
             int yPos = r.Next(1, (int)MaxSize.y);
-
+            //check if near wall, on the floor and no enemies on top
             if (tiles[xPos][yPos] == TileType.floor && noEnemy(xPos, yPos) && nearWall(xPos,yPos))
             {
-                putChest(xPos, yPos);
+                //instantiate the chest
+                int n = r.Next(0, 100);
+                GameObject g;
+                if (n > 80)
+                {
+                    g = Instantiate(chests[4], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g.AddComponent<Chest>().Generate(ChestType.golden, r);
+                }
+                else if (n > 65)
+                {
+                    g = Instantiate(chests[3], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g.AddComponent<Chest>().Generate(ChestType.purple, r);
+                }
+                else if (n > 40)
+                {
+                    g = Instantiate(chests[2], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g.AddComponent<Chest>().Generate(ChestType.blue, r);
+                }
+                else if (n > 10)
+                {
+                    g = Instantiate(chests[1], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g.AddComponent<Chest>().Generate(ChestType.green, r);
+                }
+                else
+                {
+                    g = Instantiate(chests[0], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g.AddComponent<Chest>().Generate(ChestType.brown, r);
+                }
                 numeroChests--;
             }
         }
     }
 
-    private void putChest(int x, int y)
-    {
-        int chest = r.Next(0, 101);
-        int typeChest = 0;
-
-        if (chest > 90) typeChest = 4;
-        else if (chest > 75) typeChest = 3;
-        else if (chest > 50) typeChest = 2;
-        else if (chest > 25) typeChest = 1;
-
-        Instantiate(chests[typeChest], new Vector3(x, y, -1), Quaternion.identity);
-    }
 
     private bool nearWall(int x,int y)
     {
         return tiles[x + 1][y] == TileType.wall || tiles[x - 1][y] == TileType.wall ||
             tiles[x][y + 1] == TileType.wall || tiles[x][y - 1] == TileType.wall;
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneIndex);
     }
 }

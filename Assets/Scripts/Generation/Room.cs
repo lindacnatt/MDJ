@@ -32,7 +32,6 @@ public class Room : ScriptableObject
         roomWidth = r.Next((int)rw.x, (int)rw.y);
         roomHeight = r.Next((int)rh.x, (int)rh.y);
 
-        Debug.Log(roomHeight + "   " + roomWidth);
         switch (enteringCor)
         {
             case direction.up:

@@ -124,7 +124,15 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.LogError("WIFEGERGEBENERGWQFWRNETN");
         CurrentHP -= damage;
+        if (CurrentHP <= 0) GameOver();
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        GameObject.FindGameObjectWithTag("OverScreen").SetActive(true);
     }
 
     #region Knockback
