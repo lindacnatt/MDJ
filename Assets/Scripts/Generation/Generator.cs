@@ -42,7 +42,7 @@ public class Generator : MonoBehaviour
 
     public GameObject[] chests;
 
-    private System.Random r;
+    public static System.Random r;
 
     public List<Room> Rooms;    // Start is called before the first frame update
 
@@ -291,27 +291,27 @@ public class Generator : MonoBehaviour
                 if (n > 80)
                 {
                     g = Instantiate(chests[4], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                    g.AddComponent<Chest>().Generate(ChestType.golden, r);
+                    g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
                 else if (n > 65)
                 {
                     g = Instantiate(chests[3], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                    g.AddComponent<Chest>().Generate(ChestType.purple, r);
+                    g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
                 else if (n > 40)
                 {
                     g = Instantiate(chests[2], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                    g.AddComponent<Chest>().Generate(ChestType.blue, r);
+                    g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
                 else if (n > 10)
                 {
                     g = Instantiate(chests[1], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                    g.AddComponent<Chest>().Generate(ChestType.green, r);
+                    g.AddComponent<Chest>().Generate(ChestType.green);
                 }
                 else
                 {
                     g = Instantiate(chests[0], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                    g.AddComponent<Chest>().Generate(ChestType.brown, r);
+                    g.AddComponent<Chest>().Generate(ChestType.brown);
                 }
                 numeroChests--;
             }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ranged : EnemyController
+public class Ranged : EnemyController2D
 {
     protected int range = 5;
     protected int rangeMove = 5;

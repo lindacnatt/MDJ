@@ -522,12 +522,12 @@ GameObject:
   - component: {fileID: 3591532856967037804}
   - component: {fileID: 2214517734802200466}
   m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
+  m_Name: OverScreen
+  m_TagString: OverScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7543357653219138543
 RectTransform:
   m_ObjectHideFlags: 0

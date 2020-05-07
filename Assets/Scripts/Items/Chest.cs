@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
@@ -14,44 +11,22 @@ public class Chest : MonoBehaviour
     public ChestType tipo;
     public GameObject[] items;
     public int numItems;
+    private System.Random r;
 
 
-    public void OpenChest()
+    public void Generate(ChestType type)
     {
-        foreach(GameObject g in items)
-        {
-            System.Random r = new System.Random();
-            Item i = FindObjectOfType<Item>();
-            if (i.type == Item.ItemType.Ink)
-            {
-                switch (tipo)
-                {
-                    case ChestType.brown:
-                        break;
-                    case ChestType.green:
-                        break;
-                    case ChestType.blue:
-                        break;
-                    case ChestType.purple:
-                        break;
-                    case ChestType.golden:
-                        break;
-                }
-            }
-        }
-    }
-
-    public void Generate(ChestType type, System.Random r)
-    {
+        r = Generator.r;
         //just to instantiate with different numbers n shit
-        if (type == ChestType.golden) CreateGolden(r);
-        else if (type == ChestType.purple) CreatePurple(r);
-        else if (type == ChestType.blue) CreateBlue(r);
-        else if (type == ChestType.green) CreateGreen(r);
-        else CreateBrown(r);
+        if (type == ChestType.golden) CreateGolden();
+        else if (type == ChestType.purple) CreatePurple();
+        else if (type == ChestType.blue) CreateBlue();
+        else if (type == ChestType.green) CreateGreen();
+        else CreateBrown();
+
     }
 
-    private void CreateBrown(System.Random r)
+    private void CreateBrown()
     {
         numItems = r.Next(1, 10);
         if (numItems > 5) numItems = 2;
@@ -69,7 +44,7 @@ public class Chest : MonoBehaviour
         
     }
 
-    private void CreateGreen(System.Random r)
+    private void CreateGreen()
     {
         numItems = r.Next(1, 20);
         if (numItems > 15) numItems = 3;
@@ -88,7 +63,7 @@ public class Chest : MonoBehaviour
         }
     }
 
-    private void CreateBlue(System.Random r)
+    private void CreateBlue()
     {
         numItems = r.Next(1, 10);
         if (numItems > 5) numItems = 3;
@@ -105,7 +80,7 @@ public class Chest : MonoBehaviour
         }
     }
 
-    private void CreatePurple(System.Random r)
+    private void CreatePurple()
     {
         numItems = r.Next(1, 20);
         if (numItems > 15) numItems = 4;
@@ -124,7 +99,7 @@ public class Chest : MonoBehaviour
         }
     }
 
-    private void CreateGolden(System.Random r)
+    private void CreateGolden()
     {
         numItems = r.Next(1, 10);
         if (numItems > 5) numItems = 4;
@@ -143,4 +118,38 @@ public class Chest : MonoBehaviour
 
 
 
+    public void OpenChest()
+    {
+        foreach (GameObject g in items)
+        {
+            Item i = g.GetComponent<Item>();
+            if (i.type == Item.ItemType.Ink || i.type == Item.ItemType.Health) {
+                float v = 1;
+                switch (tipo) {
+                    case ChestType.brown:
+                        v = 0.8f;
+                        break;
+                    case ChestType.green:
+                        v = 0.9f;
+                        break;
+                    case ChestType.blue:
+                        v = 1f;
+                        break;
+                    case ChestType.purple:
+                        v = 1.1f;
+                        break;
+                    case ChestType.golden:
+                        v = 1.2f;
+                        break;
+                }
+                i.value = (int)v * r.Next(9, 12);
+            }
+            float a = (float)r.NextDouble() + 0.2f;
+            float b = (float)r.NextDouble() + 0.2f;
+            Vector3 offset = new Vector3(a,b,0);
+            Debug.Log(a+" " +b);
+            Instantiate(g, transform.position + offset,Quaternion.identity);
+        }
+        Destroy(this.gameObject);
+    }
 }

@@ -45,7 +45,6 @@ public class Room : ScriptableObject
                 position.x = entry.EndPositionX;
                 position.y = r.Next(entry.EndPositionY - roomHeight + 3, entry.EndPositionY);
                 position.y = Mathf.Clamp(position.y, 0, max.y - roomHeight-1);
-                Debug.Log(roomHeight + "   " + roomWidth);
                 break;
             case direction.down:
                 roomHeight = Mathf.Clamp(roomHeight, 1, entry.EndPositionY);

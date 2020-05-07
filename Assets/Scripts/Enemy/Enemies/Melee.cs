@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : EnemyController
+public class Melee : EnemyController2D
 {
     // Start is called before the first frame update
     void Start()

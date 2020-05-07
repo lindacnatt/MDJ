@@ -84,9 +84,9 @@ public class PlayerController2D : MonoBehaviour
         //Ignore GUI
         else if (!finger.IsOverGui)
         {
-
             var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
             target.z = 0;
+
             agent.destination = target;
             DebugDrawPath(agent.path.corners);
 
@@ -144,11 +144,45 @@ public class PlayerController2D : MonoBehaviour
             //Take damage
             TakeDamage(10);
         }
+        else if (collision.gameObject.CompareTag("Chest"))
+        {
+            collision.gameObject.GetComponent<Chest>().OpenChest();
+        }
+        else if (collision.gameObject.CompareTag("Ink"))
+        {
+            addInk(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Health"))
+        {
+            addHP(collision.gameObject);
+        }
     }
+
 
     public void TakeDamage(float damage)
     {
         CurrentHP -= damage;
+        if (CurrentHP <= 0) GameOver();
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+
+    }
+
+
+    private void addInk(GameObject g)
+    {
+        currentInk += g.GetComponent<Item>().value;
+        Destroy(g);
+    }
+
+    private void addHP(GameObject g)
+    {
+        Debug.Log(g.GetComponent<Item>().value);
+        currentInk += g.GetComponent<Item>().value;
+        Destroy(g);
     }
 
     #region Knockback
