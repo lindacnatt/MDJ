@@ -55,27 +55,27 @@ public class EnemyController2D : MonoBehaviour
     private void Loot()
     {
         System.Random r = new System.Random();
-        int n = r.Next(0, 100);
+        int n = r.Next(0, 200);
         GameObject g;
         switch (rare)
         {
             case EnemyRarity.common:
-                if (n > 99)
+                if (n > 199)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
-                else if (n > 96)
+                else if (n > 194)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
-                else if (n > 82)
+                else if (n > 176)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
-                else if (n > 60)
+                else if (n > 150)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);
@@ -87,22 +87,22 @@ public class EnemyController2D : MonoBehaviour
                 }
                 break;
             case EnemyRarity.rare:
-                if (n > 90)
+                if (n > 180)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
-                else if (n > 70)
+                else if (n > 140)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
-                else if (n > 45)
+                else if (n > 95)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
-                else if (n > 20)
+                else if (n > 45)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);
@@ -114,22 +114,22 @@ public class EnemyController2D : MonoBehaviour
                 }
                 break;
             case EnemyRarity.legend:
-                if (n > 48)
+                if (n > 99)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
-                else if (n > 25)
+                else if (n > 55)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
-                else if (n > 10)
+                else if (n > 21)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
-                else if (n > 5)
+                else if (n > 9)
                 {
                     g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);

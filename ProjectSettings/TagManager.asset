@@ -8,6 +8,8 @@ TagManager:
   - OverScreen
   - Chest
   - Item
+  - Ink
+  - Health
   layers:
   - Default
   - TransparentFX

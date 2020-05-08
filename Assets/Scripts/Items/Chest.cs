@@ -28,17 +28,17 @@ public class Chest : MonoBehaviour
 
     private void CreateBrown()
     {
-        numItems = r.Next(1, 10);
-        if (numItems > 5) numItems = 2;
+        numItems = r.Next(1, 20);
+        if (numItems > 15) numItems = 2;
         else numItems = 1;
         items = new GameObject[numItems];
         tipo = ChestType.brown;
         items[0] = ItemArrays.commonItems[0];
         for(int i = 1; i < numItems; i++)
         {
-            int next = r.Next(0, 20);
-            if (next > 19) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
-            else if (next > 15) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
+            int next = r.Next(0, 40);
+            if (next > 39) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
+            else if (next > 31) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
             else items[i] = ItemArrays.commonItems[r.Next(0, ItemArrays.commonItems.Length)];
         }
         
