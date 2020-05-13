@@ -6,6 +6,7 @@ public class PlayerController2D : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
 
+    public GameObject inventory;
 
     //QUICK WORKAROUND TODO
     public bool HasSpell;
@@ -156,6 +157,14 @@ public class PlayerController2D : MonoBehaviour
         {
             addHP(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Item"))
+        {
+            addItem(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Equip"))
+        {
+            equipItem(collision.gameObject);
+        }
     }
 
 
@@ -182,6 +191,21 @@ public class PlayerController2D : MonoBehaviour
     {
         Debug.Log(g.GetComponent<Item>().value);
         currentInk += g.GetComponent<Item>().value;
+        Destroy(g);
+    }
+
+    private void addItem(GameObject g)
+    {
+        inventory.GetComponent<Inventory>().addItem(g);
+        Destroy(g);
+    }
+
+    private void equipItem(GameObject g)
+    {
+        if (!inventory.GetComponent<Inventory>().equipItem(g))
+        {
+            inventory.GetComponent<Inventory>().addItem(g);
+        }
         Destroy(g);
     }
 

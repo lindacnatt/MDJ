@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyData: {fileID: 11400000, guid: 045dcc7f91362a542a68d2ad25028c32, type: 2}
-  Player: {fileID: 0}
+  Player: {fileID: 2355181616577641705, guid: 834dfacfa1497534587d47cb9b32bcb0, type: 3}
 --- !u!195 &7314309809477675228
 NavMeshAgent:
   m_ObjectHideFlags: 0

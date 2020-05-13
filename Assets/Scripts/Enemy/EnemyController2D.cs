@@ -27,13 +27,17 @@ public class EnemyController2D : MonoBehaviour
         NavAgent.updateUpAxis = false;
         rare = EnemyRarity.common;
         type = EnemyType.melee;
-
-        Player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine("iniPlayer");
         CurrentHP = EnemyData.HP;
 
         NavAgent.speed = EnemyData.WalkingSpeed;
     }
 
+     IEnumerator iniPlayer()
+    {
+        yield return new WaitForSeconds(1);
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {

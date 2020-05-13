@@ -106,6 +106,7 @@ public class Generator : MonoBehaviour
                 //instantiate player in the middle room
                 Vector3 playerPos = new Vector3(rooms[i].position.x + (int)(rooms[i].roomWidth/2), rooms[i].position.y + (int)(rooms[i].roomHeight / 2), -1);
                 Instantiate(player, playerPos, Quaternion.identity);
+                Destroy(player);
             }
         }
 
