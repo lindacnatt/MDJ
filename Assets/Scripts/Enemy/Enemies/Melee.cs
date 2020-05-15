@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Melee : EnemyController2D
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
+    public override void Move()
     {
-        
+        if (Vector2.Distance(Player.transform.position, this.transform.position) < sightRange)
+        {
+            base.Move();
+        }
     }
 }

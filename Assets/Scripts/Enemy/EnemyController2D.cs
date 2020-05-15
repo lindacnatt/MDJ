@@ -18,6 +18,8 @@ public class EnemyController2D : MonoBehaviour
 
     protected NavMeshAgent NavAgent;
 
+    protected int sightRange;
+
     public GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,7 @@ public class EnemyController2D : MonoBehaviour
         type = EnemyType.melee;
         StartCoroutine("iniPlayer");
         CurrentHP = EnemyData.HP;
-
+        sightRange = 30;
         NavAgent.speed = EnemyData.WalkingSpeed;
     }
 
@@ -40,6 +42,11 @@ public class EnemyController2D : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
+    {
+        Move();
+    }
+
+    public virtual void Move()
     {
         NavAgent.destination = Player.transform.position;
     }

@@ -14,12 +14,12 @@ public class Generator : MonoBehaviour
     private readonly Vector2Int corridorWidth = new Vector2Int(1, 4);
     private int corridorW = 0;
     private readonly Vector2Int numRooms = new Vector2Int(15,20);
-    private readonly Vector2Int roomwidth = new Vector2Int(15, 35);
-    private readonly Vector2Int roomheight = new Vector2Int(15, 30);
+    private readonly Vector2Int roomwidth = new Vector2Int(15, 25);
+    private readonly Vector2Int roomheight = new Vector2Int(15, 20);
     private readonly Vector2Int corridorLength = new Vector2Int(15, 20);
     private readonly Vector2Int MaxSize = new Vector2Int(200, 150);
 
-    private readonly Vector2Int numEnemies = new Vector2Int(18,20);
+    private readonly Vector2Int numEnemies = new Vector2Int(18,25);
 
     private readonly Vector2Int numChests = new Vector2Int(5,8);
 

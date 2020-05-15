@@ -146,7 +146,7 @@ public class Chest : MonoBehaviour
             }
             float a = (float)r.NextDouble() + 0.2f;
             float b = (float)r.NextDouble() + 0.2f;
-            Vector3 offset = new Vector3(a,b,0);
+            Vector3 offset = new Vector3(a,b,-0.5f);
             Debug.Log(a+" " +b);
             Instantiate(g, transform.position + offset,Quaternion.identity);
         }

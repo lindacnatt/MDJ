@@ -6,7 +6,7 @@ public class PlayerController2D : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
 
-    public GameObject inventory;
+    public Inventory inventory;
 
     //QUICK WORKAROUND TODO
     public bool HasSpell;
@@ -23,6 +23,8 @@ public class PlayerController2D : MonoBehaviour
 
     private bool Knockback = false;
     private Vector3 direction;
+
+    private int defBuff;
 
     //Raise an event if we change the Ink
     public float CurrentInk { get => currentInk; 
@@ -49,7 +51,7 @@ public class PlayerController2D : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-
+        defBuff = 1;
 
         //Don't forgot to set the current hp/ink values at start to get the UI working (fire off events)
         CurrentHP = CurrentInk = 100;
@@ -170,7 +172,7 @@ public class PlayerController2D : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        CurrentHP -= damage;
+        CurrentHP -= damage/defBuff;
         if (CurrentHP <= 0) GameOver();
     }
 
@@ -202,13 +204,19 @@ public class PlayerController2D : MonoBehaviour
 
     private void equipItem(GameObject g)
     {
-        if (!inventory.GetComponent<Inventory>().equipItem(g))
+        if (!inventory.equipItem(g))
         {
-            inventory.GetComponent<Inventory>().addItem(g);
+            inventory.addItem(g);
         }
         Destroy(g);
+        calcBuffs();
     }
 
+    private void calcBuffs()
+    {
+        defBuff = inventory.defensive();
+    }
+    
     #region Knockback
 
     //Check this out: https://www.youtube.com/watch?v=gFq0lO2E2Sc

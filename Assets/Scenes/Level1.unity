@@ -439,7 +439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -332, y: -145}
+  m_AnchoredPosition: {x: -333, y: -166}
   m_SizeDelta: {x: 180.3, y: 72.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187851236
@@ -990,11 +990,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonItems1:
   - {fileID: 2059599992557538436, guid: 023d13d99355e3d4293f491ffcbf5e78, type: 3}
+  - {fileID: 7841599960916757940, guid: d64e0b37775e0cc4db4f0777197c804e, type: 3}
+  - {fileID: 3239607176443532935, guid: 803f1199417457f41a5124e4a0af3b76, type: 3}
   - {fileID: 6901883995446790625, guid: 651a98c65028f8141b45e423eb3053ad, type: 3}
   rareItems1:
+  - {fileID: 7841599960916757940, guid: d64e0b37775e0cc4db4f0777197c804e, type: 3}
+  - {fileID: 3239607176443532935, guid: 803f1199417457f41a5124e4a0af3b76, type: 3}
   - {fileID: 6901883995446790625, guid: 651a98c65028f8141b45e423eb3053ad, type: 3}
   legendItems1:
   - {fileID: 6901883995446790625, guid: 651a98c65028f8141b45e423eb3053ad, type: 3}
+  - {fileID: 3239607176443532935, guid: 803f1199417457f41a5124e4a0af3b76, type: 3}
+  - {fileID: 6901883995446790625, guid: 651a98c65028f8141b45e423eb3053ad, type: 3}
+  - {fileID: 7841599960916757940, guid: d64e0b37775e0cc4db4f0777197c804e, type: 3}
 --- !u!1 &423495561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,12 +2548,12 @@ PrefabInstance:
     - target: {fileID: 8633562168363527614, guid: 0bae73fed8923e7488b499f62d9a5cdd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 337.6
+      value: 319
       objectReference: {fileID: 0}
     - target: {fileID: 8633562168363527614, guid: 0bae73fed8923e7488b499f62d9a5cdd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8633562168363527614, guid: 0bae73fed8923e7488b499f62d9a5cdd,
         type: 3}
@@ -4744,6 +4751,6 @@ PrefabInstance:
         type: 3}
       propertyPath: inventory
       value: 
-      objectReference: {fileID: 8388952858636627705}
+      objectReference: {fileID: 8388952858636627704}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e1f29ee2ad9ee7419434c46b4bd2487, type: 3}

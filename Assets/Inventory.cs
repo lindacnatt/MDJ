@@ -11,38 +11,38 @@ public class Inventory : MonoBehaviour
     public GameObject inventory;
 
     public List<Image> slots;
-    private List<GameObject> items;
+    private List<Item> items;
     private int numItems = 0;
     private int maxNumItems;
 
     public Image chestSlot;
-    private GameObject chestplate;
+    private Item chestplate;
     private bool chestplateOc = false;
 
     public Image pantSlot;
-    private GameObject pant;
+    private Item pant;
     private bool pantOc = false;
 
     public Image gloveSlot;
-    private GameObject glove;
+    private Item glove;
     private bool gloveOc = false;
 
     public Image bootSlot;
-    private GameObject boot;
+    private Item boot;
     private bool bootOc = false;
 
     public Image inkSlot;
-    private GameObject inkTank;
+    private Item inkTank;
     private bool inkOc = false;
 
     public Image backSlot;
-    private GameObject backpack;
+    private Item backpack;
     private bool backOc = false;
 
 
     void Start()
     {
-        items = new List<GameObject>();
+        items = new List<Item>();
         maxNumItems = 4;
         int i = 1;
         foreach(Image g in slots)
@@ -54,9 +54,11 @@ public class Inventory : MonoBehaviour
 
     public bool setChest(GameObject c)
     {
-        if (c.GetComponent<Item>().type == Item.ItemType.Chest)
+        if (c.GetComponent<Item>().type == Item.ItemType.Chest && !chestplateOc)
         {
-            chestplate = c;
+            chestSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
+            chestSlot.color = new Color32(255, 255, 225, 255);
+            chestplate = c.GetComponent<Item>();
             chestplateOc = true;
             return true;
         }
@@ -65,9 +67,9 @@ public class Inventory : MonoBehaviour
 
     public bool setPant(GameObject c)
     {
-        if (c.GetComponent<Item>().type == Item.ItemType.Pant)
+        if (c.GetComponent<Item>().type == Item.ItemType.Pant && !pantOc)
         {
-            pant = c;
+            pant = c.GetComponent<Item>();
             pantOc = true;
             return true;
         }
@@ -75,9 +77,9 @@ public class Inventory : MonoBehaviour
     }
     public bool setGlove(GameObject c)
     {
-        if (c.GetComponent<Item>().type == Item.ItemType.Glove)
+        if (c.GetComponent<Item>().type == Item.ItemType.Glove && !gloveOc)
         {
-            glove = c;
+            glove = c.GetComponent<Item>();
             gloveOc = true;
             return true;
         }
@@ -85,9 +87,9 @@ public class Inventory : MonoBehaviour
     }
     public bool setBoot(GameObject c)
     {
-        if (c.GetComponent<Item>().type == Item.ItemType.Boot)
+        if (c.GetComponent<Item>().type == Item.ItemType.Boot && !bootOc)
         {
-            boot = c;
+            boot = c.GetComponent<Item>();
             bootOc = true;
             return true;
         }
@@ -96,9 +98,9 @@ public class Inventory : MonoBehaviour
 
     public bool setInkT(GameObject c)
     {
-        if (c.GetComponent<Item>().type == Item.ItemType.InkTank)
+        if (c.GetComponent<Item>().type == Item.ItemType.InkTank && !inkOc)
         {
-            inkTank = c;
+            inkTank = c.GetComponent<Item>();
             inkOc = true;
             return false;
         }
@@ -107,11 +109,20 @@ public class Inventory : MonoBehaviour
 
     public bool setBackpack(GameObject c)
     {
-        if (c.GetComponent<Item>().type == Item.ItemType.Backpack)
+        if (c.GetComponent<Item>().type == Item.ItemType.Backpack && !backOc)
         {
-            backpack = c;
+            backSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
+            backSlot.color = new Color32(255, 255, 225, 255);
+            backpack = c.GetComponent<Item>();
             backOc = true;
-            return false;
+            int i = 0;
+            maxNumItems += backpack.value;
+            foreach(Image g in slots)
+            {
+                if (i < maxNumItems) g.transform.parent.gameObject.SetActive(true);
+                i++;
+            }
+            return true;
         }
         return false;
     }
@@ -120,7 +131,7 @@ public class Inventory : MonoBehaviour
     {
         if(numItems < maxNumItems)
         {
-            items.Add(i);
+            items.Add(i.GetComponent<Item>());
             slots[numItems].sprite = i.GetComponent<SpriteRenderer>().sprite;
             slots[numItems].color = new Color32(255, 255, 225, 255);
             numItems++;
@@ -166,5 +177,14 @@ public class Inventory : MonoBehaviour
     {
         inventory.SetActive(false);
         open.enabled = true;
+    }
+
+    public int defensive()
+    {
+        int res = 1;
+        if (chestplateOc) res *= chestplate.value;
+        if (pantOc) res *= pant.value;
+        if (bootOc) res *= boot.value;
+        return res;
     }
 }
