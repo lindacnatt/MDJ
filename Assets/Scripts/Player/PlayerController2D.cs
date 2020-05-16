@@ -8,13 +8,14 @@ public class PlayerController2D : MonoBehaviour
 
     public Inventory inventory;
 
-    //QUICK WORKAROUND TODO
+    //State machine
     public bool HasSpell;
     private Spell currentPrimedSpell;
 
     [SerializeField] private FloatEvent onHPChanged = null;
     [SerializeField] private FloatEvent onInkChanged = null;
     [SerializeField] private SpellEvent onSpellPrimed = null;
+    [SerializeField] private VoidEvent onDie = null;
 
     //Values
     private float currentHP;
@@ -27,6 +28,7 @@ public class PlayerController2D : MonoBehaviour
     private int defBuff;
 
     //Raise an event if we change the Ink
+    //TODO: Don't forget to clamp the ink between 0 and maxInk as well!
     public float CurrentInk { get => currentInk; 
         set {
             currentInk = value;
@@ -35,13 +37,17 @@ public class PlayerController2D : MonoBehaviour
     }
 
     //Raise an event if the HP changes
-    //TODO: Raise an event if the player dies instead
     //TODO: Don't forget to clamp the hp between 0 and maxHP as well!
     public float CurrentHP { get => currentHP; 
         set
         {
             currentHP = value;
             onHPChanged.Raise(currentHP);
+
+            if(currentHP <= 0)
+            {
+                onDie.Raise();
+            }
         }
     }
 
@@ -77,9 +83,10 @@ public class PlayerController2D : MonoBehaviour
         if(HasSpell)
         {
 
-            //TODO: think about this after we've implemented a few different spells
-            //Like lighting, healing, etc...
-            Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>().SetDestination(finger);         
+            //TODO: We have an interface for now
+            //If we need anything else let me know - Rafael
+            var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
+            Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<ISpell>().SetDestination(target);         
             
             HasSpell = false;
             onSpellPrimed.Raise(null);
@@ -174,8 +181,6 @@ public class PlayerController2D : MonoBehaviour
     {
         CurrentHP -= damage/defBuff;
     }
-
-
 
     private void addInk(GameObject g)
     {

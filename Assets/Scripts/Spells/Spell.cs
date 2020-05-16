@@ -8,4 +8,8 @@ public abstract class Spell : ScriptableObject
     public int InkCost;
     public string GestureName;
     public GameObject SpellPrefab;
+
+    //In case we need it (for statistics or something else)
+    [SerializeField] private VoidEvent OnSpellPrimedEvent;
+    [SerializeField] private VoidEvent OnSpellCastEvent;
 }
