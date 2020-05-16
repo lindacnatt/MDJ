@@ -15,28 +15,24 @@ public class Inventory : MonoBehaviour
     private int numItems = 0;
     private int maxNumItems;
 
+    private List<Equippable> equipped;
+
     public Image chestSlot;
-    private Item chestplate;
     private bool chestplateOc = false;
 
     public Image pantSlot;
-    private Item pant;
     private bool pantOc = false;
 
     public Image gloveSlot;
-    private Item glove;
     private bool gloveOc = false;
 
     public Image bootSlot;
-    private Item boot;
     private bool bootOc = false;
 
     public Image inkSlot;
-    private Item inkTank;
     private bool inkOc = false;
 
     public Image backSlot;
-    private Item backpack;
     private bool backOc = false;
 
 
@@ -58,7 +54,7 @@ public class Inventory : MonoBehaviour
         {
             chestSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
             chestSlot.color = new Color32(255, 255, 225, 255);
-            chestplate = c.GetComponent<Item>();
+            equipped.Add(c.GetComponent<Equippable>());
             chestplateOc = true;
             return true;
         }
@@ -68,8 +64,10 @@ public class Inventory : MonoBehaviour
     public bool setPant(GameObject c)
     {
         if (c.GetComponent<Item>().type == Item.ItemType.Pant && !pantOc)
-        {
-            pant = c.GetComponent<Item>();
+        { 
+            pantSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
+            pantSlot.color = new Color32(255, 255, 225, 255);
+            equipped.Add(c.GetComponent<Equippable>());
             pantOc = true;
             return true;
         }
@@ -79,7 +77,9 @@ public class Inventory : MonoBehaviour
     {
         if (c.GetComponent<Item>().type == Item.ItemType.Glove && !gloveOc)
         {
-            glove = c.GetComponent<Item>();
+            gloveSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
+            gloveSlot.color = new Color32(255, 255, 225, 255);
+            equipped.Add(c.GetComponent<Equippable>());
             gloveOc = true;
             return true;
         }
@@ -89,7 +89,9 @@ public class Inventory : MonoBehaviour
     {
         if (c.GetComponent<Item>().type == Item.ItemType.Boot && !bootOc)
         {
-            boot = c.GetComponent<Item>();
+            bootSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
+            bootSlot.color = new Color32(255, 255, 225, 255);
+            equipped.Add(c.GetComponent<Equippable>());
             bootOc = true;
             return true;
         }
@@ -100,7 +102,9 @@ public class Inventory : MonoBehaviour
     {
         if (c.GetComponent<Item>().type == Item.ItemType.InkTank && !inkOc)
         {
-            inkTank = c.GetComponent<Item>();
+            inkSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
+            inkSlot.color = new Color32(255, 255, 225, 255);
+            equipped.Add(c.GetComponent<Equippable>());
             inkOc = true;
             return false;
         }
@@ -113,10 +117,10 @@ public class Inventory : MonoBehaviour
         {
             backSlot.sprite = c.GetComponent<SpriteRenderer>().sprite;
             backSlot.color = new Color32(255, 255, 225, 255);
-            backpack = c.GetComponent<Item>();
+            equipped.Add(c.GetComponent<Equippable>());
             backOc = true;
             int i = 0;
-            maxNumItems += backpack.value;
+            maxNumItems += c.GetComponent<Equippable>().value;
             foreach(Image g in slots)
             {
                 if (i < maxNumItems) g.transform.parent.gameObject.SetActive(true);
@@ -179,42 +183,59 @@ public class Inventory : MonoBehaviour
         open.enabled = true;
     }
 
-    public int defensive()
+    public float defensiveValue()
     {
-        int res = 1;
-        if (chestplateOc) res *= chestplate.value;
-        if (pantOc) res *= pant.value;
-        if (bootOc) res *= boot.value;
-        return res;
+        float res = 100;
+        foreach(Equippable e in equipped)
+        {
+            res += e.defenseValue;
+        }
+        return res/100;
     }
-    
+
+    public float speedValue()
+    {
+        float res = 100;
+        foreach (Equippable e in equipped)
+        {
+            res += e.speedValue;
+        }
+        return res / 100;
+    }
+
+    public float healthValue()
+    {
+        float res = 100;
+        foreach (Equippable e in equipped)
+        {
+            res += e.healthValue;
+        }
+        return res / 100;
+    }
+
+    public float inkValue()
+    {
+        float res = 100;
+        foreach (Equippable e in equipped)
+        {
+            res += e.inkValue;
+        }
+        return res / 100;
+    }
+
     public void use(int index,Item.ItemType t)
     {
         if (index < 0)
         {
-            switch (t)
+            foreach (Equippable e in equipped)
             {
-                case Item.ItemType.Chest:
-                    Debug.Log("HFEWOIFNIWEF");
-                    chestplate.clicked();
-                    break;
-                case Item.ItemType.Pant:
-                    pant.clicked();
-                    break;
-                case Item.ItemType.Glove:
-                    glove.clicked();
-                    break;
-                case Item.ItemType.Boot:
-                    glove.clicked();
-                    break;
-                case Item.ItemType.Backpack:
-                    Debug.Log("HFEWOIFNIWEF");
-                    glove.clicked();
-                    break;
-                case Item.ItemType.InkTank:
-                    inkTank.clicked();
-                    break;
+                Debug.Log("CARALHO2");
+                if (t == e.type) {
+                    Debug.Log("CARALHO2");
+                    e.clicked();
+                }
             }
+            
         }
         else
         {

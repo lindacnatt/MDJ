@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3840450381249699854}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   type: 6
   itemName: Tomato
   description: Eat to recuperate 6 Hp
-  value: 6
+  value: 3
 --- !u!61 &-3840450381249699854
 BoxCollider2D:
   m_ObjectHideFlags: 0

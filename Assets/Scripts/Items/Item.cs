@@ -21,7 +21,7 @@ public class Item : MonoBehaviour
     protected GameObject panel;
 
 
-    private void Start()
+    protected void Start()
     {
         panel = GameObject.FindGameObjectWithTag("InfoScreen");
     }

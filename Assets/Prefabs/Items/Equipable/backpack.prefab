@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7841599960916757936}
   - component: {fileID: 7841599960916757937}
   - component: {fileID: 7841599960916757938}
-  - component: {fileID: 7841599960916757939}
+  - component: {fileID: 7295861856020601548}
   m_Layer: 0
   m_Name: backpack
   m_TagString: Equip
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &7841599960916757939
+--- !u!114 &7295861856020601548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,12 +118,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7841599960916757940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c258bd0271f9a4c9b016313e1cc78a, type: 3}
+  m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rare: 1
   type: 8
   itemName: Backpack
-  description: Raises the inventory space by 4
+  description: Normal backpack that raises the inventory space by 4
   value: 4
-  panel: {fileID: 0}
+  defenseValue: 0
+  healthValue: 0
+  inkValue: 0
+  speedValue: 0

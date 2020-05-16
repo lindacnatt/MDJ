@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3239607176443532933}
   - component: {fileID: 3239607176443532934}
-  - component: {fileID: 7675658717493716362}
   - component: {fileID: 8181539993068067143}
+  - component: {fileID: -6302080714869544825}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Equip
@@ -83,24 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7675658717493716362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3239607176443532935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c258bd0271f9a4c9b016313e1cc78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rare: 1
-  type: 3
-  itemName: Iron Chestplate
-  description: This item provides 2 armor making the player receive 2x less damage
-  value: 2
-  panel: {fileID: 0}
 --- !u!61 &8181539993068067143
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +109,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &-6302080714869544825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239607176443532935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rare: 1
+  type: 3
+  itemName: Iron Chestplate
+  description: This item provides 100 armor making the player receive 2x less damage
+  value: 0
+  defenseValue: 100
+  healthValue: 0
+  inkValue: 0
+  speedValue: 0
