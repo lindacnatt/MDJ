@@ -127,6 +127,7 @@ MonoBehaviour:
   onHPChanged: {fileID: 11400000, guid: 30996a53b55207c4996715e254ca5f39, type: 2}
   onInkChanged: {fileID: 11400000, guid: ddfc31900b0f3f34097688ab9566f0bf, type: 2}
   onSpellPrimed: {fileID: 11400000, guid: a694d4e888947cf4ab545f39f74ca2bb, type: 2}
+  onDie: {fileID: 11400000, guid: 87d246ffb3ea34549b5e5bdca242f7ff, type: 2}
 --- !u!61 &8292121685698741108
 BoxCollider2D:
   m_ObjectHideFlags: 0
