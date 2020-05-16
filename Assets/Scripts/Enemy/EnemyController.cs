@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static Chest;
 
 public class EnemyController : MonoBehaviour
 {
     public EnemyData EnemyData;
 
-    private float CurrentHP;
 
-    NavMeshAgent NavAgent;
+    protected float CurrentHP;
+
+    protected NavMeshAgent NavAgent;
 
     public GameObject Player;
     // Start is called before the first frame update
@@ -18,7 +20,6 @@ public class EnemyController : MonoBehaviour
         NavAgent = GetComponent<NavMeshAgent>();        
         Player = GameObject.FindGameObjectWithTag("Player");
         CurrentHP = EnemyData.HP;
-
         NavAgent.speed = EnemyData.WalkingSpeed;
     }
 
@@ -37,4 +38,6 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }

@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - OverScreen
+  - Chest
+  - Item
+  - Ink
+  - Health
+  - Equip
   layers:
   - Default
   - TransparentFX

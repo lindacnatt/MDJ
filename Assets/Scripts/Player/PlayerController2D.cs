@@ -6,6 +6,7 @@ public class PlayerController2D : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
 
+    public Inventory inventory;
 
     //QUICK WORKAROUND TODO
     public bool HasSpell;
@@ -22,6 +23,8 @@ public class PlayerController2D : MonoBehaviour
 
     private bool Knockback = false;
     private Vector3 direction;
+
+    private int defBuff;
 
     //Raise an event if we change the Ink
     public float CurrentInk { get => currentInk; 
@@ -48,7 +51,7 @@ public class PlayerController2D : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-
+        defBuff = 1;
 
         //Don't forgot to set the current hp/ink values at start to get the UI working (fire off events)
         CurrentHP = CurrentInk = 100;
@@ -85,9 +88,9 @@ public class PlayerController2D : MonoBehaviour
         //Ignore GUI
         else if (!finger.IsOverGui)
         {
-
             var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
             target.z = 0;
+
             agent.destination = target;
             DebugDrawPath(agent.path.corners);
 
@@ -145,13 +148,76 @@ public class PlayerController2D : MonoBehaviour
             //Take damage
             TakeDamage(10);
         }
+        else if (collision.gameObject.CompareTag("Chest"))
+        {
+            collision.gameObject.GetComponent<Chest>().OpenChest();
+        }
+        else if (collision.gameObject.CompareTag("Ink"))
+        {
+            addInk(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Health"))
+        {
+            addHP(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Item"))
+        {
+            addItem(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Equip"))
+        {
+            equipItem(collision.gameObject);
+        }
     }
+
 
     public void TakeDamage(float damage)
     {
-        CurrentHP -= damage;
+        CurrentHP -= damage/defBuff;
+        if (CurrentHP <= 0) GameOver();
     }
 
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+
+    }
+
+
+    private void addInk(GameObject g)
+    {
+        currentInk += g.GetComponent<Item>().value;
+        Destroy(g);
+    }
+
+    private void addHP(GameObject g)
+    {
+        Debug.Log(g.GetComponent<Item>().value);
+        currentInk += g.GetComponent<Item>().value;
+        Destroy(g);
+    }
+
+    private void addItem(GameObject g)
+    {
+        inventory.GetComponent<Inventory>().addItem(g);
+        Destroy(g);
+    }
+
+    private void equipItem(GameObject g)
+    {
+        if (!inventory.equipItem(g))
+        {
+            inventory.addItem(g);
+        }
+        Destroy(g);
+        calcBuffs();
+    }
+
+    private void calcBuffs()
+    {
+        defBuff = inventory.defensive();
+    }
+    
     #region Knockback
 
     //Check this out: https://www.youtube.com/watch?v=gFq0lO2E2Sc
