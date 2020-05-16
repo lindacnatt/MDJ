@@ -97,7 +97,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 0
   type: 2
-  value: 9
+  itemName: Ink
+  description: 
+  value: 10
+  panel: {fileID: 0}
 --- !u!61 &7770323489841485083
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -24,7 +24,11 @@ public class Generator : MonoBehaviour
     private readonly Vector2Int numChests = new Vector2Int(5,8);
 
     public Tile[] floorTile;
-    public Tile[] wallTile;
+
+    public Tile[] wallTileUp;
+    public Tile[] wallTileDown;
+    public Tile[] wallTileRight;
+    public Tile[] wallTileLeft;
 
     public Tilemap floorTM;
     public Tilemap wallTM;
@@ -198,22 +202,22 @@ public class Generator : MonoBehaviour
         {
             if (tiles[i][1] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(i, 0, 0), wallTile[r.Next(0, wallTile.Length)]);
+                wallTM.SetTile(new Vector3Int(i, 0, 0), wallTileUp[r.Next(0, wallTileUp.Length)]);
             }
             if (tiles[i][tiles[0].Length - 2] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTile[r.Next(0, wallTile.Length)]);
+                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTileDown[r.Next(0, wallTileDown.Length)]);
             }
         }
         for (int i = 0; i < tiles[0].Length; i++)
         {
             if (tiles[1][i] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(0, i, 0), wallTile[r.Next(0, wallTile.Length)]);
+                wallTM.SetTile(new Vector3Int(0, i, 0), wallTileLeft[r.Next(0, wallTileLeft.Length)]);
             }
             if (tiles[tiles.Length - 2][i] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(tiles.Length - 1, i, 0), wallTile[r.Next(0, wallTile.Length)]);
+                wallTM.SetTile(new Vector3Int(tiles.Length - 1, i, 0), wallTileRight[r.Next(0, wallTileRight.Length)]);
             }
         }
         for (int i = 1; i < tiles.Length - 1; i++)
@@ -225,19 +229,19 @@ public class Generator : MonoBehaviour
                     floorTM.SetTile(new Vector3Int(i, j, 0), floorTile[r.Next(0, floorTile.Length)]);
                     if (tiles[i + 1][j] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i + 1, j, 0), wallTile[r.Next(0, wallTile.Length)]);
+                        wallTM.SetTile(new Vector3Int(i + 1, j, 0), wallTileRight[r.Next(0, wallTileRight.Length)]);
                     }
                     if (tiles[i - 1][j] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTile[r.Next(0, wallTile.Length)]);
+                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTileLeft[r.Next(0, wallTileLeft.Length)]);
                     }
                     if (tiles[i][j + 1] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i, j + 1, 0), wallTile[r.Next(0, wallTile.Length)]);
+                        wallTM.SetTile(new Vector3Int(i, j + 1, 0), wallTileUp[r.Next(0, wallTileUp.Length)]);
                     }
                     if (tiles[i][j - 1] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTile[r.Next(0, wallTile.Length)]);
+                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTileDown[r.Next(0, wallTileDown.Length)]);
                     }
 
                 }
@@ -291,27 +295,27 @@ public class Generator : MonoBehaviour
                 GameObject g;
                 if (n > 80)
                 {
-                    g = Instantiate(chests[4], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g = Instantiate(chests[4], new Vector3(xPos, yPos, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
                 else if (n > 65)
                 {
-                    g = Instantiate(chests[3], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g = Instantiate(chests[3], new Vector3(xPos, yPos, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
                 else if (n > 40)
                 {
-                    g = Instantiate(chests[2], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g = Instantiate(chests[2], new Vector3(xPos, yPos, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
                 else if (n > 10)
                 {
-                    g = Instantiate(chests[1], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g = Instantiate(chests[1], new Vector3(xPos, yPos, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);
                 }
                 else
                 {
-                    g = Instantiate(chests[0], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    g = Instantiate(chests[0], new Vector3(xPos, yPos, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.brown);
                 }
                 numeroChests--;

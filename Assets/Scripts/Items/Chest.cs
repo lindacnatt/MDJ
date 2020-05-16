@@ -56,8 +56,8 @@ public class Chest : MonoBehaviour
         for (int i = 1; i < numItems; i++)
         {
             int next = r.Next(0, 20);
-            if (next > 18) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
-            else if (next > 13) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
+            if (next > 19) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
+            else if (next > 14) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
             else items[i] = ItemArrays.commonItems[r.Next(0, ItemArrays.commonItems.Length)];
 
         }
@@ -74,8 +74,8 @@ public class Chest : MonoBehaviour
         for (int i = 1; i < numItems; i++)
         {
             int next = r.Next(0, 20);
-            if (next > 17) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
-            else if (next > 11) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
+            if (next > 18) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
+            else if (next > 12) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
             else items[i] = ItemArrays.commonItems[r.Next(0, ItemArrays.commonItems.Length)];
         }
     }
@@ -93,8 +93,8 @@ public class Chest : MonoBehaviour
         {
 
             int next = r.Next(0, 20);
-            if (next > 16) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
-            else if (next > 9) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
+            if (next > 17) items[i] = ItemArrays.legendItems[r.Next(0, ItemArrays.legendItems.Length)];
+            else if (next > 10) items[i] = ItemArrays.rareItems[r.Next(0, ItemArrays.rareItems.Length)];
             else items[i] = ItemArrays.commonItems[r.Next(0, ItemArrays.commonItems.Length)];
         }
     }
@@ -124,7 +124,7 @@ public class Chest : MonoBehaviour
         {
             Item i = g.GetComponent<Item>();
             if (i.type == Item.ItemType.Ink || i.type == Item.ItemType.Health) {
-                float v = 1;
+                float v = 1f;
                 switch (tipo) {
                     case ChestType.brown:
                         v = 0.8f;
@@ -142,7 +142,7 @@ public class Chest : MonoBehaviour
                         v = 1.2f;
                         break;
                 }
-                i.value = (int)v * r.Next(9, 12);
+                i.value = (int)(i.value * v * r.NextDouble());
             }
             float a = (float)r.NextDouble() + 0.2f;
             float b = (float)r.NextDouble() + 0.2f;

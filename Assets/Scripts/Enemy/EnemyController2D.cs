@@ -73,81 +73,81 @@ public class EnemyController2D : MonoBehaviour
             case EnemyRarity.common:
                 if (n > 199)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
                 else if (n > 194)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
                 else if (n > 176)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
                 else if (n > 150)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);
                 }
                 else
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[0], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[0], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.brown);
                 }
                 break;
             case EnemyRarity.rare:
                 if (n > 180)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
                 else if (n > 140)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
                 else if (n > 95)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
                 else if (n > 45)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);
                 }
                 else
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[0], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[0], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.brown);
                 }
                 break;
             case EnemyRarity.legend:
                 if (n > 99)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[4], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.golden);
                 }
                 else if (n > 55)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[3], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.purple);
                 }
                 else if (n > 21)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[2], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.blue);
                 }
                 else if (n > 9)
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[1], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.green);
                 }
                 else
                 {
-                    g = Instantiate(FindObjectOfType<Generator>().chests[0], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                    g = Instantiate(FindObjectOfType<Generator>().chests[0], new Vector3(transform.position.x, transform.position.y, -0.5f), Quaternion.identity);
                     g.AddComponent<Chest>().Generate(ChestType.brown);
                 }
                 break;

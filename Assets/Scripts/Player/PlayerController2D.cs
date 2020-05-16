@@ -173,33 +173,27 @@ public class PlayerController2D : MonoBehaviour
     public void TakeDamage(float damage)
     {
         CurrentHP -= damage/defBuff;
-        if (CurrentHP <= 0) GameOver();
     }
 
-    public void GameOver()
-    {
-        Time.timeScale = 0;
-
-    }
 
 
     private void addInk(GameObject g)
     {
-        currentInk += g.GetComponent<Item>().value;
+        CurrentInk += g.GetComponent<Item>().value;
         Destroy(g);
     }
 
     private void addHP(GameObject g)
     {
-        Debug.Log(g.GetComponent<Item>().value);
-        currentInk += g.GetComponent<Item>().value;
+        CurrentHP += g.GetComponent<Item>().value;
         Destroy(g);
     }
 
     private void addItem(GameObject g)
     {
         inventory.GetComponent<Inventory>().addItem(g);
-        Destroy(g);
+        g.GetComponent<SpriteRenderer>().enabled = false;
+        g.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void equipItem(GameObject g)
@@ -208,7 +202,8 @@ public class PlayerController2D : MonoBehaviour
         {
             inventory.addItem(g);
         }
-        Destroy(g);
+        g.GetComponent<SpriteRenderer>().enabled = false;
+        g.GetComponent<BoxCollider2D>().enabled = false;
         calcBuffs();
     }
 

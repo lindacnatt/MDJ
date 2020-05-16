@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5581046748664725052}
   - component: {fileID: 6737943541607981539}
-  - component: {fileID: -824363883203229063}
-  - component: {fileID: 1748294052494573278}
   - component: {fileID: 5508354822248739462}
+  - component: {fileID: -6822743691714621348}
   m_Layer: 0
   m_Name: Scroll
   m_TagString: Item
@@ -84,34 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-824363883203229063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901883995446790625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5875a8f5f201849b4a79fc50c374a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 0}
---- !u!114 &1748294052494573278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901883995446790625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c258bd0271f9a4c9b016313e1cc78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rare: 0
-  type: 0
-  value: 0
 --- !u!61 &5508354822248739462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,3 +109,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &-6822743691714621348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901883995446790625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9840649e4cb30f148ae809912471c913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rare: 0
+  type: 0
+  itemName: Fireball
+  description: Shoots a fireball that deals damage
+  value: 0
+  spellSigil: {fileID: 21300000, guid: 329b727e9ee2dcf46a130613379803d4, type: 3}

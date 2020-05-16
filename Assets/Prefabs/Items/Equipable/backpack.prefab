@@ -123,4 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 1
   type: 8
+  itemName: Backpack
+  description: Raises the inventory space by 4
   value: 4
+  panel: {fileID: 0}

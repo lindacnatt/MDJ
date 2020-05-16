@@ -170,12 +170,12 @@ public class Inventory : MonoBehaviour
     public void showInv()
     {
         open.enabled = false;
-        inventory.SetActive(true);
+        inventory.GetComponent<Canvas>().enabled = true;
     }
 
     public void closeInv()
     {
-        inventory.SetActive(false);
+        inventory.GetComponent<Canvas>().enabled = false;
         open.enabled = true;
     }
 
@@ -186,5 +186,44 @@ public class Inventory : MonoBehaviour
         if (pantOc) res *= pant.value;
         if (bootOc) res *= boot.value;
         return res;
+    }
+    
+    public void use(int index,Item.ItemType t)
+    {
+        if (index < 0)
+        {
+            switch (t)
+            {
+                case Item.ItemType.Chest:
+                    Debug.Log("HFEWOIFNIWEF");
+                    chestplate.clicked();
+                    break;
+                case Item.ItemType.Pant:
+                    pant.clicked();
+                    break;
+                case Item.ItemType.Glove:
+                    glove.clicked();
+                    break;
+                case Item.ItemType.Boot:
+                    glove.clicked();
+                    break;
+                case Item.ItemType.Backpack:
+                    Debug.Log("HFEWOIFNIWEF");
+                    glove.clicked();
+                    break;
+                case Item.ItemType.InkTank:
+                    inkTank.clicked();
+                    break;
+            }
+        }
+        else
+        {
+            if (index < numItems)
+            {
+                items[index].clicked();
+            }
+            
+        }
+        
     }
 }

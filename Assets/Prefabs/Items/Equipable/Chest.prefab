@@ -97,7 +97,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 1
   type: 3
+  itemName: Iron Chestplate
+  description: This item provides 2 armor making the player receive 2x less damage
   value: 2
+  panel: {fileID: 0}
 --- !u!61 &8181539993068067143
 BoxCollider2D:
   m_ObjectHideFlags: 0

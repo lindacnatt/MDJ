@@ -11,6 +11,9 @@ TagManager:
   - Ink
   - Health
   - Equip
+  - garbage
+  - InfoScreen
+  - SigilScreen
   layers:
   - Default
   - TransparentFX
