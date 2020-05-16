@@ -326,8 +326,8 @@ public class Generator : MonoBehaviour
 
     private bool nearWall(int x,int y)
     {
-        return tiles[x + 1][y] == TileType.wall || tiles[x - 1][y] == TileType.wall ||
-            tiles[x][y + 1] == TileType.wall || tiles[x][y - 1] == TileType.wall;
+        return tiles[x + 2][y] == TileType.wall || tiles[x - 2][y] == TileType.wall ||
+            tiles[x][y + 2] == TileType.wall || tiles[x][y - 2] == TileType.wall;
     }
 
     public void Restart()
