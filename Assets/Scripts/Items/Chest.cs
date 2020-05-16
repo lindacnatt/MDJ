@@ -144,12 +144,23 @@ public class Chest : MonoBehaviour
                 }
                 i.value = (int)(i.value * v * r.NextDouble());
             }
-            float a = (float)r.NextDouble() + 0.2f;
-            float b = (float)r.NextDouble() + 0.2f;
+            float a = (float)randomNum();
+            float b = (float)randomNum();
             Vector3 offset = new Vector3(a,b,-0.5f);
-            Debug.Log(a+" " +b);
             Instantiate(g, transform.position + offset,Quaternion.identity);
         }
         Destroy(this.gameObject);
+    }
+
+    private double randomNum()
+    {
+        if (r.NextDouble() > 0.5)
+        {
+            return (float)r.NextDouble() * 0.9 + 0.25;
+        }
+        else
+        {
+            return (float)r.NextDouble() * -0.9 + 0.25;
+        }
     }
 }

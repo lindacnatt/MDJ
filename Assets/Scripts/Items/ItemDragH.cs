@@ -45,9 +45,7 @@ public class ItemDragH : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerC
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (type == Item.ItemType.Other)
-        {
             FindObjectOfType<Inventory>().use(index, type);
-        }
+        
     }
 }
