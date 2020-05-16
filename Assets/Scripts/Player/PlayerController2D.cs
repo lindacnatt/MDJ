@@ -74,9 +74,10 @@ public class PlayerController2D : MonoBehaviour
         if(HasSpell)
         {
 
-            //TODO: think about this after we've implemented a few different spells
-            //Like lighting, healing, etc...
-            Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<Fireball>().SetDestination(finger);         
+            //TODO: We have an interface for now
+            //If we need anything else let me know - Rafael
+            var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
+            Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<ISpell>().SetDestination(target);         
             
             HasSpell = false;
             onSpellPrimed.Raise(null);

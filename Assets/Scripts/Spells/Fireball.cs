@@ -2,61 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : MonoBehaviour, ISpell
 {
     public DamagingSpell DamageSpellSettings;
-
     
     private Vector3 Destination;
     private Vector3 Direction;
     public float speed = 1f;
 
-    /*TODO:
-        Check if over GUI, otherwise cancel
-        Tap once for the destination and remove itself from the lean touch event
-        so it doesn't change midway
-    */
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Lean.Touch.LeanTouch.OnFingerDown += SetDestination;
-        //Destroy(gameObject, 2.0f);
-
-        Direction = (Destination - transform.position).normalized;
-        Direction.z = 0;
-    }
-
-    void OnDisable()
-    {
-        Lean.Touch.LeanTouch.OnFingerDown -= SetDestination;
-    }
-
     //Update is called once per frame
     void Update()
     {
-
         transform.position += Direction * speed;
-
-        //transform.LookAt(transform.position + Direction * speed);
-
-    }
-
-    public void SetDestination(Lean.Touch.LeanFinger finger)
-    {
-
-        var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
-        target.z = 0;
-        Destination = target;
-
-        //RaycastHit hit;
-
-        //if (Physics.Raycast(Camera.main.ScreenPointToRay(finger.ScreenPosition), out hit, 100))
-        //{
-        //    Destination = hit.point;
-        //    Destination.y = 1;
-
-        //}
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -69,16 +26,18 @@ public class Fireball : MonoBehaviour
         }
     }
 
-    //3D
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.CompareTag("Enemy"))
-    //    {
-    //        other.gameObject.GetComponent<EnemyController>().TakeDamage(DamageSpellSettings.damage);
-    //        Destroy(gameObject);
+    public bool OnSpellPrimed()
+    {
+        return false;
+    }
 
-    //    }
-        
-    //}
+    public void SetDestination(Vector2 target)
+    {
+        Vector3 temp = new Vector3(target.x, target.y, 0);
+        Destination = temp;
+
+        Direction = (Destination - transform.position).normalized;
+        Direction.z = 0;
+    }
 
 }
