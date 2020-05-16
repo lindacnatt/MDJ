@@ -8,13 +8,14 @@ public class PlayerController2D : MonoBehaviour
 
     public Inventory inventory;
 
-    //QUICK WORKAROUND TODO
+    //State machine
     public bool HasSpell;
     private Spell currentPrimedSpell;
 
     [SerializeField] private FloatEvent onHPChanged = null;
     [SerializeField] private FloatEvent onInkChanged = null;
     [SerializeField] private SpellEvent onSpellPrimed = null;
+    [SerializeField] private VoidEvent onDie = null;
 
     //Values
     private float currentHP;
@@ -27,6 +28,7 @@ public class PlayerController2D : MonoBehaviour
     private int defBuff;
 
     //Raise an event if we change the Ink
+    //TODO: Don't forget to clamp the ink between 0 and maxInk as well!
     public float CurrentInk { get => currentInk; 
         set {
             currentInk = value;
@@ -35,13 +37,17 @@ public class PlayerController2D : MonoBehaviour
     }
 
     //Raise an event if the HP changes
-    //TODO: Raise an event if the player dies instead
     //TODO: Don't forget to clamp the hp between 0 and maxHP as well!
     public float CurrentHP { get => currentHP; 
         set
         {
             currentHP = value;
             onHPChanged.Raise(currentHP);
+
+            if(currentHP <= 0)
+            {
+                onDie.Raise();
+            }
         }
     }
 
@@ -174,26 +180,18 @@ public class PlayerController2D : MonoBehaviour
     public void TakeDamage(float damage)
     {
         CurrentHP -= damage/defBuff;
-        if (CurrentHP <= 0) GameOver();
     }
-
-    public void GameOver()
-    {
-        Time.timeScale = 0;
-
-    }
-
 
     private void addInk(GameObject g)
     {
-        currentInk += g.GetComponent<Item>().value;
+        CurrentInk += g.GetComponent<Item>().value;
         Destroy(g);
     }
 
     private void addHP(GameObject g)
     {
         Debug.Log(g.GetComponent<Item>().value);
-        currentInk += g.GetComponent<Item>().value;
+        CurrentInk += g.GetComponent<Item>().value;
         Destroy(g);
     }
 
