@@ -11,6 +11,7 @@ public class Pause : MonoBehaviour
     public void PauseGame(){
         Time.timeScale = 0;
         open.enabled = false;
+        Debug.Log(Time.timeScale);
         GetComponent<Canvas>().enabled = true;
     }
     public void ResumeGame(){
