@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6fc833bce88f1245845c4dd673962f6, type: 3}
-  m_Name: Thunder
+  m_Name: Wind
   m_EditorClassIdentifier: 
-  InkCost: 2
-  GestureName: T
-  SpellPrefab: {fileID: 69447310835338625, guid: 21825995d390549c88458f774b1f2dca,
+  InkCost: 30
+  GestureName: null
+  SpellPrefab: {fileID: 5926310410998079154, guid: 206ab699cf1654c8e9f6f07c126db83a,
     type: 3}
   OnSpellPrimedEvent: {fileID: 0}
   OnSpellCastEvent: {fileID: 0}
-  damage: 50
+  damage: 30
