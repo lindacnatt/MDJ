@@ -154,7 +154,6 @@ public class PlayerController2D : MonoBehaviour
 
             StartCoroutine(AddKnockback(direction));
 
-            //Take damage
             TakeDamage(10);
         }
         else if (collision.gameObject.CompareTag("Chest"))

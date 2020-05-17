@@ -39,6 +39,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         items = new List<Item>();
+        equipped = new List<Equippable>();
         maxNumItems = 4;
         int i = 1;
         foreach(Image g in slots)
@@ -229,9 +230,7 @@ public class Inventory : MonoBehaviour
         {
             foreach (Equippable e in equipped)
             {
-                Debug.Log("CARALHO2");
                 if (t == e.type) {
-                    Debug.Log("CARALHO2");
                     e.clicked();
                 }
             }
