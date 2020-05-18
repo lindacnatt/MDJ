@@ -43,6 +43,10 @@ public class Inventory : MonoBehaviour
         items = new List<Item>();
         equipped = new List<Equippable>();
         maxNumItems = MAXITEMS;
+        for(int j = 0; j < maxNumItems; j++)
+        {
+            items.Add(null);
+        }
         int i = 1;
         foreach(Image g in slots)
         {
@@ -194,11 +198,18 @@ public class Inventory : MonoBehaviour
     {
         if(numItems < maxNumItems)
         {
-            items.Add(i.GetComponent<Item>());
-            slots[numItems].sprite = i.GetComponent<SpriteRenderer>().sprite;
-            slots[numItems].color = new Color32(255, 255, 225, 255);
-            numItems++;
-            return true;
+            for(int j = 0; j < maxNumItems; j++)
+            {
+                if(items[j] == null)
+                {
+                    items[j] = i.GetComponent<Item>();
+                    slots[j].sprite = i.GetComponent<SpriteRenderer>().sprite;
+                    slots[j].color = new Color32(255, 255, 225, 255);
+                    numItems++;
+                    return true;
+                }
+            }
+
         }
         return false;
     }
@@ -249,9 +260,13 @@ public class Inventory : MonoBehaviour
                     break;
             }
         }
-        items.RemoveAt(i);
-        slots[i].sprite = null;
-        numItems--;
+        else
+        {
+            items.RemoveAt(i);
+            slots[i].sprite = null;
+            slots[i].color = new Color32(255, 255, 255, 0);
+            numItems--;
+        }
     }
 
     public void showInv()
@@ -312,19 +327,12 @@ public class Inventory : MonoBehaviour
         {
             foreach (Equippable e in equipped)
             {
-                if (t == e.type) {
-                    e.clicked();
-                }
+                if (t == e.type)  e.clicked();
             }
-            
         }
         else
         {
-            if (index < numItems)
-            {
-                items[index].clicked();
-            }
-            
+            if (index < numItems)  items[index].clicked();
         }
         
     }
@@ -332,33 +340,63 @@ public class Inventory : MonoBehaviour
 
     private bool switchIAux(int index1, Item.ItemType type1, int index2, Item.ItemType type2)
     {
-        if (index2 > -1)
+        if (index1 > -1)
         {
-            if (items[index2] != null)
+            //switch items
+            if (items[index1] != null)
             {
-                if (items[index2].type != type1)
+                //both in inventory
+                if (type2 == Item.ItemType.Other)
                 {
-
+                    swap(index1, index2);
                 }
+                //item 2 is equipped
                 else
                 {
-
+                    //diferent types of items
+                    if (items[index1].type != type2)
+                    {
+                        return false;
+                    }
+                    //same type -> can switch
+                    else
+                    {
+                        swapE(index1, type2);
+                    }
                 }
+                
             }
+            //remove 2 from equipped
             else
             {
+                
                 foreach (Equippable e in equipped)
                 {
-                    if (e.type == type1)
+                    if (e.type == type2)
                     {
                         items[index2] = e;
                         break;
                     }
                 }
-                switch (type1)
+                switch (type2)
                 {
                     case Item.ItemType.Chest:
                         removeChest();
+                        break;
+                    case Item.ItemType.Pant:
+                        removePant();
+                        break;
+                    case Item.ItemType.Glove:
+                        removeGlove();
+                        break;
+                    case Item.ItemType.Boot:
+                        removeBoot();
+                        break;
+                    case Item.ItemType.Backpack:
+                        removeBack();
+                        break;
+                    case Item.ItemType.InkTank:
+                        removeInkT();
                         break;
                 }
 
@@ -366,15 +404,73 @@ public class Inventory : MonoBehaviour
         }
         return false;
     }
+
+    private void swap(int index1, int index2)
+    {
+        Item i1 = items[index1];
+
+        items[index1] = items[index2];
+        slots[index1].sprite = slots[index2].sprite;
+
+        items[index2] = i1;
+        slots[index2].sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;  
+        
+    }
+
+    private void swapE(int index1, Item.ItemType t)
+    {
+        Item i1 = items[index1];
+        for(int i = 0; i < equipped.Count; i++)
+        {
+            if (equipped[i].type == t)
+            {
+                items[index1] = equipped[i];
+                switch (t)
+                {
+                    case Item.ItemType.Chest:
+                        slots[index1].sprite = chestSlot.sprite;
+                        chestSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        equipped[i] = i1 as Equippable;
+                        break;
+                    case Item.ItemType.Pant:
+                        slots[index1].sprite = pantSlot.sprite;
+                        pantSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        equipped[i] = i1 as Equippable;
+                        break;
+                    case Item.ItemType.Glove:
+                        slots[index1].sprite = gloveSlot.sprite;
+                        gloveSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        equipped[i] = i1 as Equippable;
+                        break;
+                    case Item.ItemType.Boot:
+                        slots[index1].sprite = bootSlot.sprite;
+                        bootSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        equipped[i] = i1 as Equippable;
+                        break;
+                    case Item.ItemType.Backpack:
+                        slots[index1].sprite = backSlot.sprite;
+                        backSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        equipped[i] = i1 as Equippable;
+                        break;
+                    case Item.ItemType.InkTank:
+                        slots[index1].sprite = inkSlot.sprite;
+                        inkSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        equipped[i] = i1 as Equippable;
+                        break;
+                }
+            }
+        }
+    }
+
     public bool switchItems(int index1, Item.ItemType type1, int index2, Item.ItemType type2)
     {
+        Debug.Log(index1 + " " +index2);
         //both equipped
         if (index1 == index2) return false;
         //item 1 is in inventory
         if (index1 > -1) return switchIAux(index1, type1, index2, type2);
-        //item 1 is equipped
+        //item 1 is equipped item 2 is in inventory
         else  return switchIAux(index2, type2, index1, type1);
         
-
     }
 }

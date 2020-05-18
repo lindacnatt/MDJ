@@ -47,8 +47,8 @@ public class Chest : MonoBehaviour
     private void CreateGreen()
     {
         numItems = r.Next(1, 20);
-        if (numItems > 15) numItems = 3;
-        else if (numItems > 10) numItems = 2;
+        if (numItems > 16) numItems = 3;
+        else if (numItems > 8) numItems = 2;
         else numItems = 1;
         items = new GameObject[numItems];
         tipo = ChestType.green;
@@ -83,8 +83,8 @@ public class Chest : MonoBehaviour
     private void CreatePurple()
     {
         numItems = r.Next(1, 20);
-        if (numItems > 15) numItems = 4;
-        else if (numItems > 10) numItems = 3;
+        if (numItems > 16) numItems = 4;
+        else if (numItems > 8) numItems = 3;
         else numItems = 2;
         items = new GameObject[numItems];
         tipo = ChestType.purple;
@@ -101,8 +101,9 @@ public class Chest : MonoBehaviour
 
     private void CreateGolden()
     {
-        numItems = r.Next(1, 10);
-        if (numItems > 5) numItems = 4;
+        numItems = r.Next(1, 20);
+        if (numItems > 16) numItems = 5;
+        else if (numItems > 8) numItems = 4;
         else numItems = 3;
         items = new GameObject[numItems];
         tipo = ChestType.golden;
@@ -122,7 +123,12 @@ public class Chest : MonoBehaviour
     {
         foreach (GameObject g in items)
         {
-            Item i = g.GetComponent<Item>();
+            float a = (float)randomNum();
+            float b = (float)randomNum();
+            Vector3 offset = new Vector3(a, b, -0.5f);
+            GameObject g2 = Instantiate(g, transform.position + offset, Quaternion.identity);
+
+            Item i = g2.GetComponent<Item>();
             if (i.type == Item.ItemType.Ink || i.type == Item.ItemType.Health) {
                 float v = 1f;
                 switch (tipo) {
@@ -142,12 +148,9 @@ public class Chest : MonoBehaviour
                         v = 1.2f;
                         break;
                 }
-                i.value = (int)(i.value * v * r.NextDouble());
+                i.value = (int)(i.value * v * r.Next(8,13));
             }
-            float a = (float)randomNum();
-            float b = (float)randomNum();
-            Vector3 offset = new Vector3(a,b,-0.5f);
-            Instantiate(g, transform.position + offset,Quaternion.identity);
+            
         }
         Destroy(this.gameObject);
     }
@@ -160,7 +163,12 @@ public class Chest : MonoBehaviour
         }
         else
         {
-            return (float)r.NextDouble() * -0.9 + 0.25;
+            return (float)r.NextDouble() * -0.9 - 0.25;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player") OpenChest();
     }
 }

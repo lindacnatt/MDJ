@@ -54,4 +54,36 @@ public class Item : MonoBehaviour
     {
         panel.GetComponent<Canvas>().enabled = false;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (type)
+        {
+            case ItemType.Health:
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addHP(value)) Destroy(gameObject);
+                else
+                {
+                    Debug.Log("wat");
+                    if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+                }
+                break;
+            case ItemType.Ink:
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addInk(value)) Destroy(gameObject);
+                else
+                {
+                    Debug.Log("wat");
+                    if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+                }
+                break;
+            default:
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject))  pickedUp();
+                break;
+        }
+    }
+
+    protected void pickedUp()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
 }

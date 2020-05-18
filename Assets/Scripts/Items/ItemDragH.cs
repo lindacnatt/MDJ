@@ -13,16 +13,20 @@ public class ItemDragH : LeanSelectableBehaviour
     private RectTransform panel;
 
     private ItemDragH other;
+    private Transform par;
 
 
     protected override void OnSelect(LeanFinger finger)
     {
-
+        transform.parent = transform.parent.parent;
+        (transform as RectTransform).SetAsLastSibling();
     }
 
     protected override void OnDeselect()
     {
-        Vector2 pos = (transform as RectTransform).anchoredPosition;
+        transform.parent = par;
+        Vector2 pos = (transform as RectTransform).position;
+        Debug.Log(pos);
         if (Vector2.Distance(pos,Vector2.zero) < 50)
         {
             (transform as RectTransform).anchoredPosition = Vector2.zero;
@@ -55,6 +59,7 @@ public class ItemDragH : LeanSelectableBehaviour
                 foreach(Transform c in g.transform)
                 {
                     other = c.gameObject.GetComponent<ItemDragH>();
+                    other.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 0);
                     return true;
                 }
             }
@@ -65,6 +70,7 @@ public class ItemDragH : LeanSelectableBehaviour
 
     protected override void Start()
     {
+        par = transform.parent;
         base.Start();
         panel = GameObject.FindGameObjectWithTag("garbage").transform.GetComponent<RectTransform>();
     }

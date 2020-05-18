@@ -156,26 +156,6 @@ public class PlayerController2D : MonoBehaviour
 
             TakeDamage(10);
         }
-        else if (collision.gameObject.CompareTag("Chest"))
-        {
-            collision.gameObject.GetComponent<Chest>().OpenChest();
-        }
-        else if (collision.gameObject.CompareTag("Ink"))
-        {
-            addInk(collision.gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Health"))
-        {
-            addHP(collision.gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Item"))
-        {
-            addItem(collision.gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Equip"))
-        {
-            equipItem(collision.gameObject);
-        }
     }
 
 
@@ -184,34 +164,33 @@ public class PlayerController2D : MonoBehaviour
         CurrentHP -= damage/defBuff;
     }
 
-    private void addInk(GameObject g)
+    public bool addInk(int value)
     {
-        CurrentInk += g.GetComponent<Item>().value;
-        Destroy(g);
+        Debug.Log(value);
+        CurrentInk += value;
+        return true;
     }
 
-    private void addHP(GameObject g)
+    public bool addHP(int value)
     {
-        CurrentHP += g.GetComponent<Item>().value;
-        Destroy(g);
+        
+        CurrentHP += value;
+        return true;
     }
 
-    private void addItem(GameObject g)
+    public bool addItem(GameObject g)
     {
-        inventory.GetComponent<Inventory>().addItem(g);
-        g.GetComponent<SpriteRenderer>().enabled = false;
-        g.GetComponent<BoxCollider2D>().enabled = false;
+        return inventory.GetComponent<Inventory>().addItem(g);
     }
 
-    private void equipItem(GameObject g)
+    public bool equipItem(GameObject g)
     {
         if (!inventory.equipItem(g))
         {
-            inventory.addItem(g);
+            return inventory.addItem(g);
         }
-        g.GetComponent<SpriteRenderer>().enabled = false;
-        g.GetComponent<BoxCollider2D>().enabled = false;
         calcBuffs();
+        return true;
     }
 
     private void calcBuffs()
