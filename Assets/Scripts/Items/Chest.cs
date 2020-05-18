@@ -148,7 +148,7 @@ public class Chest : MonoBehaviour
                         v = 1.2f;
                         break;
                 }
-                i.value = (int)(i.value * v * r.Next(8,13));
+                i.value = (int)(v * r.Next(8,13));
             }
             
         }
