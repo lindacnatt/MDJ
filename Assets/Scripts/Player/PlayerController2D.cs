@@ -25,7 +25,10 @@ public class PlayerController2D : MonoBehaviour
     private bool Knockback = false;
     private Vector3 direction;
 
-    private int defBuff;
+    private float defBuff;
+    private float speedBuff;
+    private float healthBuff;
+    private float inkBuff;
 
     //Raise an event if we change the Ink
     //TODO: Don't forget to clamp the ink between 0 and maxInk as well!
@@ -151,7 +154,6 @@ public class PlayerController2D : MonoBehaviour
 
             StartCoroutine(AddKnockback(direction));
 
-            //Take damage
             TakeDamage(10);
         }
         else if (collision.gameObject.CompareTag("Chest"))
@@ -214,7 +216,10 @@ public class PlayerController2D : MonoBehaviour
 
     private void calcBuffs()
     {
-        defBuff = inventory.defensive();
+        defBuff = inventory.defensiveValue();
+        speedBuff = inventory.speedValue();
+        healthBuff = inventory.healthValue();
+        inkBuff = inventory.inkValue();
     }
     
     #region Knockback

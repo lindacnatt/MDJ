@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Lean.Touch;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemDragH : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler, IDropHandler
+public class ItemDragH : LeanSelectableBehaviour
 {
     private Vector3 pos;
 
@@ -11,26 +12,22 @@ public class ItemDragH : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerC
     public Item.ItemType type;
 
     private RectTransform panel;
-    public void OnDrop(PointerEventData eventData)
+
+    protected override void OnSelect(LeanFinger finger)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(panel, Input.mousePosition))
-        {
-            Debug.Log("WIJENMOWEMFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaWE");
-        }
-    }
-    public void OnDrag(PointerEventData eventData)
-    {
-        transform.position = Input.mousePosition;
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        FindObjectOfType<Inventory>().use(index, type);
+        this.GetComponent<LeanSelectable>().IsSelected = false;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    protected override void OnDeselect()
     {
-        transform.position = pos;
+        pos = this.transform.parent.transform.position;
     }
 
-
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         pos = this.transform.position;
         Debug.Log(pos);
         panel = GameObject.FindGameObjectWithTag("garbage").transform.GetComponent<RectTransform>();
@@ -45,9 +42,6 @@ public class ItemDragH : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerC
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (type == Item.ItemType.Other)
-        {
-            FindObjectOfType<Inventory>().use(index, type);
-        }
+        
     }
 }
