@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class Inventory : MonoBehaviour
     private List<Item> items;
     private int numItems = 0;
     private int maxNumItems;
+    private readonly int MAXITEMS = 4;
 
     private List<Equippable> equipped;
 
@@ -40,7 +42,7 @@ public class Inventory : MonoBehaviour
     {
         items = new List<Item>();
         equipped = new List<Equippable>();
-        maxNumItems = 4;
+        maxNumItems = MAXITEMS;
         int i = 1;
         foreach(Image g in slots)
         {
@@ -48,6 +50,7 @@ public class Inventory : MonoBehaviour
             i++;
         }
     }
+
 
     public bool setChest(GameObject c)
     {
@@ -62,6 +65,20 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public void removeChest()
+    {
+        chestSlot.sprite = null;
+        chestSlot.color = new Color32(255, 255, 255, 0);
+        foreach (Equippable e in equipped)
+        {
+            if (e.type == Item.ItemType.Backpack)
+            {
+                equipped.Remove(e);
+                break;
+            }
+        }
+        chestplateOc = false;
+    }
     public bool setPant(GameObject c)
     {
         if (c.GetComponent<Item>().type == Item.ItemType.Pant && !pantOc)
@@ -73,6 +90,11 @@ public class Inventory : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void removePant()
+    {
+
     }
     public bool setGlove(GameObject c)
     {
@@ -86,6 +108,11 @@ public class Inventory : MonoBehaviour
         }
         return false;
     }
+
+    public void removeGlove()
+    {
+
+    }
     public bool setBoot(GameObject c)
     {
         if (c.GetComponent<Item>().type == Item.ItemType.Boot && !bootOc)
@@ -97,6 +124,11 @@ public class Inventory : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void removeBoot()
+    {
+
     }
 
     public bool setInkT(GameObject c)
@@ -112,6 +144,10 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public void removeInkT()
+    {
+
+    }
     public bool setBackpack(GameObject c)
     {
         if (c.GetComponent<Item>().type == Item.ItemType.Backpack && !backOc)
@@ -130,6 +166,28 @@ public class Inventory : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void removeBack()
+    {
+        backSlot.sprite = null;
+        backSlot.color = new Color32(255, 255, 225, 0);
+        foreach(Equippable e in equipped)
+        {
+            if (e.type == Item.ItemType.Backpack)
+            {
+                equipped.Remove(e);
+                break;
+            }
+        }
+        backOc = false;
+        maxNumItems = MAXITEMS;
+        int i = 1;
+        foreach (Image g in slots)
+        {
+            if (i > maxNumItems) g.transform.parent.gameObject.SetActive(false);
+            i++;
+        }
     }
 
     public bool addItem(GameObject i)
@@ -165,8 +223,32 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    public void removeItem(int i)
+    public void removeItem(int i,Item.ItemType t)
     {
+        if (t != Item.ItemType.Other)
+        {
+            switch (t)
+            {
+                case Item.ItemType.Backpack:
+                    removeBack();
+                    break;
+                case Item.ItemType.Boot:
+                    removeBoot();
+                    break;
+                case Item.ItemType.Chest:
+                    removeChest();
+                    break;
+                case Item.ItemType.Pant:
+                    removePant();
+                    break;
+                case Item.ItemType.InkTank:
+                    removeInkT();
+                    break;
+                case Item.ItemType.Glove:
+                    removeGlove();
+                    break;
+            }
+        }
         items.RemoveAt(i);
         slots[i].sprite = null;
         numItems--;
@@ -245,5 +327,54 @@ public class Inventory : MonoBehaviour
             
         }
         
+    }
+
+
+    private bool switchIAux(int index1, Item.ItemType type1, int index2, Item.ItemType type2)
+    {
+        if (index2 > -1)
+        {
+            if (items[index2] != null)
+            {
+                if (items[index2].type != type1)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                foreach (Equippable e in equipped)
+                {
+                    if (e.type == type1)
+                    {
+                        items[index2] = e;
+                        break;
+                    }
+                }
+                switch (type1)
+                {
+                    case Item.ItemType.Chest:
+                        removeChest();
+                        break;
+                }
+
+            }
+        }
+        return false;
+    }
+    public bool switchItems(int index1, Item.ItemType type1, int index2, Item.ItemType type2)
+    {
+        //both equipped
+        if (index1 == index2) return false;
+        //item 1 is in inventory
+        if (index1 > -1) return switchIAux(index1, type1, index2, type2);
+        //item 1 is equipped
+        else  return switchIAux(index2, type2, index1, type1);
+        
+
     }
 }

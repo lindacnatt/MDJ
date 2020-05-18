@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 152673087}
   m_Layer: 5
   m_Name: Panel (5)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 167366183}
   m_Layer: 5
   m_Name: Panel (11)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 263812983}
   m_Layer: 5
   m_Name: Panel (7)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 274708794}
   m_Layer: 5
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1552,6 +1552,7 @@ GameObject:
   - component: {fileID: 408946576}
   - component: {fileID: 408946578}
   - component: {fileID: 408946579}
+  - component: {fileID: 408946580}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1656,6 +1657,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &408946580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408946574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &410507508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,7 +1883,7 @@ GameObject:
   - component: {fileID: 423495563}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1934,6 +1957,7 @@ GameObject:
   - component: {fileID: 479843653}
   - component: {fileID: 479843655}
   - component: {fileID: 479843656}
+  - component: {fileID: 479843657}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2038,6 +2062,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &479843657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479843651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &571359477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2174,7 @@ GameObject:
   - component: {fileID: 600196999}
   m_Layer: 5
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2202,7 +2248,7 @@ GameObject:
   - component: {fileID: 628005902}
   m_Layer: 5
   m_Name: Panel (3)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2276,6 +2322,7 @@ GameObject:
   - component: {fileID: 715364172}
   - component: {fileID: 715364174}
   - component: {fileID: 715364175}
+  - component: {fileID: 715364176}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2369,7 +2416,18 @@ MonoBehaviour:
   IsolateSelectingFingers: 0
   onSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 715364171}
+        m_MethodName: SetAsLastSibling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSelectSet:
     m_PersistentCalls:
       m_Calls: []
@@ -2380,6 +2438,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &715364176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715364170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &733554589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,7 +2473,7 @@ GameObject:
   - component: {fileID: 733554591}
   m_Layer: 5
   m_Name: Panel (10)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2467,6 +2547,7 @@ GameObject:
   - component: {fileID: 885937372}
   - component: {fileID: 885937374}
   - component: {fileID: 885937375}
+  - component: {fileID: 885937376}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2571,6 +2652,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &885937376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885937370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &917141373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,6 +2908,7 @@ GameObject:
   - component: {fileID: 951826602}
   - component: {fileID: 951826605}
   - component: {fileID: 951826604}
+  - component: {fileID: 951826606}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2909,6 +3013,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   type: 8
+--- !u!114 &951826606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951826600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &954020110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +3048,7 @@ GameObject:
   - component: {fileID: 954020112}
   - component: {fileID: 954020114}
   - component: {fileID: 954020115}
+  - component: {fileID: 954020116}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3026,6 +3153,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &954020116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954020110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &955708176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,6 +3261,7 @@ GameObject:
   - component: {fileID: 1033986698}
   - component: {fileID: 1033986700}
   - component: {fileID: 1033986701}
+  - component: {fileID: 1033986702}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3216,6 +3366,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1033986702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033986696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1106336731
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,6 +3478,7 @@ GameObject:
   - component: {fileID: 1114108357}
   - component: {fileID: 1114108359}
   - component: {fileID: 1114108360}
+  - component: {fileID: 1114108361}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3410,6 +3583,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1114108361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114108355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1295548509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,6 +3618,7 @@ GameObject:
   - component: {fileID: 1295548511}
   - component: {fileID: 1295548513}
   - component: {fileID: 1295548514}
+  - component: {fileID: 1295548515}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3527,6 +3723,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1295548515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295548509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1312639955
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,7 +3758,7 @@ GameObject:
   - component: {fileID: 1312639957}
   m_Layer: 5
   m_Name: Panel (2)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3614,7 +3832,7 @@ GameObject:
   - component: {fileID: 1317817623}
   m_Layer: 5
   m_Name: Boot
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3761,6 +3979,7 @@ GameObject:
   - component: {fileID: 1337946630}
   - component: {fileID: 1337946632}
   - component: {fileID: 1337946633}
+  - component: {fileID: 1337946634}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3865,6 +4084,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1337946634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337946628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1359568843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3878,7 +4119,7 @@ GameObject:
   - component: {fileID: 1359568845}
   m_Layer: 5
   m_Name: Panel (6)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4181,7 +4422,7 @@ GameObject:
   - component: {fileID: 1459247159}
   m_Layer: 5
   m_Name: InkT
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4528,7 +4769,7 @@ GameObject:
   - component: {fileID: 1568013169}
   m_Layer: 5
   m_Name: Glove
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4602,6 +4843,7 @@ GameObject:
   - component: {fileID: 1570317485}
   - component: {fileID: 1570317487}
   - component: {fileID: 1570317488}
+  - component: {fileID: 1570317489}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4706,6 +4948,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1570317489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570317483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1621926794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,7 +4983,7 @@ GameObject:
   - component: {fileID: 1621926796}
   m_Layer: 5
   m_Name: Panel (8)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4922,7 +5186,7 @@ GameObject:
   - component: {fileID: 1684277856}
   m_Layer: 5
   m_Name: Panel (4)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5125,6 +5389,7 @@ GameObject:
   - component: {fileID: 1722334442}
   - component: {fileID: 1722334444}
   - component: {fileID: 1722334445}
+  - component: {fileID: 1722334446}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5229,6 +5494,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1722334446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722334440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1761689347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5383,6 +5670,7 @@ GameObject:
   - component: {fileID: 1836402740}
   - component: {fileID: 1836402742}
   - component: {fileID: 1836402743}
+  - component: {fileID: 1836402744}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5487,6 +5775,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1836402744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836402738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1848887714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5742,6 +6052,7 @@ GameObject:
   - component: {fileID: 1878861802}
   - component: {fileID: 1878861804}
   - component: {fileID: 1878861805}
+  - component: {fileID: 1878861806}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5846,6 +6157,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1878861806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878861800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1925470319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,6 +6192,7 @@ GameObject:
   - component: {fileID: 1925470321}
   - component: {fileID: 1925470323}
   - component: {fileID: 1925470324}
+  - component: {fileID: 1925470325}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5963,6 +6297,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &1925470325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925470319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &1954030478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8292121685698741111, guid: 4e1f29ee2ad9ee7419434c46b4bd2487,
@@ -5982,7 +6338,7 @@ GameObject:
   - component: {fileID: 2011489251}
   m_Layer: 5
   m_Name: Panel (1)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6201,6 +6557,7 @@ GameObject:
   - component: {fileID: 2063737610}
   - component: {fileID: 2063737612}
   - component: {fileID: 2063737613}
+  - component: {fileID: 2063737614}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6305,6 +6662,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &2063737614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063737608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &2069196621
 GameObject:
   m_ObjectHideFlags: 0
@@ -6318,6 +6697,7 @@ GameObject:
   - component: {fileID: 2069196623}
   - component: {fileID: 2069196625}
   - component: {fileID: 2069196626}
+  - component: {fileID: 2069196627}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6422,6 +6802,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &2069196627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069196621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &2070854226
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,7 +6854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TapThreshold: 0.2
-  SwipeThreshold: 100
+  SwipeThreshold: 50
   ReferenceDpi: 200
   GuiLayers:
     serializedVersion: 2
@@ -6518,14 +6920,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2084184120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c1c71d8ad5da9438de3b2e5990763f, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb097c07812299498915a0a3e793843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IgnoreStartedOverGui: 0
-  IgnoreIsOverGui: 0
   RequiredSelectable: {fileID: 0}
-  RequiredTapCount: 0
-  RequiredTapInterval: 0
   onFinger:
     m_PersistentCalls:
       m_Calls:
@@ -6570,7 +6969,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967291
   Camera: {fileID: 0}
-  MaxSelectables: 0
+  MaxSelectables: 1
   Search: 0
   Reselect: 3
   AutoDeselect: 0
@@ -6602,6 +7001,7 @@ GameObject:
   - component: {fileID: 2114089994}
   - component: {fileID: 2114089996}
   - component: {fileID: 2114089997}
+  - component: {fileID: 2114089998}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6706,6 +7106,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSelected: 0
+--- !u!114 &2114089998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114089992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 0
+    RequiredFingerCount: 0
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 715364175}
+  Camera: {fileID: 0}
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!224 &2118155101 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8633562168582713811, guid: 0bae73fed8923e7488b499f62d9a5cdd,
@@ -6725,7 +7147,7 @@ GameObject:
   - component: {fileID: 2120862262}
   m_Layer: 5
   m_Name: Pant
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6799,7 +7221,7 @@ GameObject:
   - component: {fileID: 2123248854}
   m_Layer: 5
   m_Name: Panel (9)
-  m_TagString: Untagged
+  m_TagString: InvSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

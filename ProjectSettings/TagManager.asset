@@ -14,6 +14,7 @@ TagManager:
   - garbage
   - InfoScreen
   - SigilScreen
+  - InvSlot
   layers:
   - Default
   - TransparentFX
