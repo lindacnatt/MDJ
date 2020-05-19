@@ -426,6 +426,8 @@ public class Inventory : MonoBehaviour
     private void swapE(int index1, Item.ItemType t)
     {
         Item i1 = items[index1];
+        Sprite s = slots[index1].sprite;
+        Color c = slots[index1].color;
         for(int i = 0; i < equipped.Count; i++)
         {
             if (equipped[i].type == t)
@@ -435,32 +437,44 @@ public class Inventory : MonoBehaviour
                 {
                     case Item.ItemType.Chest:
                         slots[index1].sprite = chestSlot.sprite;
-                        chestSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = chestSlot.color;
+                        chestSlot.sprite = s;
+                        chestSlot.color = c;
                         equipped[i] = i1 as Equippable;
                         break;
                     case Item.ItemType.Pant:
                         slots[index1].sprite = pantSlot.sprite;
-                        pantSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = pantSlot.color;
+                        pantSlot.sprite = s;
+                        pantSlot.color = c;
                         equipped[i] = i1 as Equippable;
                         break;
                     case Item.ItemType.Glove:
                         slots[index1].sprite = gloveSlot.sprite;
-                        gloveSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = gloveSlot.color;
+                        gloveSlot.sprite = s;
+                        gloveSlot.color = c;
                         equipped[i] = i1 as Equippable;
                         break;
                     case Item.ItemType.Boot:
                         slots[index1].sprite = bootSlot.sprite;
-                        bootSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = bootSlot.color;
+                        bootSlot.sprite = s;
+                        bootSlot.color = c;
                         equipped[i] = i1 as Equippable;
                         break;
                     case Item.ItemType.Backpack:
                         slots[index1].sprite = backSlot.sprite;
-                        backSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = backSlot.color;
+                        backSlot.sprite = s;
+                        backSlot.color = c;
                         equipped[i] = i1 as Equippable;
                         break;
                     case Item.ItemType.InkTank:
                         slots[index1].sprite = inkSlot.sprite;
-                        inkSlot.sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = inkSlot.color;
+                        inkSlot.sprite = s;
+                        inkSlot.color = c;
                         equipped[i] = i1 as Equippable;
                         break;
                 }
@@ -475,7 +489,7 @@ public class Inventory : MonoBehaviour
         if (index1 == index2) return false;
         //item 1 is in inventory
         if (index1 > -1) return switchIAux(index1, type1, index2, type2);
-        //item 1 is equipped item 2 is in inventory
+        //item 1 is equipped item 2 is in inventory ->switch
         else  return switchIAux(index2, type2, index1, type1);
         
     }
