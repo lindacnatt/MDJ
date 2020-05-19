@@ -96,11 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rare: 0
-  type: 2
+  type: 5
   itemName: Ink
-  description: 
-  value: 10
-  panel: {fileID: 0}
+  description: Replenishes Ink
+  value: 1
 --- !u!61 &7770323489841485083
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111,7 +110,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
