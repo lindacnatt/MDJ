@@ -16,7 +16,7 @@ public class Fireball : MonoBehaviour, ISpell
         transform.position += Direction * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {

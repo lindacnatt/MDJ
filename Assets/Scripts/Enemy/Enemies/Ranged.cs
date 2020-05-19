@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Ranged : EnemyController2D
 {
-    protected int range = 5;
     protected int rangeMove = 4;
     protected int projSpeed = 3;
+    protected float cooldownTime = 2.5f;
+    protected bool cooldown = false;
 
-    private void Start()
-    {
-        
-    }
-
+    [SerializeField] private DamagingSpell fireballSpell = null; 
     void Update()
     {
         if (Vector2.Distance(Player.transform.position, this.transform.position) < sightRange)
@@ -23,7 +20,7 @@ public class Ranged : EnemyController2D
             }
             else
             {
-                Invoke("Shoot", 1);
+                Shoot();
             }
         }
         
@@ -31,12 +28,25 @@ public class Ranged : EnemyController2D
 
     public void Shoot()
     {
+        if(!cooldown)
+        {
 
+            GameObject fireballSpawned = Instantiate(fireballSpell.SpellPrefab, transform.position, Quaternion.identity);
+            Physics2D.IgnoreCollision(boxCollider, fireballSpawned.GetComponent<CircleCollider2D>());
+            fireballSpawned.GetComponent<ISpell>().SetDestination(Player.transform.position);
+
+            
+            cooldown = true;
+            StartCoroutine(wait(cooldownTime));
+        }
+        
     }
 
-    IEnumerator wait(float lag)
+    IEnumerator wait(float duration)
     {
-        yield return new WaitForSeconds(lag);
+        yield return new WaitForSeconds(duration);
+        cooldown = false;
+
     }
 }
 

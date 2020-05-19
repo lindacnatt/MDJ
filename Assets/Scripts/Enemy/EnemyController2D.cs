@@ -20,7 +20,10 @@ public class EnemyController2D : MonoBehaviour
 
     protected int sightRange;
 
-    public GameObject Player;
+    protected GameObject Player;
+
+    protected BoxCollider2D boxCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,17 +32,14 @@ public class EnemyController2D : MonoBehaviour
         NavAgent.updateUpAxis = false;
         rare = EnemyRarity.common;
         type = EnemyType.melee;
-        StartCoroutine("iniPlayer");
+        Player = GameObject.FindGameObjectWithTag("Player");
         CurrentHP = EnemyData.HP;
         sightRange = 30;
         NavAgent.speed = EnemyData.WalkingSpeed;
+
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-     IEnumerator iniPlayer()
-    {
-        yield return new WaitForSeconds(1);
-        Player = GameObject.FindGameObjectWithTag("Player");
-    }
     // Update is called once per frame
     void Update()
     {
