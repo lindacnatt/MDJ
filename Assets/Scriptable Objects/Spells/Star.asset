@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6fc833bce88f1245845c4dd673962f6, type: 3}
-  m_Name: Thunder
+  m_Name: Star
   m_EditorClassIdentifier: 
-  InkCost: 2
-  GestureName: T
-  SpellPrefab: {fileID: 69447310835338625, guid: 21825995d390549c88458f774b1f2dca,
+  InkCost: 13
+  GestureName: five point star
+  SpellPrefab: {fileID: 506285183452435504, guid: d2b5ed7b48fdd49aebff0f454f9c2c4f,
     type: 3}
   OnSpellPrimedEvent: {fileID: 0}
   OnSpellCastEvent: {fileID: 0}
-  damage: 50
+  damage: 75
