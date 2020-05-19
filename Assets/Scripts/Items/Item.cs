@@ -57,28 +57,30 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (type)
+        if(collision.gameObject.tag == "Player")
         {
-            case ItemType.Health:
-                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addHP(value)) Destroy(gameObject);
-                else
-                {
-                    Debug.Log("wat");
-                    if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
-                }
-                break;
-            case ItemType.Ink:
-                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addInk(value)) Destroy(gameObject);
-                else
-                {
-                    Debug.Log("wat");
-                    if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
-                }
-                break;
-            default:
-                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject))  pickedUp();
-                break;
+            switch (type)
+            {
+                case ItemType.Health:
+                    if (collision.gameObject.GetComponent<PlayerController2D>().addHP(value)) Destroy(gameObject);
+                    else
+                    {
+                        if (collision.gameObject.GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+                    }
+                    break;
+                case ItemType.Ink:
+                    if (collision.gameObject.GetComponent<PlayerController2D>().addInk(value)) Destroy(gameObject);
+                    else
+                    {
+                        if (collision.gameObject.GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+                    }
+                    break;
+                default:
+                    if (collision.gameObject.GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+                    break;
+            }
         }
+        
     }
 
     protected void pickedUp()

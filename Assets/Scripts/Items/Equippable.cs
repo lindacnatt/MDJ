@@ -15,7 +15,10 @@ public class Equippable : Item
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().equipItem(gameObject)) pickedUp();
-        else if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+        if(collision.gameObject.tag == "Player")
+        {
+            if (collision.gameObject.GetComponent<PlayerController2D>().equipItem(gameObject)) pickedUp();
+            else if (collision.gameObject.GetComponent<PlayerController2D>().addItem(gameObject)) pickedUp();
+        }
     }
 }

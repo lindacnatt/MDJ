@@ -332,7 +332,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            if (index < numItems)  items[index].clicked();
+            if (items[index] != null)  items[index].clicked();
         }
         
     }
@@ -374,7 +374,9 @@ public class Inventory : MonoBehaviour
                 {
                     if (e.type == type2)
                     {
-                        items[index2] = e;
+                        items[index1] = e as Item;
+                        slots[index1].sprite = e.GetComponent<SpriteRenderer>().sprite;
+                        slots[index1].color = new Color32(255, 255, 255, 255);
                         break;
                     }
                 }
@@ -408,13 +410,17 @@ public class Inventory : MonoBehaviour
     private void swap(int index1, int index2)
     {
         Item i1 = items[index1];
+        Sprite s = slots[index1].sprite;
+        Color c = slots[index1].color;
 
         items[index1] = items[index2];
         slots[index1].sprite = slots[index2].sprite;
+        slots[index1].color = slots[index2].color;
 
         items[index2] = i1;
-        slots[index2].sprite = i1.gameObject.GetComponent<SpriteRenderer>().sprite;  
-        
+        slots[index2].sprite = s;
+        slots[index2].color = c;
+
     }
 
     private void swapE(int index1, Item.ItemType t)

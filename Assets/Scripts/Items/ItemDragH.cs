@@ -16,6 +16,7 @@ public class ItemDragH : LeanSelectableBehaviour
     private Transform par;
 
 
+
     protected override void OnSelect(LeanFinger finger)
     {
         transform.parent = transform.parent.parent;
@@ -26,24 +27,24 @@ public class ItemDragH : LeanSelectableBehaviour
     {
         transform.parent = par;
         Vector2 pos = (transform as RectTransform).position;
+        Vector2 pos2 = (transform.parent as RectTransform).position;
         Debug.Log(pos);
-        if (Vector2.Distance(pos,Vector2.zero) < 50)
+        if (Vector2.Distance(pos, pos2) < 50)
         {
-            (transform as RectTransform).anchoredPosition = Vector2.zero;
+            (transform as RectTransform).position = (transform.parent as RectTransform).position;
             FindObjectOfType<Inventory>().use(index, type);
         }
         else
         {
-            if(findRect())
+            if (findRect())
             {
-                if (!FindObjectOfType<Inventory>().switchItems(index,type, other.index, other.type))
-                {
-                    (transform as RectTransform).anchoredPosition = Vector2.zero;
-                }
-            }
+
+                FindObjectOfType<Inventory>().switchItems(index, type, other.index, other.type);
+                (transform as RectTransform).position = (transform.parent as RectTransform).position;
+            } 
             else
             {
-                (transform as RectTransform).anchoredPosition = Vector2.zero;
+                (transform as RectTransform).position = (transform.parent as RectTransform).position;
             }
         }
     }
@@ -53,15 +54,11 @@ public class ItemDragH : LeanSelectableBehaviour
         GameObject[] slots = GameObject.FindGameObjectsWithTag("InvSlot");
         foreach(GameObject g in slots)
         {
-            Vector2 pos = (transform.parent as RectTransform).anchoredPosition;
-            if(Vector2.Distance(pos,(g.transform as RectTransform).anchoredPosition) < 50)
+            Vector2 pos = (transform as RectTransform).position;
+            if(Vector2.Distance(pos,(g.transform as RectTransform).position) < 50 && g != gameObject.transform.parent.gameObject)
             {
-                foreach(Transform c in g.transform)
-                {
-                    other = c.gameObject.GetComponent<ItemDragH>();
-                    other.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 0);
-                    return true;
-                }
+                other = g.GetComponentInChildren<ItemDragH>();
+                return true;
             }
             
         }
