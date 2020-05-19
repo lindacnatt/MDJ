@@ -10,7 +10,7 @@ public class ItemDragH : LeanSelectableBehaviour
     public int index;
     public Item.ItemType type;
 
-    private RectTransform panel;
+    public RectTransform panel;
 
     private ItemDragH other;
     private Transform par;
@@ -34,6 +34,11 @@ public class ItemDragH : LeanSelectableBehaviour
             (transform as RectTransform).position = (transform.parent as RectTransform).position;
             FindObjectOfType<Inventory>().use(index, type);
         }
+        else if (outInv())
+        {
+            FindObjectOfType<Inventory>().dropItem(index, type);
+            (transform as RectTransform).position = (transform.parent as RectTransform).position;
+        }
         else
         {
             if (findRect())
@@ -47,6 +52,14 @@ public class ItemDragH : LeanSelectableBehaviour
                 (transform as RectTransform).position = (transform.parent as RectTransform).position;
             }
         }
+    }
+
+    private bool outInv()
+    {
+        if (RectTransformUtility.RectangleContainsScreenPoint(panel.transform as RectTransform, (transform as RectTransform).position))
+            return false;
+        else
+            return true;
     }
 
     private bool findRect()
@@ -69,7 +82,7 @@ public class ItemDragH : LeanSelectableBehaviour
     {
         par = transform.parent;
         base.Start();
-        panel = GameObject.FindGameObjectWithTag("garbage").transform.GetComponent<RectTransform>();
+        //panel = GameObject.FindGameObjectWithTag("garbage").transform.GetComponent<RectTransform>();
     }
 
     

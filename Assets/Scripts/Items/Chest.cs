@@ -157,14 +157,8 @@ public class Chest : MonoBehaviour
 
     private double randomNum()
     {
-        if (r.NextDouble() > 0.5)
-        {
-            return (float)r.NextDouble() * 0.9 + 0.25;
-        }
-        else
-        {
-            return (float)r.NextDouble() * -0.9 - 0.25;
-        }
+        if (r.NextDouble() > 0.5) return (float)r.NextDouble() * 0.9 + 0.25;
+        else return (float)r.NextDouble() * -0.9 - 0.25;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

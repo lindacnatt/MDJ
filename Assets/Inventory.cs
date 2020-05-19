@@ -160,9 +160,13 @@ public class Inventory : MonoBehaviour
             backSlot.color = new Color32(255, 255, 225, 255);
             equipped.Add(c.GetComponent<Equippable>());
             backOc = true;
-            int i = 0;
+            int i = 0; 
             maxNumItems += c.GetComponent<Equippable>().value;
-            foreach(Image g in slots)
+            for (int j = MAXITEMS; j < maxNumItems; j++)
+            {
+                items.Add(null);
+            }
+            foreach (Image g in slots)
             {
                 if (i < maxNumItems) g.transform.parent.gameObject.SetActive(true);
                 i++;
@@ -186,10 +190,25 @@ public class Inventory : MonoBehaviour
         }
         backOc = false;
         maxNumItems = MAXITEMS;
-        int i = 1;
+        int i = 0;
+        int aux = items.Count;
         foreach (Image g in slots)
         {
-            if (i > maxNumItems) g.transform.parent.gameObject.SetActive(false);
+            if (i >= maxNumItems)
+            {
+                if(i < aux)
+                {
+                    if (items[items.Count - 1] != null)
+                    {
+                        items[items.Count - 1].dropped(FindObjectOfType<PlayerController2D>().transform.position);
+                        slots[items.Count - 1].sprite = null;
+                        slots[items.Count - 1].color = new Color32(255,255,255,0);
+                        
+                    }
+                    items.RemoveAt(items.Count-1);
+                    g.transform.parent.gameObject.SetActive(false);
+                }
+            }
             i++;
         }
     }
@@ -269,6 +288,29 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void dropItem(int i, Item.ItemType t)
+    {
+        if (t != Item.ItemType.Other)
+        {
+            foreach(Equippable e in equipped)
+            {
+                if (e.type == t)
+                {
+                    e.dropped(FindObjectOfType<PlayerController2D>().gameObject.transform.position);
+                    break;
+                }
+            }
+            
+        }
+        else
+        {
+            if(items[i] != null)  items[i].dropped(FindObjectOfType<PlayerController2D>().gameObject.transform.position);
+            
+        }
+        removeItem(i, t);
+    }
+
+    
     public void showInv()
     {
         open.enabled = false;
@@ -381,27 +423,7 @@ public class Inventory : MonoBehaviour
                         break;
                     }
                 }
-                switch (type2)
-                {
-                    case Item.ItemType.Chest:
-                        removeChest();
-                        break;
-                    case Item.ItemType.Pant:
-                        removePant();
-                        break;
-                    case Item.ItemType.Glove:
-                        removeGlove();
-                        break;
-                    case Item.ItemType.Boot:
-                        removeBoot();
-                        break;
-                    case Item.ItemType.Backpack:
-                        removeBack();
-                        break;
-                    case Item.ItemType.InkTank:
-                        removeInkT();
-                        break;
-                }
+                removeItem(index2, type2);
 
             }
         }
@@ -483,12 +505,8 @@ public class Inventory : MonoBehaviour
                             equipped[i] = i1 as Equippable;
                             break;
                         case Item.ItemType.Backpack:
-                            items[index1] = equipped[i];
-                            slots[index1].sprite = backSlot.sprite;
-                            slots[index1].color = backSlot.color;
-                            backSlot.sprite = s;
-                            backSlot.color = c;
-                            equipped[i] = i1 as Equippable;
+                            removeBack();
+                            equipItem(i1.gameObject);
                             break;
                         case Item.ItemType.InkTank:
                             items[index1] = equipped[i];
@@ -519,6 +537,6 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-
+        Debug.Log(numItems +" "+ items.Count);
     }
 }
