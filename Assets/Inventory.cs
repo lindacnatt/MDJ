@@ -377,6 +377,7 @@ public class Inventory : MonoBehaviour
                         items[index1] = e as Item;
                         slots[index1].sprite = e.GetComponent<SpriteRenderer>().sprite;
                         slots[index1].color = new Color32(255, 255, 255, 255);
+                        numItems++;
                         break;
                     }
                 }
@@ -425,61 +426,83 @@ public class Inventory : MonoBehaviour
 
     private void swapE(int index1, Item.ItemType t)
     {
-        Item i1 = items[index1];
-        Sprite s = slots[index1].sprite;
-        Color c = slots[index1].color;
-        for(int i = 0; i < equipped.Count; i++)
+        if (equipped.Count == 0)
         {
-            if (equipped[i].type == t)
+            if(items[index1] != null)
             {
-                items[index1] = equipped[i];
-                switch (t)
+                equipItem(items[index1].gameObject);
+                slots[index1].sprite = null;
+                slots[index1].color = new Color32(255, 255, 255, 0);
+                items[index1] = null;
+                numItems--;
+            }
+        }
+        else
+        {
+            Item i1 = items[index1];
+            if (i1 == null) numItems++;
+            Sprite s = slots[index1].sprite;
+            Color c = slots[index1].color;
+            for (int i = 0; i < equipped.Count; i++)
+            {
+                if (equipped[i].type == t)
                 {
-                    case Item.ItemType.Chest:
-                        slots[index1].sprite = chestSlot.sprite;
-                        slots[index1].color = chestSlot.color;
-                        chestSlot.sprite = s;
-                        chestSlot.color = c;
-                        equipped[i] = i1 as Equippable;
-                        break;
-                    case Item.ItemType.Pant:
-                        slots[index1].sprite = pantSlot.sprite;
-                        slots[index1].color = pantSlot.color;
-                        pantSlot.sprite = s;
-                        pantSlot.color = c;
-                        equipped[i] = i1 as Equippable;
-                        break;
-                    case Item.ItemType.Glove:
-                        slots[index1].sprite = gloveSlot.sprite;
-                        slots[index1].color = gloveSlot.color;
-                        gloveSlot.sprite = s;
-                        gloveSlot.color = c;
-                        equipped[i] = i1 as Equippable;
-                        break;
-                    case Item.ItemType.Boot:
-                        slots[index1].sprite = bootSlot.sprite;
-                        slots[index1].color = bootSlot.color;
-                        bootSlot.sprite = s;
-                        bootSlot.color = c;
-                        equipped[i] = i1 as Equippable;
-                        break;
-                    case Item.ItemType.Backpack:
-                        slots[index1].sprite = backSlot.sprite;
-                        slots[index1].color = backSlot.color;
-                        backSlot.sprite = s;
-                        backSlot.color = c;
-                        equipped[i] = i1 as Equippable;
-                        break;
-                    case Item.ItemType.InkTank:
-                        slots[index1].sprite = inkSlot.sprite;
-                        slots[index1].color = inkSlot.color;
-                        inkSlot.sprite = s;
-                        inkSlot.color = c;
-                        equipped[i] = i1 as Equippable;
-                        break;
+                    items[index1] = equipped[i];
+                    switch (t)
+                    {
+                        case Item.ItemType.Chest:
+                            items[index1] = equipped[i];
+                            slots[index1].sprite = chestSlot.sprite;
+                            slots[index1].color = chestSlot.color;
+                            chestSlot.sprite = s;
+                            chestSlot.color = c;
+                            equipped[i] = i1 as Equippable;
+                            break;
+                        case Item.ItemType.Pant:
+                            items[index1] = equipped[i];
+                            slots[index1].sprite = pantSlot.sprite;
+                            slots[index1].color = pantSlot.color;
+                            pantSlot.sprite = s;
+                            pantSlot.color = c;
+                            equipped[i] = i1 as Equippable;
+                            break;
+                        case Item.ItemType.Glove:
+                            items[index1] = equipped[i];
+                            slots[index1].sprite = gloveSlot.sprite;
+                            slots[index1].color = gloveSlot.color;
+                            gloveSlot.sprite = s;
+                            gloveSlot.color = c;
+                            equipped[i] = i1 as Equippable;
+                            break;
+                        case Item.ItemType.Boot:
+                            items[index1] = equipped[i];
+                            slots[index1].sprite = bootSlot.sprite;
+                            slots[index1].color = bootSlot.color;
+                            bootSlot.sprite = s;
+                            bootSlot.color = c;
+                            equipped[i] = i1 as Equippable;
+                            break;
+                        case Item.ItemType.Backpack:
+                            items[index1] = equipped[i];
+                            slots[index1].sprite = backSlot.sprite;
+                            slots[index1].color = backSlot.color;
+                            backSlot.sprite = s;
+                            backSlot.color = c;
+                            equipped[i] = i1 as Equippable;
+                            break;
+                        case Item.ItemType.InkTank:
+                            items[index1] = equipped[i];
+                            slots[index1].sprite = inkSlot.sprite;
+                            slots[index1].color = inkSlot.color;
+                            inkSlot.sprite = s;
+                            inkSlot.color = c;
+                            equipped[i] = i1 as Equippable;
+                            break;
+                    }
                 }
             }
         }
+
     }
 
     public bool switchItems(int index1, Item.ItemType type1, int index2, Item.ItemType type2)
@@ -492,5 +515,10 @@ public class Inventory : MonoBehaviour
         //item 1 is equipped item 2 is in inventory ->switch
         else  return switchIAux(index2, type2, index1, type1);
         
+    }
+
+    private void Update()
+    {
+
     }
 }
