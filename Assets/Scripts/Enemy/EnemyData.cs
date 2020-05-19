@@ -7,4 +7,5 @@ public class EnemyData : ScriptableObject
 {
     public float HP;
     public float WalkingSpeed;
+    public float sightRange;
 }
