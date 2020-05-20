@@ -34,7 +34,13 @@ public class RecognizerController : MonoBehaviour
         TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("GestureSet/10-stylus-MEDIUM/");
         foreach (TextAsset gestureXml in gesturesXml)
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
-        
+
+        /*TODO: Check if this is needed.
+        * I want the recognizer to do the start() function (to get the gestures in the array)
+        * But I'd rather do it at start-up time rather than the first time the user clicks the scroll
+        * This is needed so whenever the user drags in the inventory it doesn't mess with the recognizer
+        */
+        enabled = false;
     }
 
     void OnEnable()
@@ -67,6 +73,7 @@ public class RecognizerController : MonoBehaviour
             }
         }
 
+        //No way to specify the GUI we want :/ bummer
         if(finger.IsOverGui)
         {
             //Started pressing this frame

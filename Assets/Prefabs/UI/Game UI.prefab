@@ -3560,6 +3560,9 @@ MonoBehaviour:
   UIHPText: {fileID: 8633562169434266131}
   UIInkText: {fileID: 8633562168409976524}
   UISpellText: {fileID: 1224957997}
+  HealthSlider: {fileID: 0}
+  HealthFill: {fileID: 0}
+  InkSlider: {fileID: 0}
 --- !u!114 &8633562168199645600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4438,6 +4441,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2858190954712256051}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &8633562168409976530
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,6 +4679,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2858190954712256051}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8633562168582713815
 GameObject:
