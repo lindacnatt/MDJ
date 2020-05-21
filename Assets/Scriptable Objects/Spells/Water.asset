@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fc833bce88f1245845c4dd673962f6, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  InkCost: 25
+  InkCost: 15
   GestureName: line
   SpellPrefab: {fileID: 154163655282456749, guid: e2291668f504b40a9b9bb1c22a0c3453,
     type: 3}
   OnSpellPrimedEvent: {fileID: 0}
   OnSpellCastEvent: {fileID: 0}
-  damage: 30
+  damage: 80

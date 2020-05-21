@@ -18,4 +18,4 @@ MonoBehaviour:
     type: 3}
   OnSpellPrimedEvent: {fileID: 0}
   OnSpellCastEvent: {fileID: 0}
-  damage: 90
+  damage: 100
