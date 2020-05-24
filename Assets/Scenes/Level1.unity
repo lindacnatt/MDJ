@@ -7936,13 +7936,47 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c90d6f9f431192b49a229daf0c6d47ff, type: 2}
   - {fileID: 11400000, guid: c90d6f9f431192b49a229daf0c6d47ff, type: 2}
   wallTileUp:
-  - {fileID: 11400000, guid: 7a66b66434853b74e91644d37f836a3b, type: 2}
-  wallTileDown:
-  - {fileID: 11400000, guid: 7a66b66434853b74e91644d37f836a3b, type: 2}
+  - {fileID: 11400000, guid: 96251377bd2c69f4c9ae354192cea146, type: 2}
+  - {fileID: 11400000, guid: da3498086d7774547ba54e773f4baa30, type: 2}
+  - {fileID: 11400000, guid: dd5d0a664e641184287a2e6b4a46246a, type: 2}
+  - {fileID: 11400000, guid: 2414e365266d83b40a2bb05438e86770, type: 2}
+  - {fileID: 11400000, guid: 26272c75780616f4c95f34b5ef6d399e, type: 2}
+  - {fileID: 11400000, guid: 26272c75780616f4c95f34b5ef6d399e, type: 2}
+  - {fileID: 11400000, guid: 26272c75780616f4c95f34b5ef6d399e, type: 2}
+  - {fileID: 11400000, guid: 96251377bd2c69f4c9ae354192cea146, type: 2}
+  - {fileID: 11400000, guid: 96251377bd2c69f4c9ae354192cea146, type: 2}
+  - {fileID: 11400000, guid: da3498086d7774547ba54e773f4baa30, type: 2}
+  - {fileID: 11400000, guid: da3498086d7774547ba54e773f4baa30, type: 2}
+  - {fileID: 11400000, guid: 23a61ec8504ad4943880adad071d8ed7, type: 2}
+  - {fileID: 11400000, guid: 03414eaa1eb954c42a847b2e16106cc1, type: 2}
+  - {fileID: 11400000, guid: 8608888c9f0b81243885f4ab17d3ffa3, type: 2}
+  - {fileID: 11400000, guid: 03414eaa1eb954c42a847b2e16106cc1, type: 2}
+  - {fileID: 11400000, guid: 8608888c9f0b81243885f4ab17d3ffa3, type: 2}
+  - {fileID: 11400000, guid: 23a61ec8504ad4943880adad071d8ed7, type: 2}
+  - {fileID: 11400000, guid: ac753c9383f427b4188bccf0c918e35f, type: 2}
+  - {fileID: 11400000, guid: 26272c75780616f4c95f34b5ef6d399e, type: 2}
+  - {fileID: 11400000, guid: ac753c9383f427b4188bccf0c918e35f, type: 2}
+  - {fileID: 11400000, guid: 23a61ec8504ad4943880adad071d8ed7, type: 2}
   wallTileRight:
-  - {fileID: 11400000, guid: 7a66b66434853b74e91644d37f836a3b, type: 2}
-  wallTileLeft:
-  - {fileID: 11400000, guid: 7a66b66434853b74e91644d37f836a3b, type: 2}
+  - {fileID: 11400000, guid: d338814d50048c048a5f735140775182, type: 2}
+  - {fileID: 11400000, guid: 5da6ec6cca3163d4393fb52ca6970472, type: 2}
+  - {fileID: 11400000, guid: 779353313013362418daa3fff2b67b76, type: 2}
+  - {fileID: 11400000, guid: be34f68d0e825d7489e158b2b7242646, type: 2}
+  - {fileID: 11400000, guid: 764d1536c66a2b2479cab28f21d7e69b, type: 2}
+  - {fileID: 11400000, guid: 3ee76690de1cada46bde536554d1c3ea, type: 2}
+  - {fileID: 11400000, guid: 5d6520e0a127a574fb7775d136e4bc99, type: 2}
+  - {fileID: 11400000, guid: a6bdfb7809575f046999c829574cec05, type: 2}
+  - {fileID: 11400000, guid: 983e897f3c88e254dbd1e671788a7723, type: 2}
+  - {fileID: 11400000, guid: 711641d8db7daaf4cb7cd332561f489c, type: 2}
+  - {fileID: 11400000, guid: 983e897f3c88e254dbd1e671788a7723, type: 2}
+  - {fileID: 11400000, guid: a6bdfb7809575f046999c829574cec05, type: 2}
+  - {fileID: 11400000, guid: 5d6520e0a127a574fb7775d136e4bc99, type: 2}
+  - {fileID: 11400000, guid: 3ee76690de1cada46bde536554d1c3ea, type: 2}
+  - {fileID: 11400000, guid: 764d1536c66a2b2479cab28f21d7e69b, type: 2}
+  - {fileID: 11400000, guid: be34f68d0e825d7489e158b2b7242646, type: 2}
+  - {fileID: 11400000, guid: 764d1536c66a2b2479cab28f21d7e69b, type: 2}
+  - {fileID: 11400000, guid: be34f68d0e825d7489e158b2b7242646, type: 2}
+  - {fileID: 11400000, guid: a6bdfb7809575f046999c829574cec05, type: 2}
   floorTM: {fileID: 92081871}
   wallTM: {fileID: 1848887717}
   enemiesPrefab:

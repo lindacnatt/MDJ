@@ -26,9 +26,7 @@ public class Generator : MonoBehaviour
     public Tile[] floorTile;
 
     public Tile[] wallTileUp;
-    public Tile[] wallTileDown;
     public Tile[] wallTileRight;
-    public Tile[] wallTileLeft;
 
     public Tilemap floorTM;
     public Tilemap wallTM;
@@ -205,14 +203,14 @@ public class Generator : MonoBehaviour
             }
             if (tiles[i][tiles[0].Length - 2] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTileDown[r.Next(0, wallTileDown.Length)]);
+                wallTM.SetTile(new Vector3Int(i, tiles[0].Length - 1, 0), wallTileUp[r.Next(0, wallTileUp.Length)]);
             }
         }
         for (int i = 0; i < tiles[0].Length; i++)
         {
             if (tiles[1][i] == TileType.floor)
             {
-                wallTM.SetTile(new Vector3Int(0, i, 0), wallTileLeft[r.Next(0, wallTileLeft.Length)]);
+                wallTM.SetTile(new Vector3Int(0, i, 0), wallTileRight[r.Next(0, wallTileRight.Length)]);
             }
             if (tiles[tiles.Length - 2][i] == TileType.floor)
             {
@@ -232,7 +230,7 @@ public class Generator : MonoBehaviour
                     }
                     if (tiles[i - 1][j] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTileLeft[r.Next(0, wallTileLeft.Length)]);
+                        wallTM.SetTile(new Vector3Int(i - 1, j, 0), wallTileRight[r.Next(0, wallTileRight.Length)]);
                     }
                     if (tiles[i][j + 1] != TileType.floor)
                     {
@@ -240,7 +238,7 @@ public class Generator : MonoBehaviour
                     }
                     if (tiles[i][j - 1] != TileType.floor)
                     {
-                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTileDown[r.Next(0, wallTileDown.Length)]);
+                        wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTileUp[r.Next(0, wallTileUp.Length)]);
                     }
 
                 }
