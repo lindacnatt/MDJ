@@ -321,7 +321,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            items.RemoveAt(i);
+            items[i] = null;
             slots[i].sprite = null;
             slots[i].color = new Color32(255, 255, 255, 0);
             numItems--;
