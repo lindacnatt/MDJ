@@ -57,8 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34861a5dcec3dbf438f8288be97dd133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 72c44f820e292664ead684b85643fada, type: 2}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Material: {fileID: 2100000, guid: 6a00fc91f168947e9a289661dd129deb, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -71,7 +71,7 @@ MonoBehaviour:
   lineThickness: 2
   relativeSize: 0
   lineList: 0
-  lineCaps: 0
+  lineCaps: 1
   bezierSegmentsPerCurve: 10
   LineJoins: 0
   BezierMode: 0
