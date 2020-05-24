@@ -28,6 +28,8 @@ public class Generator : MonoBehaviour
     public Tile[] wallTileUp;
     public Tile[] wallTileRight;
 
+    public Tile[] background;
+
     public Tilemap floorTM;
     public Tilemap wallTM;
 
@@ -241,6 +243,10 @@ public class Generator : MonoBehaviour
                         wallTM.SetTile(new Vector3Int(i, j - 1, 0), wallTileUp[r.Next(0, wallTileUp.Length)]);
                     }
 
+                }
+                else
+                {
+                    wallTM.SetTile(new Vector3Int(i, j - 1, 0), background[r.Next(0, background.Length)]);
                 }
             }
         }
