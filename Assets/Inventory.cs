@@ -75,7 +75,7 @@ public class Inventory : MonoBehaviour
         chestSlot.color = new Color32(255, 255, 255, 0);
         foreach (Equippable e in equipped)
         {
-            if (e.type == Item.ItemType.Backpack)
+            if (e.type == Item.ItemType.Chest)
             {
                 equipped.Remove(e);
                 break;
@@ -98,7 +98,17 @@ public class Inventory : MonoBehaviour
 
     public void removePant()
     {
-
+        pantSlot.sprite = null;
+        pantSlot.color = new Color32(255, 255, 255, 0);
+        foreach (Equippable e in equipped)
+        {
+            if (e.type == Item.ItemType.Pant)
+            {
+                equipped.Remove(e);
+                break;
+            }
+        }
+        pantOc = false;
     }
     public bool setGlove(GameObject c)
     {
@@ -115,7 +125,17 @@ public class Inventory : MonoBehaviour
 
     public void removeGlove()
     {
-
+        gloveSlot.sprite = null;
+        gloveSlot.color = new Color32(255, 255, 255, 0);
+        foreach (Equippable e in equipped)
+        {
+            if (e.type == Item.ItemType.Glove)
+            {
+                equipped.Remove(e);
+                break;
+            }
+        }
+        gloveOc = false;
     }
     public bool setBoot(GameObject c)
     {
@@ -132,7 +152,17 @@ public class Inventory : MonoBehaviour
 
     public void removeBoot()
     {
-
+        bootSlot.sprite = null;
+        bootSlot.color = new Color32(255, 255, 255, 0);
+        foreach (Equippable e in equipped)
+        {
+            if (e.type == Item.ItemType.Boot)
+            {
+                equipped.Remove(e);
+                break;
+            }
+        }
+        bootOc = false;
     }
 
     public bool setInkT(GameObject c)
@@ -150,7 +180,17 @@ public class Inventory : MonoBehaviour
 
     public void removeInkT()
     {
-
+        inkSlot.sprite = null;
+        inkSlot.color = new Color32(255, 255, 255, 0);
+        foreach (Equippable e in equipped)
+        {
+            if (e.type == Item.ItemType.InkTank)
+            {
+                equipped.Remove(e);
+                break;
+            }
+        }
+        inkOc = false;
     }
     public bool setBackpack(GameObject c)
     {
