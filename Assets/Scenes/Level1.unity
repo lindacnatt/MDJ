@@ -4240,7 +4240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 9
   type: 9
-  panel: {fileID: 0}
+  panel: {fileID: 934628839}
 --- !u!114 &1114108360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6840,7 +6840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 10
   type: 9
-  panel: {fileID: 0}
+  panel: {fileID: 934628839}
 --- !u!114 &1722334445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7557,7 +7557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   type: 4
-  panel: {fileID: 0}
+  panel: {fileID: 934628839}
 --- !u!114 &1878861805
 MonoBehaviour:
   m_ObjectHideFlags: 0

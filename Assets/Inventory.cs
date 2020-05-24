@@ -511,64 +511,52 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            Item i1 = items[index1];
-            if (i1 == null) numItems++;
-            Sprite s = slots[index1].sprite;
-            Color c = slots[index1].color;
-            for (int i = 0; i < equipped.Count; i++)
+            Item i2 = null;
+            Sprite s = null;
+            Color c = new Color32(255,255,255,0);
+            foreach(Equippable e in equipped)
             {
-                if (equipped[i].type == t)
+                if (e.type == t)
                 {
-                    items[index1] = equipped[i];
-                    switch (t)
-                    {
-                        case Item.ItemType.Chest:
-                            items[index1] = equipped[i];
-                            slots[index1].sprite = chestSlot.sprite;
-                            slots[index1].color = chestSlot.color;
-                            chestSlot.sprite = s;
-                            chestSlot.color = c;
-                            equipped[i] = i1 as Equippable;
-                            break;
-                        case Item.ItemType.Pant:
-                            items[index1] = equipped[i];
-                            slots[index1].sprite = pantSlot.sprite;
-                            slots[index1].color = pantSlot.color;
-                            pantSlot.sprite = s;
-                            pantSlot.color = c;
-                            equipped[i] = i1 as Equippable;
-                            break;
-                        case Item.ItemType.Glove:
-                            items[index1] = equipped[i];
-                            slots[index1].sprite = gloveSlot.sprite;
-                            slots[index1].color = gloveSlot.color;
-                            gloveSlot.sprite = s;
-                            gloveSlot.color = c;
-                            equipped[i] = i1 as Equippable;
-                            break;
-                        case Item.ItemType.Boot:
-                            items[index1] = equipped[i];
-                            slots[index1].sprite = bootSlot.sprite;
-                            slots[index1].color = bootSlot.color;
-                            bootSlot.sprite = s;
-                            bootSlot.color = c;
-                            equipped[i] = i1 as Equippable;
-                            break;
-                        case Item.ItemType.Backpack:
-                            removeBack();
-                            equipItem(i1.gameObject);
-                            break;
-                        case Item.ItemType.InkTank:
-                            items[index1] = equipped[i];
-                            slots[index1].sprite = inkSlot.sprite;
-                            slots[index1].color = inkSlot.color;
-                            inkSlot.sprite = s;
-                            inkSlot.color = c;
-                            equipped[i] = i1 as Equippable;
-                            break;
-                    }
+                    s = e.gameObject.GetComponent<SpriteRenderer>().sprite;
+                    c = new Color32(255, 255, 255, 255);
+                    i2 = e;
                 }
             }
+            switch (t)
+            {
+                case Item.ItemType.Chest:
+                    removeChest();
+                        break;
+                case Item.ItemType.Pant:
+                    removePant();
+                    break;
+                case Item.ItemType.Glove:
+                    removeGlove();
+                    break;
+                case Item.ItemType.Boot:
+                    removeBoot();
+                    break;
+                case Item.ItemType.Backpack:
+                    removeBack();
+                    break;
+                case Item.ItemType.InkTank:
+                    removeInkT();
+                    break;
+            }
+            if (items[index1] != null)
+            {
+                equipItem(items[index1].gameObject);
+                items[index1] = null;
+                slots[index1].sprite = null;
+                slots[index1].color = new Color(255, 255, 255, 0);
+                numItems--;
+            }
+            if (i2 != null)
+            {
+                addItem(i2.gameObject);
+            }
+
         }
 
     }
