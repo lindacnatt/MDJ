@@ -403,6 +403,16 @@ public class Inventory : MonoBehaviour
         return res / 100;
     }
 
+    public float offenseValue()
+    {
+        float res = 100;
+        foreach (Equippable e in equipped)
+        {
+            res += e.offensiveValue;
+        }
+        return res / 100;
+    }
+
     public void use(int index,Item.ItemType t)
     {
         if (index < 0)
