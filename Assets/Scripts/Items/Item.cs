@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
         drop = true;
     }
 
-    public void clicked()
+    public virtual void clicked()
     {
         foreach(Transform c in panel.transform)
         {

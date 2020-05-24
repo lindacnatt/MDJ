@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8522999468746596009}
   - component: {fileID: 8522999468746596008}
-  - component: {fileID: 6688533931141862296}
   - component: {fileID: 6327316742709443732}
+  - component: {fileID: 5474914973426840609}
   m_Layer: 0
   m_Name: Pear
   m_TagString: Health
@@ -83,23 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6688533931141862296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8522999468746596011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c258bd0271f9a4c9b016313e1cc78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rare: 1
-  type: 6
-  itemName: Pear
-  description: Eat to recuperate 3 Hp
-  value: 2
 --- !u!61 &6327316742709443732
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +109,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5474914973426840609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522999468746596011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fffdc617d319047b5fd71d0472c311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rare: 1
+  type: 6
+  itemName: Pear
+  description: Eat to recuperate 3 Hp
+  value: 3

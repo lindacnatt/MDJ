@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1047314545440111041}
   - component: {fileID: 1047314545440111042}
-  - component: {fileID: 5102199284563653064}
   - component: {fileID: 1173142783241608793}
+  - component: {fileID: 2274598579812605944}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: Health
@@ -83,23 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5102199284563653064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047314545440111043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c258bd0271f9a4c9b016313e1cc78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rare: 0
-  type: 0
-  itemName: Watermelon
-  description: Eat to recuperate 8 Hp
-  value: 8
 --- !u!61 &1173142783241608793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +109,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2274598579812605944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047314545440111043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fffdc617d319047b5fd71d0472c311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rare: 0
+  type: 6
+  itemName: Watermelon
+  description: Eat to recuperate 8 Hp
+  value: 8
