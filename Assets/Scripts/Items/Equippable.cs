@@ -8,6 +8,7 @@ public class Equippable : Item
     public float healthValue;
     public float inkValue;
     public float speedValue;
+    public float offensiveValue;
 
     protected new void Start()
     {
