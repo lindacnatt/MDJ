@@ -11,6 +11,7 @@ public class Thunder : AOESpellBase
     // Start is called before the first frame update
     void Start()
     {
+        transform.localScale = new Vector3(AOESpellSettings.radius, AOESpellSettings.radius, 1);
         StartCoroutine(ActivateHurtbox());
         StartCoroutine(IncreaseAlpha());
 
@@ -67,7 +68,7 @@ public class Thunder : AOESpellBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyController2D>().TakeDamage(AOESpellSettings.damage * DamageMultiplier);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(AOESpellSettings.damage * DamageMultiplier);
             Destroy(gameObject);
 
         }

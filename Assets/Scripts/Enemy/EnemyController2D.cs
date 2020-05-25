@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using static Chest;
 
-public class EnemyController2D : MonoBehaviour
+public class EnemyController2D : MonoBehaviour, IDamageable
 {
     public EnemyData EnemyData;
 
