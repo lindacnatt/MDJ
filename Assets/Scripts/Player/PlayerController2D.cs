@@ -25,17 +25,24 @@ public class PlayerController2D : MonoBehaviour
     private bool Knockback = false;
     private Vector3 direction;
 
-    private float defBuff;
-    private float speedBuff;
-    private float healthBuff;
-    private float inkBuff;
+    private float defBuff = 0;
+    private float offenseBuff = 0;
+
+    private int maxHp = 100;
+    private int maxInk = 100;
 
     //Raise an event if we change the Ink
     //TODO: Don't forget to clamp the ink between 0 and maxInk as well!
     public float CurrentInk { get => currentInk; 
-        set {
-            currentInk = value;
-            onInkChanged.Raise(currentInk);
+        set
+        {
+            if(value > maxInk)
+                onInkChanged.Raise(maxInk);
+            else
+            {
+                currentInk = value;
+                onInkChanged.Raise(currentInk);
+            }
         } 
     }
 
@@ -44,12 +51,17 @@ public class PlayerController2D : MonoBehaviour
     public float CurrentHP { get => currentHP; 
         set
         {
-            currentHP = value;
-            onHPChanged.Raise(currentHP);
-
-            if(currentHP <= 0)
+            if (value > maxHp)
+                onHPChanged.Raise(maxHp);
+            else
             {
-                onDie.Raise();
+                currentHP = value;
+                onHPChanged.Raise(currentHP);
+
+                if (currentHP <= 0)
+                {
+                    onDie.Raise();
+                }
             }
         }
     }
@@ -166,14 +178,14 @@ public class PlayerController2D : MonoBehaviour
 
     public bool addInk(int value)
     {
-        Debug.Log(value);
+        if (currentInk == maxInk) return false;
         CurrentInk += value;
         return true;
     }
 
     public bool addHP(int value)
     {
-        
+        if (currentHP == maxHp) return false;
         CurrentHP += value;
         return true;
     }
@@ -196,11 +208,29 @@ public class PlayerController2D : MonoBehaviour
     private void calcBuffs()
     {
         defBuff = inventory.defensiveValue();
-        speedBuff = inventory.speedValue();
-        healthBuff = inventory.healthValue();
-        inkBuff = inventory.inkValue();
+        offenseBuff = inventory.offenseValue();
+
+        changeSpeed(inventory.speedValue());
+        changeMaxHp(inventory.healthValue());
+        changeMaxInk(inventory.inkValue());
+
     }
     
+    private void changeSpeed(float speed)
+    {
+        agent.speed *= speed;
+    }
+
+    private void changeMaxHp(float max)
+    {
+        maxHp = (int)(max * maxHp);
+    }
+
+    private void changeMaxInk(float max)
+    {
+        maxInk = (int)(max * maxInk);
+    }
+
     #region Knockback
 
     //Check this out: https://www.youtube.com/watch?v=gFq0lO2E2Sc
