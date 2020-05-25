@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e433ce6cc812c4d904a089697205e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHP: 1000
+  CurrentHP: 700
   navAgent: {fileID: 5489750875613510678}
   LeftHand: {fileID: 2146412890177360749}
   RightHand: {fileID: 5191896414204316285}
@@ -439,4 +439,4 @@ MonoBehaviour:
     type: 3}
   LeftHandCollider: {fileID: 0}
   RightHandCollider: {fileID: 0}
-  onDie: {fileID: 0}
+  onDie: {fileID: 11400000, guid: f0b665059610e2545b35c99390b74078, type: 2}
