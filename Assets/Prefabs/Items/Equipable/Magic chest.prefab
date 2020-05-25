@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2882869478994202502
+--- !u!1 &3239607176443532935
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2882869478994202498}
-  - component: {fileID: 2882869478994202499}
-  - component: {fileID: 2882869478994202496}
-  - component: {fileID: 2418693212672940286}
+  - component: {fileID: 3239607176443532933}
+  - component: {fileID: 3239607176443532934}
+  - component: {fileID: 8181539993068067143}
+  - component: {fileID: -6302080714869544825}
   m_Layer: 0
-  m_Name: glove
+  m_Name: Magic chest
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2882869478994202498
+--- !u!4 &3239607176443532933
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882869478994202502}
+  m_GameObject: {fileID: 3239607176443532935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.579, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2882869478994202499
+--- !u!212 &3239607176443532934
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882869478994202502}
+  m_GameObject: {fileID: 3239607176443532935}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb64736f35305df4d880ddc6f4f0a5fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80dca38fa814c42c889e330ab1820ef5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,13 +83,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2882869478994202496
+--- !u!61 &8181539993068067143
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882869478994202502}
+  m_GameObject: {fileID: 3239607176443532935}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -109,26 +109,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &2418693212672940286
+--- !u!114 &-6302080714869544825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882869478994202502}
+  m_GameObject: {fileID: 3239607176443532935}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 0
-  type: 4
-  itemName: Normal gloves
-  description: These gloves improve the damage by 20 at the cost of max ink you can
-    carry.
+  rare: 1
+  type: 3
+  itemName: Magic Chestplate
+  description: This item provides 100 armor making the player receive 2x less damage
+    and increases ink value
   value: 0
-  defenseValue: 0
+  defenseValue: 100
   healthValue: 0
-  inkValue: -20
+  inkValue: 50
   speedValue: 0
-  offensiveValue: 20
+  offensiveValue: 0
