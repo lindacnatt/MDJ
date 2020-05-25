@@ -5,6 +5,7 @@ using UnityEngine;
 public class EyeRokSmashFloor : EyeRokState
 {
     private float handSmashVelocity = 7.0f;
+    private float timeHandsInGround = 3.0f;
 
     private Vector2 leftHandDestination, rightHandDestination;
 
@@ -14,7 +15,7 @@ public class EyeRokSmashFloor : EyeRokState
      * Spawn a prefab or something of a circle in the positions where the hands are going to fall into
      */
 
-    private bool leftHandFinished, rightHandFinished = false;
+    private bool leftHandFinished, rightHandFinished, handsCooldown = false;
     public override void OnEnter(EyeRok eyeRok)
     {
         //Calculate hand positions based on the player position
@@ -38,7 +39,11 @@ public class EyeRokSmashFloor : EyeRokState
     {
         if(leftHandFinished && rightHandFinished)
         {
-            return new EyeRokPatrol();
+            eyeRok.StartCoroutine(WaitForSeconds(timeHandsInGround, () => handsCooldown = true));
+            if (handsCooldown)
+                return new EyeRokPatrol();
+            else
+                return null;
         }
         else
         {

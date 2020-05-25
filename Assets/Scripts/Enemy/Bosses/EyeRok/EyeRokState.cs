@@ -34,4 +34,11 @@ public abstract class EyeRokState
         else
             return false;
     }
+
+    public static IEnumerator WaitForSeconds(float time, System.Action action)
+    {
+        yield return new WaitForSecondsRealtime(time);
+
+        action.Invoke();
+    }
 }
