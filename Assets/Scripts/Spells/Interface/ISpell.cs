@@ -18,4 +18,10 @@ public interface ISpell
     /// </summary>
     /// <param name="target">World coordinates of the destination</param>
     void SetDestination(Vector2 target);
+
+    /// <summary>
+    /// Set a damage multiplier on the spell
+    /// </summary>
+    /// <param name="mult"></param>
+    void SetDamageMultipler(float mult);
 }

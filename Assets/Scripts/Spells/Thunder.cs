@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Thunder : MonoBehaviour, ISpell
+public class Thunder : AOESpellBase
 {
-
-    [SerializeField] private AOESpell AOESpellSettings = null;
+    [SerializeField] private AOESpellSettings AOESpellSettings = null;
     [SerializeField] private CircleCollider2D Hurtbox = null;
-    [SerializeField] private SpriteRenderer BaseSprite = null;
-
-    Vector3 Center;    
+    [SerializeField] private SpriteRenderer BaseSprite = null;   
 
     // Start is called before the first frame update
     void Start()
@@ -61,24 +58,16 @@ public class Thunder : MonoBehaviour, ISpell
         Hurtbox.enabled = true;        
     }
 
-    public bool OnSpellPrimed()
+    public override bool OnSpellPrimed()
     {
         return false;
-    }
-
-    public void SetDestination(Vector2 target)
-    {
-        Vector3 temp = new Vector3(target.x, target.y, 0);
-        Center = temp;
-
-        transform.position = Center;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyController2D>().TakeDamage(AOESpellSettings.damage);
+            collision.gameObject.GetComponent<EnemyController2D>().TakeDamage(AOESpellSettings.damage * DamageMultiplier);
             Destroy(gameObject);
 
         }

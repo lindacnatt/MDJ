@@ -10,7 +10,7 @@ public class PlayerController2D : MonoBehaviour
 
     //State machine
     public bool HasSpell;
-    private Spell currentPrimedSpell;
+    private SpellSettings currentPrimedSpell;
 
     [SerializeField] private FloatEvent onHPChanged = null;
     [SerializeField] private FloatEvent onInkChanged = null;
@@ -105,8 +105,10 @@ public class PlayerController2D : MonoBehaviour
             //TODO: We have an interface for now
             //If we need anything else let me know - Rafael
             var target = Camera.main.ScreenToWorldPoint(finger.ScreenPosition);
-            Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<ISpell>().SetDestination(target);         
-            
+            var spellPrefab = Instantiate(currentPrimedSpell.SpellPrefab, transform.position, Quaternion.identity).GetComponent<ISpell>();
+            spellPrefab.SetDestination(target);
+            spellPrefab.SetDamageMultipler(offenseBuff);
+
             HasSpell = false;
             onSpellPrimed.Raise(null);
         }
@@ -134,7 +136,7 @@ public class PlayerController2D : MonoBehaviour
         Debug.DrawLine(corners[0], corners[1], Color.red);
     }
 
-    public void AssignSpell(Spell spell)
+    public void AssignSpell(SpellSettings spell)
     {
         if (spell == null)
         {

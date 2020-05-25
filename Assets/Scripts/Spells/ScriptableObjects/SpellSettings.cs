@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spell : ScriptableObject
+public abstract class SpellSettings : ScriptableObject
 {
     public int InkCost;
     public string GestureName;

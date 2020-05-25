@@ -4795,7 +4795,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
 --- !u!212 &2162435607074569626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4858,9 +4858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82517b465d15457c9065a4b012dcc90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 1
+  DamageMultiplier: 1
   DamageSpellSettings: {fileID: 11400000, guid: 51745edae2ea94aaea50a1759dac1b08,
     type: 2}
-  speed: 0.5
 --- !u!82 &-4032587176839010420
 AudioSource:
   m_ObjectHideFlags: 0

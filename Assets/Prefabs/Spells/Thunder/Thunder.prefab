@@ -112,7 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05576634b148cc542a06d5c002133ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AOESpellSettings: {fileID: 11400000, guid: a3849c96ba3e2584498978555303dcba, type: 2}
+  Speed: 1
+  DamageMultiplier: 1
+  AOESpellSettings: {fileID: 11400000, guid: ad177e9c1e7076c4d83081972121eaeb, type: 2}
   Hurtbox: {fileID: 5113678938108743568}
   BaseSprite: {fileID: 5113678938108743570}
 --- !u!82 &2834949892920533124

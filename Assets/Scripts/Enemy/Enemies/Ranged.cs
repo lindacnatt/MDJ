@@ -9,7 +9,7 @@ public class Ranged : EnemyController2D
     protected float cooldownTime = 2.5f;
     protected bool cooldown = false;
 
-    [SerializeField] private DamagingSpell fireballSpell = null; 
+    [SerializeField] private DamagingSpellSettings fireballSpell = null; 
     void Update()
     {
         if (Vector2.Distance(Player.transform.position, this.transform.position) < sightRange)

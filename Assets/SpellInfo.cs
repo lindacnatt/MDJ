@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SpellInfo : MonoBehaviour
 {
-    public Spell data;
+    public SpellSettings data;
 }

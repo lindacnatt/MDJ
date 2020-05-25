@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5651263825010367762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.32275, y: 17.914598, z: -10.262194}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4795,7 +4795,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
 --- !u!212 &7272362161401586114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4858,9 +4858,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46885851e1382409eb0e85571bf2bde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 1
+  DamageMultiplier: 1
   DamageSpellSettings: {fileID: 11400000, guid: e82900529894d4f38864b2ad18f6e6be,
     type: 2}
-  speed: 0.1
 --- !u!82 &-2283403664644067711
 AudioSource:
   m_ObjectHideFlags: 0

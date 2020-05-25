@@ -6,9 +6,9 @@ using UnityEngine;
 public class SpellListManager : ScriptableObject
 {
 
-    [SerializeField] private List<Spell> SpellMap = new List<Spell>();
+    [SerializeField] private List<SpellSettings> SpellMap = new List<SpellSettings>();
 
-    public Spell GetSpell(string gestureName)
+    public SpellSettings GetSpell(string gestureName)
     {
         return SpellMap.Find(spell => spell.GestureName.Equals(gestureName));
     }

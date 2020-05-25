@@ -572,9 +572,4 @@ public class Inventory : MonoBehaviour
         else  return switchIAux(index2, type2, index1, type1);
         
     }
-
-    private void Update()
-    {
-        Debug.Log(numItems +" "+ items.Count);
-    }
 }

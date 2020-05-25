@@ -31,7 +31,7 @@ public class GameplayUIManager : MonoBehaviour
         InkSlider.value = newInk;
     }
 
-    public void UpdateSpellPrimed(Spell spell)
+    public void UpdateSpellPrimed(SpellSettings spell)
     {
         UISpellText.text = spell == null ? "" : spell.name;
     }
