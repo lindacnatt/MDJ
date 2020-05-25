@@ -6,7 +6,7 @@ public class EnemyFireball : Fireball
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController2D>().TakeDamage(DamageSpellSettings.damage);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(DamageSpellSettings.damage);
             Destroy(gameObject);
         }
     }

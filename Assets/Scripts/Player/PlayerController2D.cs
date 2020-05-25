@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController2D : MonoBehaviour
+public class PlayerController2D : MonoBehaviour, IDamageable
 {
     [SerializeField] private NavMeshAgent agent;
 
@@ -29,8 +29,8 @@ public class PlayerController2D : MonoBehaviour
     private bool Knockback = false;
     private Vector3 direction;
 
-    private float defBuff = 0;
-    private float offenseBuff = 0;
+    private float defBuff = 1;
+    private float offenseBuff = 1;
 
     private int maxHp = 100;
     private int maxInk = 100;
@@ -76,7 +76,6 @@ public class PlayerController2D : MonoBehaviour
         agent.updateUpAxis = false;
         agent.speed = currentSpeed = initalSpeed;
 
-        defBuff = 1;
 
         //Don't forgot to set the current hp/ink values at start to get the UI working (fire off events)
         CurrentHP = CurrentInk = 100;

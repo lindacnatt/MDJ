@@ -10,7 +10,7 @@ public class Water : ProjectileSpellBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyController2D>().TakeDamage(DamageSpellSettings.damage * DamageMultiplier);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(DamageSpellSettings.damage * DamageMultiplier);
             Destroy(gameObject);
 
         }

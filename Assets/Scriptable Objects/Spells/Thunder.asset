@@ -19,5 +19,5 @@ MonoBehaviour:
   OnSpellPrimedEvent: {fileID: 0}
   OnSpellCastEvent: {fileID: 0}
   damage: 100
-  radius: 5
-  delay: 0.5
+  radius: 2.5
+  delay: 1
