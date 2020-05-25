@@ -4771,9 +4771,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d7c7a53919112409f92d8eba0aaa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0.1
+  DamageMultiplier: 1
   DamageSpellSettings: {fileID: 11400000, guid: 3cccdffb8043d5b4ca49f2b7d93c2c60,
     type: 2}
-  speed: 0.1
 --- !u!50 &6097121493472704714
 Rigidbody2D:
   serializedVersion: 4

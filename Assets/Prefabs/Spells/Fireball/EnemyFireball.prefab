@@ -4857,6 +4857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e676bd2e5c1ee54d8db56f2d05c8a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0.05
+  DamageMultiplier: 1
   DamageSpellSettings: {fileID: 11400000, guid: ee773741d3a3c59469a39ad03fceb35f,
     type: 2}
-  speed: 0.05

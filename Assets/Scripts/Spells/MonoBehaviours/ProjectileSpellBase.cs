@@ -13,7 +13,8 @@ public abstract class ProjectileSpellBase : SpellBase
         Vector3 temp = new Vector3(target.x, target.y, 0);
         Destination = temp;
 
-        Direction = (Destination - transform.position).normalized;
+        Direction = (Destination - transform.position);
         Direction.z = 0;
+        Direction = Direction.normalized;
     }
 }
