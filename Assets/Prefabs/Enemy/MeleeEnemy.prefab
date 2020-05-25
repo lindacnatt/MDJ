@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5872482515150158764}
   - component: {fileID: -1842973446254880447}
   m_Layer: 0
-  m_Name: Enemy2D
+  m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,4 +169,3 @@ MonoBehaviour:
   EnemyData: {fileID: 11400000, guid: 045dcc7f91362a542a68d2ad25028c32, type: 2}
   rare: 0
   type: 0
-  Player: {fileID: 2355181616577641705, guid: 834dfacfa1497534587d47cb9b32bcb0, type: 3}

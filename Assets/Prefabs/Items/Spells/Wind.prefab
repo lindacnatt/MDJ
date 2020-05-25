@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5508354822248739462}
   - component: {fileID: -6822743691714621348}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: Wind
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9840649e4cb30f148ae809912471c913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 2
+  rare: 0
   type: 0
-  itemName: Fireball
-  description: Shoots a fireball that deals damage
+  itemName: Wind
+  description: Damages 90 HP and costs 15 Ink
   value: 0
-  spellSigil: {fileID: 21300000, guid: 329b727e9ee2dcf46a130613379803d4, type: 3}
+  spellSigil: {fileID: 21300000, guid: cd476477289f34b179321a848ebc7f61, type: 3}
