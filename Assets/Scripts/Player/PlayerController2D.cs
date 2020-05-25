@@ -17,6 +17,10 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField] private SpellEvent onSpellPrimed = null;
     [SerializeField] private VoidEvent onDie = null;
 
+    //Player speed inital values
+    private readonly float initalSpeed = 3.5f;
+
+    private float currentSpeed;
     //Values
     private float currentHP;
     private float currentInk;
@@ -47,7 +51,6 @@ public class PlayerController2D : MonoBehaviour
     }
 
     //Raise an event if the HP changes
-    //TODO: Don't forget to clamp the hp between 0 and maxHP as well!
     public float CurrentHP { get => currentHP; 
         set
         {
@@ -71,6 +74,7 @@ public class PlayerController2D : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = currentSpeed = initalSpeed;
 
         defBuff = 1;
 
@@ -115,12 +119,6 @@ public class PlayerController2D : MonoBehaviour
             agent.destination = target;
             DebugDrawPath(agent.path.corners);
 
-            //RaycastHit hit;
-
-            //if (Physics.Raycast(Camera.main.ScreenPointToRay(finger.ScreenPosition), out hit, 100))
-            //{
-            //    agent.destination = hit.point;
-            //}
         }
     }
 
@@ -218,7 +216,8 @@ public class PlayerController2D : MonoBehaviour
     
     private void changeSpeed(float speed)
     {
-        agent.speed *= speed;
+        currentSpeed *= speed;
+        agent.speed = currentSpeed;
     }
 
     private void changeMaxHp(float max)
@@ -264,7 +263,7 @@ public class PlayerController2D : MonoBehaviour
         yield return new WaitForSeconds(.2f);
 
         Knockback = false;
-        agent.speed = 3.5f;
+        agent.speed = currentSpeed;
         agent.angularSpeed = 120;
         agent.acceleration = 8;
     }
