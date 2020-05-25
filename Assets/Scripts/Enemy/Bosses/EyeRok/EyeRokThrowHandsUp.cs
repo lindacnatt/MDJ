@@ -6,7 +6,7 @@ public class EyeRokThrowHandsUp : EyeRokState
 {
 
     //TODO: Put this in a scriptable object for EyeRok?
-    [SerializeField] private float TimeDelayBeforeAttack = 5.0f;
+    [SerializeField] private float TimeDelayBeforeAttack = 1.5f;
     private bool HandsReadyToAttack = false;
     public override void OnEnter(EyeRok eyeRok)
     {

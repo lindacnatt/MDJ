@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EyeRokSmashFloor : EyeRokState
 {
-    private float handSmashVelocity = 7.0f;
-    private float timeHandsInGround = 3.0f;
+    private readonly float delayBeforeAttack = 1.5f;
+    private readonly float handSmashVelocity = 15.0f;
+    private readonly float timeHandsInGround = 2.0f;
 
     private Vector2 leftHandDestination, rightHandDestination;
 
@@ -25,13 +26,23 @@ public class EyeRokSmashFloor : EyeRokState
         //Right hand on a circle around the player
         rightHandDestination = GetLocationAroundPoint(eyeRok.Player.transform.position, 1.5f, 3.0f);
 
-        eyeRok.StartCoroutine(SmashFloor(eyeRok.LeftHand, leftHandDestination, eyeRok.LeftHandCollider, () => leftHandFinished = true));
-        eyeRok.StartCoroutine(SmashFloor(eyeRok.RightHand, rightHandDestination, eyeRok.RightHandCollider, () => rightHandFinished = true));
+        //Spawn prefabs
+        var leftHandWarning = Object.Instantiate(eyeRok.HandWarningPrefab, leftHandDestination, Quaternion.identity);
+        var rightHandWarning = Object.Instantiate(eyeRok.HandWarningPrefab, rightHandDestination, Quaternion.identity);
 
-        //TODO: Spawn prefabs where they are going to land
+        //Also get rid of the prefab at the end
+        eyeRok.StartCoroutine(SmashFloor(eyeRok.LeftHand, leftHandDestination, eyeRok.LeftHandCollider, () =>
+        {
+            leftHandFinished = true;
+            Object.Destroy(leftHandWarning);
+        }));
 
-
-        //throw new System.NotImplementedException();
+        eyeRok.StartCoroutine(SmashFloor(eyeRok.RightHand, rightHandDestination, eyeRok.RightHandCollider, () =>
+        {
+            rightHandFinished = true;
+            Object.Destroy(rightHandWarning);
+        }));
+        
     }
 
     
@@ -53,6 +64,7 @@ public class EyeRokSmashFloor : EyeRokState
 
     IEnumerator SmashFloor(GameObject hand, Vector2 handDestination, BoxCollider2D handCollider, System.Action action)
     {
+        yield return new WaitForSeconds(delayBeforeAttack);
 
         while(!ArrivedAtDestination(hand.transform.position, handDestination))
         {

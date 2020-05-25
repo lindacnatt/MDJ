@@ -1,0 +1,605 @@
+fileFormatVersion: 2
+guid: bb995df33e4ead74ba1725e1e788a9c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5964707805356683553
+    second: EyeRok - Hand_0
+  - first:
+      213: -534584081790973032
+    second: EyeRok - Hand_1
+  - first:
+      213: 6245677321703088533
+    second: EyeRok - Hand_2
+  - first:
+      213: -6901599151404371587
+    second: EyeRok - Hand_3
+  - first:
+      213: -4973872792914107530
+    second: EyeRok - Hand_4
+  - first:
+      213: -3641952998376591238
+    second: EyeRok - Hand_5
+  - first:
+      213: -6995799710434230720
+    second: EyeRok - Hand_6
+  - first:
+      213: -1985190458568958971
+    second: EyeRok - Hand_7
+  - first:
+      213: -6099926480090262763
+    second: EyeRok - Hand_8
+  - first:
+      213: 6937811354728042710
+    second: EyeRok - Hand_9
+  - first:
+      213: 2679786580198215623
+    second: EyeRok - Hand_10
+  - first:
+      213: 3174460960339275481
+    second: EyeRok - Hand_11
+  - first:
+      213: -3696090099159569480
+    second: EyeRok - Hand_12
+  - first:
+      213: 548526786993879471
+    second: EyeRok - Hand_13
+  - first:
+      213: 4431337967370921156
+    second: EyeRok - Hand_14
+  - first:
+      213: 5965313969549209262
+    second: EyeRok - Hand_15
+  - first:
+      213: 5315213911523249775
+    second: EyeRok - Hand_16
+  - first:
+      213: -8002570942429929908
+    second: EyeRok - Hand_17
+  - first:
+      213: -6476032315161062200
+    second: EyeRok - Hand_18
+  - first:
+      213: -8147982412466214012
+    second: EyeRok - Hand_19
+  - first:
+      213: 2092846358154137092
+    second: EyeRok - Hand_20
+  - first:
+      213: 5352351161891432498
+    second: EyeRok - Hand_21
+  - first:
+      213: 7781130151162905648
+    second: EyeRok - Hand_22
+  - first:
+      213: -1889382299558908718
+    second: EyeRok - Hand_23
+  - first:
+      213: 4244828548282540016
+    second: EyeRok - Hand_24
+  - first:
+      213: -5940416736643632792
+    second: EyeRok - Hand_25
+  - first:
+      213: 908758554132453004
+    second: EyeRok - Hand_26
+  - first:
+      213: 1584783958558086044
+    second: EyeRok - Hand_27
+  - first:
+      213: -7185434685000969367
+    second: EyeRok - Hand_28
+  - first:
+      213: 392837101883720950
+    second: EyeRok - Hand_29
+  - first:
+      213: -8668527896275940275
+    second: EyeRok - Hand_30
+  - first:
+      213: 3909661689663136595
+    second: EyeRok - Hand_31
+  - first:
+      213: -7206392987183798574
+    second: EyeRok - Hand_32
+  - first:
+      213: -6168136689303051635
+    second: EyeRok - Hand_33
+  - first:
+      213: -2343643800058976055
+    second: EyeRok - Hand_34
+  - first:
+      213: -1678090059342577086
+    second: EyeRok - Hand_35
+  - first:
+      213: 832623182853680007
+    second: EyeRok - Hand_36
+  - first:
+      213: 9035752303808905408
+    second: EyeRok - Hand_37
+  - first:
+      213: 8713686776421593214
+    second: EyeRok - Hand_38
+  - first:
+      213: 7776928125739921915
+    second: EyeRok - Hand_39
+  - first:
+      213: -2655244397139493118
+    second: EyeRok - Hand_40
+  - first:
+      213: 9131800688876211946
+    second: EyeRok - Hand_41
+  - first:
+      213: -5992287002429985192
+    second: EyeRok - Hand_42
+  - first:
+      213: 2846414093477915579
+    second: EyeRok - Hand_43
+  - first:
+      213: -3225638807084996848
+    second: EyeRok - Hand_44
+  - first:
+      213: 983119470975795368
+    second: EyeRok - Hand_45
+  - first:
+      213: -8898994874932606093
+    second: EyeRok - Hand_46
+  - first:
+      213: 7132962777672742189
+    second: EyeRok - Hand_47
+  - first:
+      213: -126064995879719640
+    second: EyeRok - Hand_48
+  - first:
+      213: 6061050787438628295
+    second: EyeRok - Hand_49
+  - first:
+      213: 3448879643354118247
+    second: EyeRok - Hand_50
+  - first:
+      213: -6303707580836299940
+    second: EyeRok - Hand_51
+  - first:
+      213: 969645296994745742
+    second: EyeRok - Hand_52
+  - first:
+      213: 7837533925138835747
+    second: EyeRok - Hand_53
+  - first:
+      213: -8811545295061404662
+    second: EyeRok - Hand_54
+  - first:
+      213: 7527369617925194713
+    second: EyeRok - Hand_55
+  - first:
+      213: -3798210756048487338
+    second: EyeRok - Hand_56
+  - first:
+      213: 5052339902666529199
+    second: EyeRok - Hand_57
+  - first:
+      213: 3766268753056244466
+    second: EyeRok - Hand_58
+  - first:
+      213: 6347415933615950588
+    second: EyeRok - Hand_59
+  - first:
+      213: -4013951351332086037
+    second: EyeRok - Hand_60
+  - first:
+      213: -5362113614402343165
+    second: EyeRok - Hand_61
+  - first:
+      213: 718870598740212910
+    second: EyeRok - Hand_62
+  - first:
+      213: 5767239255447549599
+    second: EyeRok - Hand_63
+  - first:
+      213: -5614394945969995907
+    second: EyeRok - Hand_64
+  - first:
+      213: -3542021954837963287
+    second: EyeRok - Hand_65
+  - first:
+      213: -9045822448626634252
+    second: EyeRok - Hand_66
+  - first:
+      213: 4191062732905170095
+    second: EyeRok - Hand_67
+  - first:
+      213: -5392112981110627645
+    second: EyeRok - Hand_68
+  - first:
+      213: -5280756130495892048
+    second: EyeRok - Hand_69
+  - first:
+      213: -4147310456612227923
+    second: EyeRok - Hand_70
+  - first:
+      213: 2994956514976969839
+    second: EyeRok - Hand_71
+  - first:
+      213: -9181935754121912911
+    second: EyeRok - Hand_72
+  - first:
+      213: -1126223089691643512
+    second: EyeRok - Hand_73
+  - first:
+      213: 7526017706143261917
+    second: EyeRok - Hand_74
+  - first:
+      213: -2329563004064197141
+    second: EyeRok - Hand_75
+  - first:
+      213: -3160920218303616755
+    second: EyeRok - Hand_76
+  - first:
+      213: -8728253188530559413
+    second: EyeRok - Hand_77
+  - first:
+      213: -6107799848760622807
+    second: EyeRok - Hand_78
+  - first:
+      213: 8399135323363785058
+    second: EyeRok - Hand_79
+  - first:
+      213: 3599318300224855738
+    second: EyeRok - Hand_80
+  - first:
+      213: -6508044293962587020
+    second: EyeRok - Hand_81
+  - first:
+      213: -3040910210086814525
+    second: EyeRok - Hand_82
+  - first:
+      213: 6739011227884956640
+    second: EyeRok - Hand_83
+  - first:
+      213: -3438801819650647372
+    second: EyeRok - Hand_84
+  - first:
+      213: -6523130668153961815
+    second: EyeRok - Hand_85
+  - first:
+      213: -3805031558880243718
+    second: EyeRok - Hand_86
+  - first:
+      213: 233501736892073923
+    second: EyeRok - Hand_87
+  - first:
+      213: 3512321433955776774
+    second: EyeRok - Hand_88
+  - first:
+      213: 7988667024931282683
+    second: EyeRok - Hand_89
+  - first:
+      213: 2118695322867777421
+    second: EyeRok - Hand_90
+  - first:
+      213: 7172238858814245131
+    second: EyeRok - Hand_91
+  - first:
+      213: 7200992417811763233
+    second: EyeRok - Hand_92
+  - first:
+      213: -9080521684336027554
+    second: EyeRok - Hand_93
+  - first:
+      213: -7402028436259316328
+    second: EyeRok - Hand_94
+  - first:
+      213: -8326211922925686597
+    second: EyeRok - Hand_95
+  - first:
+      213: -6407903021676785492
+    second: EyeRok - Hand_96
+  - first:
+      213: 4061495140149706311
+    second: EyeRok - Hand_97
+  - first:
+      213: 4049284954074246994
+    second: EyeRok - Hand_98
+  - first:
+      213: -2919067638739776153
+    second: EyeRok - Hand_99
+  - first:
+      213: 6860244943770934192
+    second: EyeRok - Hand_100
+  - first:
+      213: 4646768732475203811
+    second: EyeRok - Hand_101
+  - first:
+      213: 2457018923947512121
+    second: EyeRok - Hand_102
+  - first:
+      213: 7679619393756090773
+    second: EyeRok - Hand_103
+  - first:
+      213: 7624555089677411484
+    second: EyeRok - Hand_104
+  - first:
+      213: -3004007700527919195
+    second: EyeRok - Hand_105
+  - first:
+      213: 3878794864228595775
+    second: EyeRok - Hand_106
+  - first:
+      213: 2252093842309555357
+    second: EyeRok - Hand_107
+  - first:
+      213: -6322838029203293328
+    second: EyeRok - Hand_108
+  - first:
+      213: -2099326048803699726
+    second: EyeRok - Hand_109
+  - first:
+      213: 4810662750078001666
+    second: EyeRok - Hand_110
+  - first:
+      213: 7377097068816289263
+    second: EyeRok - Hand_111
+  - first:
+      213: 7338429601993403205
+    second: EyeRok - Hand_112
+  - first:
+      213: 8207320364758628118
+    second: EyeRok - Hand_113
+  - first:
+      213: -1171734082298706369
+    second: EyeRok - Hand_114
+  - first:
+      213: 344572364927877802
+    second: EyeRok - Hand_115
+  - first:
+      213: -356531296368412147
+    second: EyeRok - Hand_116
+  - first:
+      213: -1987438348743243227
+    second: EyeRok - Hand_117
+  - first:
+      213: 6337314049435430219
+    second: EyeRok - Hand_118
+  - first:
+      213: -383997497516146047
+    second: EyeRok - Hand_119
+  - first:
+      213: 5012850636018200482
+    second: EyeRok - Hand_120
+  - first:
+      213: -3166747596024868017
+    second: EyeRok - Hand_121
+  - first:
+      213: 2159971801709239347
+    second: EyeRok - Hand_122
+  - first:
+      213: -7111020971144694545
+    second: EyeRok - Hand_123
+  - first:
+      213: 4415132620939175352
+    second: EyeRok - Hand_124
+  - first:
+      213: -1664681483605742451
+    second: EyeRok - Hand_125
+  - first:
+      213: -8308522015008013174
+    second: EyeRok - Hand_126
+  - first:
+      213: -739944213678968236
+    second: EyeRok - Hand_127
+  - first:
+      213: 1638303031480600841
+    second: EyeRok - Hand_128
+  - first:
+      213: -3242327077508255046
+    second: EyeRok - Hand_129
+  - first:
+      213: -5334025699412925226
+    second: EyeRok - Hand_130
+  - first:
+      213: 4360191738317732530
+    second: EyeRok - Hand_0
+  - first:
+      213: -3929245272092500469
+    second: EyeRok - Hand_1
+  - first:
+      213: 2184495018849872389
+    second: EyeRok - Hand_2
+  - first:
+      213: -4256651580669169687
+    second: EyeRok - Hand_3
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EyeRok - Hand_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba7503e843828c30800000000000000
+      internalID: 4360191738317732530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeRok - Hand_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e1b893e348879c0800000000000000
+      internalID: -3929245272092500469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeRok - Hand_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a282c45a2e05e10800000000000000
+      internalID: 2184495018849872389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeRok - Hand_3
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efeb99a0f55de4c0800000000000000
+      internalID: -4256651580669169687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
