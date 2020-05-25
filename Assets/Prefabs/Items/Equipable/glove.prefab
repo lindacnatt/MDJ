@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 0
   type: 4
-  itemName: Normal Boots
+  itemName: Normal gloves
   description: These gloves improve the damage by 20 at the cost of max ink you can
     carry.
   value: 0

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5161462741694299487}
   - component: {fileID: 5161462741694299486}
-  - component: {fileID: 2800061251018768450}
   - component: {fileID: -8472305688928424838}
+  - component: {fileID: 4950716406517813246}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Health
@@ -83,23 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2800061251018768450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5161462741694299481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c258bd0271f9a4c9b016313e1cc78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rare: 2
-  type: 6
-  itemName: Egg
-  description: Eat to recuperate 20 Hp
-  value: 20
 --- !u!61 &-8472305688928424838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +109,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4950716406517813246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161462741694299481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fffdc617d319047b5fd71d0472c311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rare: 2
+  type: 6
+  itemName: Egg
+  description: Eat to recuperate 20 Hp
+  value: 20
