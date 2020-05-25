@@ -7,12 +7,15 @@ public class Fireball : ProjectileSpellBase
     public DamagingSpellSettings DamageSpellSettings;
 
     protected void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+    {        
+        if (!collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(DamageSpellSettings.damage * DamageMultiplier);
-            Destroy(gameObject);
-
+            var IDamageableGameObject = collision.gameObject.GetComponent<IDamageable>();
+            if(IDamageableGameObject != null)
+            {
+                IDamageableGameObject.TakeDamage(DamageSpellSettings.damage * DamageMultiplier);
+                Destroy(gameObject);
+            }           
         }
     }
 

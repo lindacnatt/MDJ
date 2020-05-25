@@ -64,13 +64,16 @@ public class Thunder : AOESpellBase
         return false;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (!collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(AOESpellSettings.damage * DamageMultiplier);
-            Destroy(gameObject);
-
+            var IDamageableGameObject = collision.gameObject.GetComponent<IDamageable>();
+            if (IDamageableGameObject != null)
+            {
+                IDamageableGameObject.TakeDamage(AOESpellSettings.damage * DamageMultiplier);
+                Destroy(gameObject);
+            }
         }
     }
 
