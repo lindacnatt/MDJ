@@ -83,6 +83,7 @@ public class PlayerController2D : MonoBehaviour, IDamageable
         onSpellPrimed.Raise(null);
 
         GameEvents.current.OnEquip += calcBuffs;
+        GameEvents.current.OnSpeedBoost += boostSpeed;
     }
 
     void OnEnable()
@@ -217,7 +218,6 @@ public class PlayerController2D : MonoBehaviour, IDamageable
 
     private void calcBuffs()
     {
-        Debug.Log("GAYBOWSER");
         defBuff = inventory.defensiveValue();
         offenseBuff = inventory.offenseValue();
 
@@ -241,6 +241,13 @@ public class PlayerController2D : MonoBehaviour, IDamageable
     private void changeMaxInk(float max)
     {
         maxInk = (int)(max * maxInk);
+    }
+
+    private void boostSpeed(float speed)
+    {
+        Debug.Log("HELLO");
+        currentSpeed *= speed;
+        agent.speed = currentSpeed;
     }
 
     #region Knockback
