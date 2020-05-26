@@ -14,9 +14,15 @@ public class Wind : ProjectileSpellBase
             if (IDamageableGameObject != null)
             {
                 IDamageableGameObject.TakeDamage(DamageSpellSettings.damage * DamageMultiplier);
-                Destroy(gameObject);
+ 
             }
         }
+    }
+
+    public override void SetDestination(Vector2 target)
+    {
+        base.SetDestination(target);
+        StartCoroutine(EyeRokState.WaitForSeconds(3.0f, () => Destroy(gameObject)));
     }
 
     public override bool OnSpellPrimed()
