@@ -154,6 +154,15 @@ public class PlayerController2D : MonoBehaviour, IDamageable
         onSpellPrimed.Raise(spell);
 
         CurrentInk -= spell.InkCost;
+
+        var primedSpellPrefab = spell.SpellPrefab.GetComponent<ISpell>();
+        if (primedSpellPrefab.OnSpellPrimed())
+        {
+            Instantiate(spell.SpellPrefab);
+            //JUST FUCKING SEND IT DUDE        
+            HasSpell = false;
+            onSpellPrimed.Raise(null);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

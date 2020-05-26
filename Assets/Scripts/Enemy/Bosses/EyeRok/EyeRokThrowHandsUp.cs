@@ -47,7 +47,6 @@ public class EyeRokThrowHandsUp : EyeRokState
 
     IEnumerator ThrowHands(GameObject hand)
     {
-
         float elapsedTime = 0;
         float ratio = elapsedTime / TimeDelayBeforeAttack;
 
