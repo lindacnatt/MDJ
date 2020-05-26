@@ -121,13 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 1
+  rare: 0
   type: 3
   itemName: Chain Chestplate
-  description: This chestplate will make your defense increase by 70%
+  description: This chestplate will make your defense at the cost of speed
   value: 0
-  defenseValue: 70
+  defenseValue: 60
   healthValue: 0
   inkValue: 0
-  speedValue: 0
+  speedValue: -25
   offensiveValue: 0

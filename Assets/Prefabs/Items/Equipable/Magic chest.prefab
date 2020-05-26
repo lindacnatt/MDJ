@@ -121,14 +121,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 1
+  rare: 2
   type: 3
   itemName: Magic Chestplate
-  description: This item provides 100 armor making the player receive 2x less damage
-    and increases ink value
+  description: This item provides 50 armor making the player receive less damage
+    and raises the ink and damage the player sends out
   value: 0
-  defenseValue: 100
+  defenseValue: 50
   healthValue: 0
   inkValue: 50
-  speedValue: 0
-  offensiveValue: 0
+  speedValue: -10
+  offensiveValue: 20

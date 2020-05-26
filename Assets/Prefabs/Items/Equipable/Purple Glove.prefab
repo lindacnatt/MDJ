@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 0
+  rare: 2
   type: 4
   itemName: Purple gloves
   description: These gloves improve the damage by 20 at the cost of max ink you can
@@ -129,6 +129,6 @@ MonoBehaviour:
   value: 0
   defenseValue: 0
   healthValue: 0
-  inkValue: -10
-  speedValue: 0
-  offensiveValue: 10
+  inkValue: 5
+  speedValue: 2
+  offensiveValue: 20

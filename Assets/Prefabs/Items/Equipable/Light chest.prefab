@@ -121,13 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 0
+  rare: 2
   type: 3
   itemName: Auminium Chestplate
   description: This item provides armor making the player receive 20% less damage
   value: 0
   defenseValue: 20
-  healthValue: 0
-  inkValue: 0
-  speedValue: 0
-  offensiveValue: 0
+  healthValue: 5
+  inkValue: 5
+  speedValue: 5
+  offensiveValue: 5

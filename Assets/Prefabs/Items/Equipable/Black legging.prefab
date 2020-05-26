@@ -127,7 +127,7 @@ MonoBehaviour:
   description: These leggings provide a bit of defense and raThese leggings will
     increase your health
   value: 0
-  defenseValue: 0
+  defenseValue: 8
   healthValue: 20
   inkValue: 0
   speedValue: 0

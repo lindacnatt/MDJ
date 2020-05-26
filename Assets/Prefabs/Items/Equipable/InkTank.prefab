@@ -121,12 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cb36e969f6225448b0d3d0be28e5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rare: 1
+  rare: 2
   type: 7
-  itemName: Ink Tank
-  description: This item provides a boost to the max ink you can carry
-  value: 0
+  itemName: Inkinator
+  description: This item regenerates ink over time
+  value: 1000
   defenseValue: 0
   healthValue: 0
-  inkValue: 100
+  inkValue: 0
   speedValue: 0
+  offensiveValue: 0

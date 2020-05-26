@@ -126,7 +126,7 @@ MonoBehaviour:
   itemName: Black Boots
   description: These boots provides some help such as defense and speed
   value: 0
-  defenseValue: 10
+  defenseValue: 15
   healthValue: 0
   inkValue: 0
   speedValue: 15

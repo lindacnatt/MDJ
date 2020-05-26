@@ -126,7 +126,7 @@ MonoBehaviour:
   itemName: Boots Of Speed
   description: These boots make you superfast
   value: 0
-  defenseValue: 20
+  defenseValue: 15
   healthValue: 0
   inkValue: 0
   speedValue: 50
