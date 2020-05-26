@@ -11,7 +11,7 @@ public class HealingInk : HealingSpellBase
     // Start is called before the first frame update
     void Start()
     {
-        timeToHeal = 10.0f;
+        timeToHeal = 5.0f;
         player = FindObjectOfType<PlayerController2D>();
 
         //Do the heal here
