@@ -226,7 +226,7 @@ public class PlayerController2D : MonoBehaviour, IDamageable
     
     private void changeSpeed(float speed)
     {
-        currentSpeed *= speed;
+        currentSpeed = speed * initalSpeed;
         agent.speed = currentSpeed;
     }
 
