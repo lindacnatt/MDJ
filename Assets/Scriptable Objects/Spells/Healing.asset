@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e7e9d29c988cf47971f6a92a4744d0, type: 3}
   m_Name: Healing
   m_EditorClassIdentifier: 
-  InkCost: 15
+  InkCost: 1
   GestureName: asterisk
   SpellPrefab: {fileID: 9081824320362348857, guid: 44b593fee600c724d885ae1f548b2b78,
     type: 3}
   OnSpellPrimedEvent: {fileID: 0}
   OnSpellCastEvent: {fileID: 0}
-  amountToHeal: 20
+  amountToHeal: 30
