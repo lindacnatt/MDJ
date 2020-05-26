@@ -123,11 +123,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 1
   type: 7
-  itemName: Ink Tank
-  description: This item provides a boost to the max ink you can carry
-  value: 0
+  itemName: Inkinator
+  description: This item regenerates an carry
+  value: 500
   defenseValue: 0
   healthValue: 0
-  inkValue: 100
+  inkValue: 0
   speedValue: 0
   offensiveValue: 0
