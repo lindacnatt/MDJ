@@ -474,6 +474,7 @@ public class Inventory : MonoBehaviour
                     }
                 }
                 removeItem(index2, type2);
+                GameEvents.current.Equip();
 
             }
         }
@@ -558,6 +559,7 @@ public class Inventory : MonoBehaviour
             }
 
         }
+        GameEvents.current.Equip();
 
     }
 

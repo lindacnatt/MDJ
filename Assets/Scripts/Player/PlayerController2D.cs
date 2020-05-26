@@ -81,6 +81,8 @@ public class PlayerController2D : MonoBehaviour, IDamageable
         CurrentHP = CurrentInk = 100;
         
         onSpellPrimed.Raise(null);
+
+        GameEvents.current.OnEquip += calcBuffs;
     }
 
     void OnEnable()
@@ -215,6 +217,7 @@ public class PlayerController2D : MonoBehaviour, IDamageable
 
     private void calcBuffs()
     {
+        Debug.Log("GAYBOWSER");
         defBuff = inventory.defensiveValue();
         offenseBuff = inventory.offenseValue();
 
