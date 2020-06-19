@@ -6,8 +6,9 @@ This project is a Unity project so Unity is required.
 
 1. Open this folder as an Unity project.
 2. Go to File->Build Settings.
-3. Choose the desired platform.
-4. Build either by building to a folder or by building and running.
+3. Add the scene "Level1" to Scenes in Build.
+4. Choose the desired platform.
+5. Build either by building to a folder or by building and running.
 
 # Group Members
 96967 - Rafael Alexandre Silva Prates
